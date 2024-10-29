@@ -1,5 +1,6 @@
 QRG Quantum Forge Unity Toolkit
-Source available; changes and bug fixes okay. Non-commercial/personal use. Non-redistributable. 
+
+Summary: Source available; changes and bug fixes okay. Non-commercial/personal use. Non-redistributable. 
 
 1. Definitions.
 
