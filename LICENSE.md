@@ -1,6 +1,4 @@
-QRG Quantum Forge Unity Toolkit
-
-Summary: Source available; changes and bug fixes okay. Non-commercial/personal use. Non-redistributable. 
+QRG Quantum Forge Unity Toolkit License 1.0
 
 1. Definitions.
 
