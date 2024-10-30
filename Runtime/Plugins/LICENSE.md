@@ -1,4 +1,4 @@
-QRG Quantum Forge
+QRG Quantum Forge License 1.0
 
 1. Definitions.
 
@@ -16,7 +16,7 @@ d. You means the individual or entity exercising the Licensed Rights under this 
 
 2. General. The Quantum Forge software and any documentation accompanying this License whether on disk, in read only memory, on any other media or in any other form (collectively the "Software") are licensed, not sold, to you by Quantum Realm Games, Inc. ("QRG") for use only under the terms of this License, and QRG reserves all rights not expressly granted to you.
 
-The rights granted herein are limited to QRG intellectual property rights in the Quantum Forge and do not include any other patents or intellectual property rights. You own the media on which Quantum Forge is recorded but QRG and/or QRG’s licensor(s) retain ownership of the Software itself.
+The rights granted herein are limited to QRG intellectual property rights in the Quantum Forge and do not include any other patents or intellectual property rights. You own the media on which Quantum Forge is recorded but QRG and/or QRGâ€™s licensor(s) retain ownership of the Software itself.
 
 3. Permitted License Uses and Restrictions. 
 
@@ -49,7 +49,7 @@ g. If requested by the Licensor, You must remove any of the information required
 7. Limitation of Liability. 
 
 a. TO THE EXTENT NOT PROHIBITED BY LAW, IN NO EVENT SHALL QRG BE LIABLE FOR PERSONAL INJURY, OR ANY INCIDENTAL, SPECIAL, INDIRECT OR CONSEQUENTIAL DAMAGES WHATSOEVER, INCLUDING, WITHOUT LIMITATION, DAMAGES FOR LOSS OF PROFITS, LOSS OF DATA, BUSINESS INTERRUPTION OR ANY OTHER COMMERCIAL DAMAGES OR LOSSES, ARISING OUT OF OR RELATED TO YOUR USE OR INABILITY TO USE THE SOFTWARE, HOWEVER CAUSED, REGARDLESS OF THE THEORY OF LIABILITY (CONTRACT, TORT OR OTHERWISE) AND EVEN IF QRG HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. SOME JURISDICTIONS DO NOT ALLOW THE LIMITATION OF LIABILITY FOR PERSONAL INJURY, OR OF INCIDENTAL OR CONSEQUENTIAL DAMAGES, SO THIS LIMITATION MAY NOT APPLY TO YOU. 
-b. In no event shall QRG’s total liability to you for all damages (other than as may be required by applicable law in cases involving personal injury) exceed the amount of one dollar in United States Currency (US$1.00). The foregoing limitations will apply even if the above stated remedy fails of its essential purpose.
+b. In no event shall QRGâ€™s total liability to you for all damages (other than as may be required by applicable law in cases involving personal injury) exceed the amount of one dollar in United States Currency (US$1.00). The foregoing limitations will apply even if the above stated remedy fails of its essential purpose.
 
 c. The disclaimer of warranties (section 6) and limitation of liability (section 7) shall be interpreted in a manner that, to the extent possible, most closely approximates an absolute disclaimer and waiver of all liability.
 
@@ -57,7 +57,7 @@ d. Nothing in this License constitutes or may be construed as permission to asse
 
 8. Export Law Assurances. You may not use or otherwise export or reexport the Software except as authorized by United States law and the laws of the jurisdiction in which the Software was obtained. In particular, but without limitation, the Software may not be exported or re-exported (a) into (or to a national or resident of) any U.S. embargoed countries (currently Cuba, Iran, Iraq, Libya, North Korea, Sudan and Syria) or (b) to anyone on the U.S. Treasury Department's list of Specially Designated Nationals or the U.S. Department of Commerce Denied Person's List or Entity List. By using the Software, you represent and warrant that you are not located in, under control of, or a national or resident of any such country or on any such list.
 
-9. Government End Users. The Software and related documentation are "Commercial Items", as that term is defined at 48 C.F.R. §2.101, consisting of "Commercial Computer Software" and "Commercial Computer Software Documentation", as such terms are used in 48 C.F.R. §12.212 or 48 C.F.R. §227.7202, as applicable. Consistent with 48 C.F.R. §12.212 or 48 C.F.R. §227.7202-1 through 227.7202-4, as applicable, the Commercial Computer Software and Commercial Computer Software Documentation are being licensed to U.S. Government end users (a) only as Commercial Items and (b) with only those rights as are granted to all other end users pursuant to the terms and conditions herein. Unpublished-rights reserved under the copyright laws of the United States.
+9. Government End Users. The Software and related documentation are "Commercial Items", as that term is defined at 48 C.F.R. Â§2.101, consisting of "Commercial Computer Software" and "Commercial Computer Software Documentation", as such terms are used in 48 C.F.R. Â§12.212 or 48 C.F.R. Â§227.7202, as applicable. Consistent with 48 C.F.R. Â§12.212 or 48 C.F.R. Â§227.7202-1 through 227.7202-4, as applicable, the Commercial Computer Software and Commercial Computer Software Documentation are being licensed to U.S. Government end users (a) only as Commercial Items and (b) with only those rights as are granted to all other end users pursuant to the terms and conditions herein. Unpublished-rights reserved under the copyright laws of the United States.
 
 10. Controlling Law and Severability and Choice of Forum. 
 a. This License will be governed by and construed in accordance with the laws of the State of California, as applied to agreements entered into and to be performed entirely within California between California residents, that is, without giving any effect to the choice of laws provisions of the State of California. 
