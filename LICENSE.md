@@ -1,4 +1,4 @@
-QRG Quantum Forge Unity Toolkit License 1.0
+QRG Quantum Forge Unity Toolkit License 1.1
 
 1. Definitions.
 
@@ -73,4 +73,4 @@ a. Moral rights, such as the right of integrity, are not licensed under this Pub
 
 b. Patent and trademark rights are not licensed under this Public License.
 
-c. The Licensor expressly reserves any right to collect royalties at a rate of not less than ten United States dollars (US$10) per copy distributed or page visit or medium-appropriate metric, as estimated by QRG or provided by a reliable third-party, of Adapted Work should the Software be discovered in use for NonCommercial purposes.
+c. The Licensor expressly reserves any right to collect royalties at a rate of not less than ten United States dollars (US$10) per copy distributed or page visit or medium-appropriate metric, as estimated by QRG or provided by a reliable third-party, of Adapted Work should the Software be discovered in use for Commercial purposes.

@@ -3,3 +3,5 @@
 0.1.2 Update quantum-forge.dll to Release target Windows SDK 10.0.18362.0
 
 0.1.3 Update quantum-forge.dll to Release target Windows SDK 8.1
+
+0.1.4 Fix LICENSE typo, and add lecture sample to Samples
