@@ -196,9 +196,9 @@ namespace QRG.QuantumForge.Runtime
             PhaseFlip(predicates);
         }
 
-        public static void Swap(QuantumProperty prop1, QuantumProperty prop2)
+        public static void Swap(QuantumProperty prop1, QuantumProperty prop2, params Predicate[] predicates)
         {
-            QuantumForge.Swap(prop1._nativeQuantumProperty, prop2._nativeQuantumProperty);
+            QuantumForge.Swap(prop1._nativeQuantumProperty, prop2._nativeQuantumProperty, ConvertPredicates(predicates));
         }
 
         public static void ISwap(QuantumProperty prop1, QuantumProperty prop2)
