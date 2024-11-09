@@ -92,10 +92,16 @@ namespace QRG.QuantumForge.Core
             }
         }
 
-        [DllImport("quantum-forge")]
+#if UNITY_EDITOR || UNITY_STANDALONE
+   const string QUANTUM_FORGE_LIB = "quantum-forge";
+#elif UNITY_WEBGL && !UNITY_EDITOR
+   const string QUANTUM_FORGE_LIB = "__Internal";
+#endif
+
+        [DllImport(QUANTUM_FORGE_LIB)]
         private static extern IntPtr qforge_make_quantum_property(int dimension, out QForgeError err);
 
-        [DllImport("quantum-forge")]
+        [DllImport(QUANTUM_FORGE_LIB)]
         private static extern QForgeError qforge_free_quantum_property(IntPtr quantumProperty);
 
         // Define the QuantumProperty class as a wrapper
@@ -164,7 +170,7 @@ namespace QRG.QuantumForge.Core
             }
         }
 
-        [DllImport("quantum-forge.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(dllName: QUANTUM_FORGE_LIB, CallingConvention = CallingConvention.Cdecl)]
         private static extern QForgeError qforge_cycle(IntPtr prop, [In] NativePredicate[] preds, int preds_len);
 
         public static void Cycle(QuantumProperty prop, params Predicate[] preds)
@@ -219,7 +225,7 @@ namespace QRG.QuantumForge.Core
             }
         }
 
-        [DllImport("quantum-forge.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(QUANTUM_FORGE_LIB, CallingConvention = CallingConvention.Cdecl)]
         private static extern QForgeError qforge_hadamard(IntPtr prop, NativePredicate[] preds, UIntPtr preds_len);
 
         public static void Hadamard(QuantumProperty prop, params Predicate[] preds)
@@ -254,7 +260,7 @@ namespace QRG.QuantumForge.Core
             }
         }
 
-        [DllImport("quantum-forge.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(QUANTUM_FORGE_LIB, CallingConvention = CallingConvention.Cdecl)]
         private static extern QForgeError qforge_swap(IntPtr p1, IntPtr p2, NativePredicate[] preds, UIntPtr preds_len);
 
         public static void Swap(QuantumProperty p1, QuantumProperty p2, params Predicate[] preds)
@@ -290,7 +296,7 @@ namespace QRG.QuantumForge.Core
             }
         }
 
-        [DllImport("quantum-forge.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(QUANTUM_FORGE_LIB, CallingConvention = CallingConvention.Cdecl)]
         private static extern QForgeError qforge_i_swap(IntPtr p1, IntPtr p2, NativePredicate[] preds,
             UIntPtr preds_len);
 
@@ -327,7 +333,7 @@ namespace QRG.QuantumForge.Core
             }
         }
 
-        [DllImport("quantum-forge.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(QUANTUM_FORGE_LIB, CallingConvention = CallingConvention.Cdecl)]
         private static extern QForgeError qforge_fractional_i_swap(IntPtr p1, IntPtr p2, float fraction,
             NativePredicate[] preds, UIntPtr preds_len);
 
@@ -366,7 +372,7 @@ namespace QRG.QuantumForge.Core
             }
         }
 
-        [DllImport("quantum-forge.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(QUANTUM_FORGE_LIB, CallingConvention = CallingConvention.Cdecl)]
         private static extern QForgeError qforge_phase_rotate(NativePredicate[] preds, UIntPtr preds_len, float angle);
 
         public static void PhaseRotate(float angle, params Predicate[] preds)
@@ -416,7 +422,7 @@ namespace QRG.QuantumForge.Core
             }
         }
 
-        [DllImport("quantum-forge.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(QUANTUM_FORGE_LIB, CallingConvention = CallingConvention.Cdecl)]
         private static extern QForgeError qforge_phase_flip(NativePredicate[] preds, UIntPtr preds_len);
 
         public static void PhaseFlip(params Predicate[] preds)
@@ -453,7 +459,7 @@ namespace QRG.QuantumForge.Core
             }
         }
 
-        [DllImport("quantum-forge.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(QUANTUM_FORGE_LIB, CallingConvention = CallingConvention.Cdecl)]
         private static extern QForgeError qforge_measure(IntPtr[] props, UIntPtr props_len, int[] output);
 
         // Public method to expose the measure function
@@ -478,7 +484,7 @@ namespace QRG.QuantumForge.Core
             return output;
         }
 
-        [DllImport("quantum-forge.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(QUANTUM_FORGE_LIB, CallingConvention = CallingConvention.Cdecl)]
         private static extern QForgeError qforge_probabilities(IntPtr[] props, UIntPtr props_len, IntPtr output);
 
         // Public method to expose the probabilities function
@@ -558,7 +564,7 @@ namespace QRG.QuantumForge.Core
             return result;
         }
 
-        [DllImport("quantum-forge.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(QUANTUM_FORGE_LIB, CallingConvention = CallingConvention.Cdecl)]
         private static extern QForgeError qforge_reduced_density_matrix(IntPtr[] props, UIntPtr props_len, IntPtr real_output, IntPtr imag_ouput, int output_len);
 
         // Public method to expose the probabilities function

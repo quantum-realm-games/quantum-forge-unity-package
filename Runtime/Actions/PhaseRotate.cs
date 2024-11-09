@@ -53,6 +53,11 @@ namespace QRG.QuantumForge.Runtime
                 quantumProperty.PhaseRotate(_radians,_value);
             }
         }
+
+        public void SetPhaseRadians(float radians)
+        {
+            _radians = radians;
+        }
     }
 
 }

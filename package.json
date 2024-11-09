@@ -31,6 +31,11 @@
       "displayName": "FaQtory",
       "description": "An example of a game mechanic inspired by the Deustch-Jozsa quantum algorithm.",
       "path": "Samples~/FaQtory"
+    },
+    {
+      "displayName": "Lecture Example",
+      "description": "Simple example of setting up quantum effects with buttons for Actions.",
+      "path": "Samples~/lecture"
     }
   ]
 }
