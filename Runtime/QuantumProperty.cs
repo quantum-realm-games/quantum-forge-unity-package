@@ -250,6 +250,11 @@ namespace QRG.QuantumForge.Runtime
 
         public static BasisProbability[] Probabilities(params QuantumProperty[] properties)
         {
+            if (properties == null || properties.Length == 0)
+            {
+                Debug.LogWarning("No properties provided to calculate probabilities");
+                return new BasisProbability[0];
+            }
             var props = Array.ConvertAll(properties, p => p._nativeQuantumProperty);
             var probs = QuantumForge.Probabilities(props);
             var numValues = properties.Length;

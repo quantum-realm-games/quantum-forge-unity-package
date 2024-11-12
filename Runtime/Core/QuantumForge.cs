@@ -490,6 +490,11 @@ namespace QRG.QuantumForge.Core
         // Public method to expose the probabilities function
         public static BasisProbability[] Probabilities(params QuantumProperty[] props)
         {
+            if (props == null || props.Length == 0)
+            {
+                Debug.LogWarning("No properties provided to calculate probabilities");
+                return new BasisProbability[0];
+            }
             BasisProbability[] result = null;
             IntPtr[] propHandles = Array.ConvertAll(props, p => p.Handle);
             int numProbabilities = 1;

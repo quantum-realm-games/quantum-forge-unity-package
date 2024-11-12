@@ -60,7 +60,7 @@ namespace QRG.QuantumForge.Roshambo
                         totalProb += basisProbability.Probability;
                         if (rand < totalProb)
                         {
-                            player1.sprite = basisProbability.QuditValues[0] switch
+                            player1.sprite = basisProbability.BasisValues[0] switch
                             {
                                 "rock" => rock,
                                 "paper" => paper,
@@ -68,7 +68,7 @@ namespace QRG.QuantumForge.Roshambo
                                 _ => null
                             };
 
-                            player2.sprite = basisProbability.QuditValues[1] switch
+                            player2.sprite = basisProbability.BasisValues[1] switch
                             {
                                 "rock" => rock,
                                 "paper" => paper,

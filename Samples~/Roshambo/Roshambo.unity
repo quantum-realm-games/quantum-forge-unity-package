@@ -943,7 +943,7 @@ MonoBehaviour:
   quantumProperties:
   - {fileID: 1705627141}
   - {fileID: 690924836}
-  probabilities: []
+  _probabilities: []
   continuous: 1
 --- !u!1 &620494383
 GameObject:
@@ -1421,7 +1421,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e681316c3a4754642b7e95ec147aa85d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _basisValues: {fileID: 11400000, guid: 1da58b1857dea32479561f4af9615ad0, type: 2}
+  _basis: {fileID: 11400000, guid: 1da58b1857dea32479561f4af9615ad0, type: 2}
   Initial: rock
 --- !u!114 &690924838
 MonoBehaviour:
@@ -1436,7 +1436,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   quantumProperties: []
-  probabilities: []
+  _probabilities: []
   continuous: 1
 --- !u!114 &690924839
 MonoBehaviour:
@@ -3540,7 +3540,7 @@ MonoBehaviour:
   quantumProperties:
   - {fileID: 1705627141}
   - {fileID: 690924836}
-  probabilities: []
+  _probabilities: []
   continuous: 1
 --- !u!114 &1416308708
 MonoBehaviour:
@@ -4085,8 +4085,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e681316c3a4754642b7e95ec147aa85d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _basisValues: {fileID: 11400000, guid: 1da58b1857dea32479561f4af9615ad0, type: 2}
-  Initial: scissors
+  _basis: {fileID: 11400000, guid: 1da58b1857dea32479561f4af9615ad0, type: 2}
+  Initial: rock
 --- !u!114 &1705627143
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4100,7 +4100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   quantumProperties: []
-  probabilities: []
+  _probabilities: []
   continuous: 1
 --- !u!114 &1705627144
 MonoBehaviour:

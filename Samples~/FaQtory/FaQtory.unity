@@ -555,6 +555,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7083599010772690620, guid: 8aab7255a19adb443b01da8b7f5d4187, type: 3}
+      propertyPath: _basis
+      value: 
+      objectReference: {fileID: 11400000, guid: d012e43057a67164cb4e23b5f91aa25e, type: 2}
+    - target: {fileID: 7083599010772690620, guid: 8aab7255a19adb443b01da8b7f5d4187, type: 3}
       propertyPath: Initial
       value: one
       objectReference: {fileID: 0}
@@ -1756,6 +1760,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   _targetProperties: []
+  _lastResult: 
 --- !u!114 &1015244584
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2660,6 +2665,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7083599010772690620, guid: 8aab7255a19adb443b01da8b7f5d4187, type: 3}
+      propertyPath: _basis
+      value: 
+      objectReference: {fileID: 11400000, guid: d012e43057a67164cb4e23b5f91aa25e, type: 2}
+    - target: {fileID: 7083599010772690620, guid: 8aab7255a19adb443b01da8b7f5d4187, type: 3}
+      propertyPath: Initial
+      value: zero
+      objectReference: {fileID: 0}
     - target: {fileID: 7340095360088498023, guid: 8aab7255a19adb443b01da8b7f5d4187, type: 3}
       propertyPath: m_Name
       value: Input 2
@@ -2807,6 +2820,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   _targetProperties: []
+  _lastResult: 
 --- !u!114 &1807026570 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7083599010772690620, guid: 8aab7255a19adb443b01da8b7f5d4187, type: 3}
@@ -3524,6 +3538,14 @@ PrefabInstance:
     - target: {fileID: 3950545960536111092, guid: 8aab7255a19adb443b01da8b7f5d4187, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7083599010772690620, guid: 8aab7255a19adb443b01da8b7f5d4187, type: 3}
+      propertyPath: _basis
+      value: 
+      objectReference: {fileID: 11400000, guid: d012e43057a67164cb4e23b5f91aa25e, type: 2}
+    - target: {fileID: 7083599010772690620, guid: 8aab7255a19adb443b01da8b7f5d4187, type: 3}
+      propertyPath: Initial
+      value: zero
       objectReference: {fileID: 0}
     - target: {fileID: 7340095360088498023, guid: 8aab7255a19adb443b01da8b7f5d4187, type: 3}
       propertyPath: m_Name

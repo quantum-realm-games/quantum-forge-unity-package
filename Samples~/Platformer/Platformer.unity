@@ -736,7 +736,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _targetProperties:
   - {fileID: 1255100755}
-  _basisValues: {fileID: 11400000, guid: 024945ceca1e5a9438f2ec45ebfafe69, type: 2}
+  _basis: {fileID: 11400000, guid: 024945ceca1e5a9438f2ec45ebfafe69, type: 2}
   _value: bottom
   _radians: 1.04
 --- !u!114 &364311889
@@ -21298,7 +21298,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   quantumProperties:
   - {fileID: 1255100755}
-  probabilities: []
+  _probabilities: []
   continuous: 1
 --- !u!114 &1255100755
 MonoBehaviour:
@@ -21312,7 +21312,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e681316c3a4754642b7e95ec147aa85d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _basisValues: {fileID: 11400000, guid: 024945ceca1e5a9438f2ec45ebfafe69, type: 2}
+  _basis: {fileID: 11400000, guid: 024945ceca1e5a9438f2ec45ebfafe69, type: 2}
   Initial: bottom
 --- !u!4 &1255100756
 Transform:

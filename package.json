@@ -1,6 +1,6 @@
 {
   "name": "com.qrg.quantumforge",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "displayName": "Quantum Forge",
   "description": "A set of tools for adding genuine quantum behavior to Unity projects.",
   "unity": "2022.3",
@@ -31,11 +31,6 @@
       "displayName": "FaQtory",
       "description": "An example of a game mechanic inspired by the Deustch-Jozsa quantum algorithm.",
       "path": "Samples~/FaQtory"
-    },
-    {
-      "displayName": "Lecture Example",
-      "description": "Simple example of setting up quantum effects with buttons for Actions.",
-      "path": "Samples~/lecture"
     }
   ]
 }

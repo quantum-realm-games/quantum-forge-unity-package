@@ -11,3 +11,5 @@
 0.2.0 Breaking change: Rename BasisValues to Basis.
     Includes webGL library for Unity 2022.3
     Other renames and QOL fixes.
+
+0.2.1 Fixed broken samples.
