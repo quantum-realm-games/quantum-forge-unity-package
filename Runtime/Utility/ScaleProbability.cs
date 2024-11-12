@@ -42,7 +42,7 @@ namespace QRG.QuantumForge.Utility
         // Update is called once per frame
         void Update()
         {
-            var p = _probabilityTracker.Probabilities.Where(x => x.QuditValues[0] == _scaleOnValue);
+            var p = _probabilityTracker.Probabilities.Where(x => x.BasisValues[0] == _scaleOnValue);
             if (p.Any()) {
                 var prob = p.First().Probability;
                 transform.localScale = new Vector3(

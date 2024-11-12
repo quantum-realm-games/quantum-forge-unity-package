@@ -27,9 +27,9 @@ namespace QRG.QuantumForge.Runtime
         [SerializeField] private QuantumProperty[] _targetProperties;
         public QuantumProperty[] TargetProperties => _targetProperties;
 
-        [SerializeField] private BasisValues _basisValues = null;
+        [SerializeField] private Basis _basis = null;
 
-        [SerializeField, Dropdown("_basisValues.values")]
+        [SerializeField, Dropdown("_basis.values")]
         private string _value;
 
         [SerializeField, Range(0, 2*Mathf.PI)] private float _radians = 1.0f;
@@ -44,9 +44,9 @@ namespace QRG.QuantumForge.Runtime
         {
             foreach (var quantumProperty in targetProperties)
             {
-                if(quantumProperty.BasisValues != _basisValues)
+                if(quantumProperty.Basis != _basis)
                 {
-                    Debug.LogWarning($"Basis values of {quantumProperty.gameObject.name} do not match the basis values of the phase rotate action. Skipping.");
+                    Debug.LogWarning($"Basis of {quantumProperty.gameObject.name} do not match the basis of the phase rotate action. Skipping.");
                     continue;
                 }
                 Debug.Log($"Applying phase rotation to {quantumProperty.gameObject.name}");

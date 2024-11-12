@@ -29,35 +29,35 @@ namespace QRG.QuantumForge.Runtime
     [Serializable]
     public class QuantumProperty : MonoBehaviour
     {
-        [SerializeField] private BasisValues _basisValues = null;
+        [SerializeField] private Basis _basis = null;
         private QuantumForge.QuantumProperty _nativeQuantumProperty;
 
-        [SerializeField, Dropdown("_basisValues.values")]
+        [SerializeField, Dropdown("_basis.values")]
         private string Initial;
 
         public int Dimension
         {
-            get => _basisValues.Dimension;
+            get => _basis.Dimension;
         }
 
-        public BasisValues BasisValues
+        public Basis Basis
         {
-            get => _basisValues;
+            get => _basis;
         }
 
-        void Start()
+        void Awake()
         {
             try
             {
-                if (_basisValues == null)
+                if (_basis == null)
                 {
-                    throw new Exception("Basis values not set. Try setting basis values in Editor. Reload/recompile sometimes corrupts this field.");
+                    throw new Exception("Basis not set. Try setting basis in Editor. Reload/recompile sometimes corrupts this field.");
                 }
-                int initial = _basisValues.values.IndexOf(Initial);
+                int initial = _basis.values.IndexOf(Initial);
                 if(initial == -1)
                 {
                     initial = 0;
-                    throw new Exception($"Initial value {initial} not found in basis values, setting it to {_basisValues.values[0]}. Try selecting initial value again in Editor. Reload/recompile sometimes corrupts this field.");
+                    throw new Exception($"Initial value {initial} not found in basis, setting it to {_basis.values[0]}. Try selecting initial value again in Editor. Reload/recompile sometimes corrupts this field.");
                 }
                 _nativeQuantumProperty = new QuantumForge.QuantumProperty(Dimension, initial);
             }
@@ -88,7 +88,7 @@ namespace QRG.QuantumForge.Runtime
 
         public Predicate is_value(int value)
         {
-            return is_value(_basisValues.values[value]);
+            return is_value(_basis.values[value]);
         }
 
         public Predicate is_not_value(string value)
@@ -103,14 +103,14 @@ namespace QRG.QuantumForge.Runtime
 
         public Predicate is_not_value(int value)
         {
-            return is_value(_basisValues.values[value]);
+            return is_value(_basis.values[value]);
         }
 
         internal static QuantumForge.Predicate[] ConvertPredicates(Predicate[] predicates)
         {
             return Array.ConvertAll(predicates,
                 p => new QuantumForge.Predicate(p.property._nativeQuantumProperty,
-                    p.property._basisValues.values.IndexOf(p.value), p.is_equal));
+                    p.property._basis.values.IndexOf(p.value), p.is_equal));
         }
 
         public static void Cycle(QuantumProperty prop, params Predicate[] predicates)
@@ -232,19 +232,19 @@ namespace QRG.QuantumForge.Runtime
         public struct BasisProbability
         {
             public float Probability;
-            public string[] QuditValues;
-            [SerializeField] private string _quditValues; // Editor conveinence
+            public string[] BasisValues;
+            [SerializeField] private string _basisValues; // Editor conveinence
 
-            public BasisProbability(float probability, string[] quditValues)
+            public BasisProbability(float probability, string[] basisValues)
             {
                 Probability = probability;
-                QuditValues = quditValues;
-                _quditValues = string.Join(",", quditValues);
+                BasisValues = basisValues;
+                _basisValues = string.Join(",", basisValues);
             }
 
             public override string ToString()
             {
-                return $"{Probability.ToString("0.00")} : {string.Join(",", QuditValues)}";
+                return $"{Probability.ToString("0.00")} : {string.Join(",", BasisValues)}";
             }
         }
 
@@ -259,7 +259,7 @@ namespace QRG.QuantumForge.Runtime
                 var values = new string[properties.Length];
                 for (int j = 0; j < properties.Length; ++j)
                 {
-                    values[j] = properties[j]._basisValues.values[probs[i].QuditValues[j]];
+                    values[j] = properties[j]._basis.values[probs[i].QuditValues[j]];
                 }
 
                 result[i] = new BasisProbability(probs[i].Probability, values);

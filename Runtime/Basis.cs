@@ -19,9 +19,9 @@ using UnityEngine;
 
 namespace QRG.QuantumForge.Runtime
 {
-    // Suggestion, keep BasisValues list small.
-    [CreateAssetMenu(fileName = "BasisValues", menuName = "Quantum/BasisValues", order = 1)]
-    public class BasisValues : ScriptableObject
+    // Suggestion, keep Basisjhk list small.
+    [CreateAssetMenu(fileName = "Basis", menuName = "Quantum/Basis", order = 1)]
+    public class Basis : ScriptableObject
     {
         [SerializeReference] public List<string> values;
 

@@ -7,3 +7,7 @@
 0.1.4 Fix LICENSE typo, and add lecture sample to Samples
 
 0.1.5 Add FractionalISwap (2 properties), Swap (2 properties), ControlledCycle (2 properties) and ControlledSwap (3 properties) Actions. Controls are the first property in the list. ControlValue is the index of the basis value for the QuantumProperty basis of the control.
+
+0.2.0 Breaking change: Rename BasisValues to Basis.
+    Includes webGL library for Unity 2022.3
+    Other renames and QOL fixes.

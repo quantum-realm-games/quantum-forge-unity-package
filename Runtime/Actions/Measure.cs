@@ -32,7 +32,10 @@ namespace QRG.QuantumForge.Runtime
 
         [SerializeField] private QuantumProperty[] _targetProperties;
         public QuantumProperty[] TargetProperties => _targetProperties;
-        
+
+        [SerializeField] private int[] _lastResult;
+        public int[] LastResult => _lastResult;
+
 
         public void apply()
         {
@@ -45,7 +48,7 @@ namespace QRG.QuantumForge.Runtime
             foreach (var quantumProperty in targetProperties)
             {
                 Debug.Log($"Measuring to {quantumProperty.gameObject.name}");
-                QuantumProperty.Measure(quantumProperty);
+                _lastResult = QuantumProperty.Measure(quantumProperty);
                 OnMeasureQuantumProperty.Invoke(quantumProperty);
             }
             OnMeasure.Invoke();

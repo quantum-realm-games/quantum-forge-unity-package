@@ -25,8 +25,15 @@ namespace QRG.QuantumForge.Runtime
     {
         [SerializeField] private QuantumProperty[] quantumProperties;
 
-        [SerializeField] private QuantumProperty.BasisProbability[] probabilities;
-        public QuantumProperty.BasisProbability[] Probabilities => probabilities;
+        [SerializeField] private QuantumProperty.BasisProbability[] _probabilities;
+        public QuantumProperty.BasisProbability[] Probabilities
+        {
+            get
+            {
+                _probabilities = GetBasisProbabilities();
+                return _probabilities;
+            }
+        } 
 
         [SerializeField] private bool continuous = true;
 
@@ -52,14 +59,14 @@ namespace QRG.QuantumForge.Runtime
         {
             if (continuous)
             {
-                probabilities = GetBasisProbabilities();
+                _probabilities = GetBasisProbabilities();
             }
         }
 
         public QuantumProperty.BasisProbability[] GetBasisProbabilities()
         {
-            probabilities = QuantumProperty.Probabilities(quantumProperties);
-            return probabilities;
+            _probabilities = QuantumProperty.Probabilities(quantumProperties);
+            return _probabilities;
         }
     }
 }
