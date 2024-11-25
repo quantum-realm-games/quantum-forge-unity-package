@@ -25,6 +25,7 @@ namespace QRG.QuantumForge.Runtime
     public class PhaseRotate : MonoBehaviour, IQuantumAction
     {
         [SerializeField] private QuantumProperty[] _targetProperties;
+        public QuantumProperty.Predicate[] Predicates { get; }
         public QuantumProperty[] TargetProperties => _targetProperties;
 
         [SerializeField] private Basis _basis = null;

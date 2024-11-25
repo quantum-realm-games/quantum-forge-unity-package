@@ -65,7 +65,7 @@ namespace QRG.QuantumForge.Core
         [StructLayout(LayoutKind.Sequential)]
         internal struct NativePredicate
         {
-            internal IntPtr Property; // Corresponds to QuantumProperty* property
+            internal IntPtr Property; // Corresponds to NativeQuantumProperty* property
             internal int Value; // Corresponds to int value
             [MarshalAs(UnmanagedType.I1)] internal bool IsEqual; // Corresponds to bool is_equal
 
@@ -80,11 +80,11 @@ namespace QRG.QuantumForge.Core
 
         public struct Predicate
         {
-            public QuantumProperty Property;
+            public NativeQuantumProperty Property;
             public int Value;
             public bool IsEqual;
 
-            public Predicate(QuantumProperty property, int value, bool isEqual)
+            public Predicate(NativeQuantumProperty property, int value, bool isEqual)
             {
                 Property = property;
                 Value = value;
@@ -104,13 +104,13 @@ namespace QRG.QuantumForge.Core
         [DllImport(QUANTUM_FORGE_LIB)]
         private static extern QForgeError qforge_free_quantum_property(IntPtr quantumProperty);
 
-        // Define the QuantumProperty class as a wrapper
-        public class QuantumProperty : IDisposable
+        // Define the NativeQuantumProperty class as a wrapper
+        public class NativeQuantumProperty : IDisposable
         {
             internal IntPtr Handle { get; private set; }
             public readonly int Dimension;
 
-            public QuantumProperty(int dimension)
+            public NativeQuantumProperty(int dimension)
             {
                 Handle = qforge_make_quantum_property(dimension, out QForgeError error);
                 if (error != QForgeError.QFORGE_ERR_NONE)
@@ -119,10 +119,10 @@ namespace QRG.QuantumForge.Core
                 }
 
                 Dimension = dimension;
-                Debug.Log($"QuantumForge: Created QuantumProperty of dimension {dimension}. Handle: {Handle}");
+                Debug.Log($"QuantumForge: Created NativeQuantumProperty of dimension {dimension}. Handle: {Handle}");
             }
 
-            public QuantumProperty(int dimension, int initial)
+            public NativeQuantumProperty(int dimension, int initial)
             {
                 if (initial >= dimension || initial < 0)
                 {
@@ -141,19 +141,19 @@ namespace QRG.QuantumForge.Core
                 var m = Measure(this);
                 while (m[0] != initial)
                 {
-                    Cycle(this);
+                    Cycle(this, 1.0f);
                     m = Measure(this);
                 }
 
                 Debug.Log(
-                    $"QuantumForge: Created QuantumProperty of dimension {dimension}, with initial value {initial}. Handle: {Handle}");
+                    $"QuantumForge: Created NativeQuantumProperty of dimension {dimension}, with initial value {initial}. Handle: {Handle}");
             }
 
             public void Dispose()
             {
                 if (Handle != IntPtr.Zero)
                 {
-                    Debug.Log($"QuantumForge: Destroying QuantumProperty with handle {Handle}");
+                    Debug.Log($"QuantumForge: Destroying NativeQuantumProperty with handle {Handle}");
                     qforge_free_quantum_property(Handle);
                     Handle = IntPtr.Zero;
                 }
@@ -171,9 +171,9 @@ namespace QRG.QuantumForge.Core
         }
 
         [DllImport(dllName: QUANTUM_FORGE_LIB, CallingConvention = CallingConvention.Cdecl)]
-        private static extern QForgeError qforge_cycle(IntPtr prop, [In] NativePredicate[] preds, int preds_len);
+        private static extern QForgeError qforge_cycle(IntPtr prop, float fraction, [In] NativePredicate[] preds, int preds_len);
 
-        public static void Cycle(QuantumProperty prop, params Predicate[] preds)
+        public static void Cycle(NativeQuantumProperty prop, float fraction, params Predicate[] preds)
         {
             GCHandle handle = default;
             NativePredicate[] nativePreds = null;
@@ -185,7 +185,7 @@ namespace QRG.QuantumForge.Core
                     handle = GCHandle.Alloc(nativePreds, GCHandleType.Pinned);
                 }
 
-                QForgeError error = qforge_cycle(prop.Handle, nativePreds, (nativePreds?.Length ?? 0));
+                QForgeError error = qforge_cycle(prop.Handle, fraction, nativePreds, (nativePreds?.Length ?? 0));
                 if (error != QForgeError.QFORGE_ERR_NONE)
                 {
                     throw new InvalidOperationException($"Error in Cycle: {error}");
@@ -205,30 +205,117 @@ namespace QRG.QuantumForge.Core
             }
         }
 
-        public static void ReverseCycle(QuantumProperty prop, params Predicate[] preds)
+        public static void Cycle(NativeQuantumProperty prop, params Predicate[] preds)
         {
-            var dimension = prop.Dimension;
-            for (int i = 0; i < dimension - 1; ++i)
-            {
-                Cycle(prop, preds);
-            }
+            Cycle(prop, 1.0f, preds);
         }
 
-        public static void NCycle(QuantumProperty prop1, QuantumProperty prop2)
+        public static void NCycle(NativeQuantumProperty prop1, NativeQuantumProperty prop2, float fraction = 1.0f)
         {
             for (int i = 0; i < prop1.Dimension; ++i)
             {
                 for (int j = 0; j < i; ++j)
                 {
-                    Cycle(prop2, prop1.is_value(i));
+                    Cycle(prop2, fraction, prop1.is_value(i));
                 }
             }
+        }
+
+        [DllImport(dllName: QUANTUM_FORGE_LIB, CallingConvention = CallingConvention.Cdecl)]
+        private static extern QForgeError qforge_shift(IntPtr prop, float fraction, [In] NativePredicate[] preds, int preds_len);
+
+        public static void Shift(NativeQuantumProperty prop, float fraction, params Predicate[] preds)
+        {
+            GCHandle handle = default;
+            NativePredicate[] nativePreds = null;
+            try
+            {
+                if (preds != null)
+                {
+                    nativePreds = preds.Select(p => new NativePredicate(p)).ToArray();
+                    handle = GCHandle.Alloc(nativePreds, GCHandleType.Pinned);
+                }
+
+                QForgeError error = qforge_shift(prop.Handle, fraction, nativePreds, (nativePreds?.Length ?? 0));
+                if (error != QForgeError.QFORGE_ERR_NONE)
+                {
+                    throw new InvalidOperationException($"Error in Shift: {error}");
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"Exception: {ex.Message}");
+                throw;
+            }
+            finally
+            {
+                if (handle.IsAllocated)
+                {
+                    handle.Free();
+                }
+            }
+        }
+
+        public static void Shift(NativeQuantumProperty prop, params Predicate[] preds)
+        {
+            Shift(prop, 1.0f, preds);
+        }
+
+        public static void NShift(NativeQuantumProperty prop1, NativeQuantumProperty prop2, float fraction = 1.0f)
+        {
+            for (int i = 0; i < prop1.Dimension; ++i)
+            {
+                for (int j = 0; j < i; ++j)
+                {
+                    Shift(prop2, 1.0f, prop1.is_value(i));
+                }
+            }
+        }
+
+        [DllImport(dllName: QUANTUM_FORGE_LIB, CallingConvention = CallingConvention.Cdecl)]
+        private static extern QForgeError qforge_clock(IntPtr prop, float fraction, [In] NativePredicate[] preds, int preds_len);
+
+        public static void Clock(NativeQuantumProperty prop, float fraction, params Predicate[] preds)
+        {
+            GCHandle handle = default;
+            NativePredicate[] nativePreds = null;
+            try
+            {
+                if (preds != null)
+                {
+                    nativePreds = preds.Select(p => new NativePredicate(p)).ToArray();
+                    handle = GCHandle.Alloc(nativePreds, GCHandleType.Pinned);
+                }
+
+                QForgeError error = qforge_clock(prop.Handle, fraction, nativePreds, (nativePreds?.Length ?? 0));
+                if (error != QForgeError.QFORGE_ERR_NONE)
+                {
+                    throw new InvalidOperationException($"Error in Clock: {error}");
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"Exception: {ex.Message}");
+                throw;
+            }
+            finally
+            {
+                if (handle.IsAllocated)
+                {
+                    handle.Free();
+                }
+            }
+        }
+
+        public static void Clock(NativeQuantumProperty prop, params Predicate[] preds)
+        {
+            Clock(prop, 1.0f, preds);
         }
 
         [DllImport(QUANTUM_FORGE_LIB, CallingConvention = CallingConvention.Cdecl)]
         private static extern QForgeError qforge_hadamard(IntPtr prop, NativePredicate[] preds, UIntPtr preds_len);
 
-        public static void Hadamard(QuantumProperty prop, params Predicate[] preds)
+        public static void Hadamard(NativeQuantumProperty prop, params Predicate[] preds)
         {
             GCHandle handle = default;
             NativePredicate[] nativePreds = null;
@@ -261,13 +348,12 @@ namespace QRG.QuantumForge.Core
         }
 
         [DllImport(QUANTUM_FORGE_LIB, CallingConvention = CallingConvention.Cdecl)]
-        private static extern QForgeError qforge_swap(IntPtr p1, IntPtr p2, NativePredicate[] preds, UIntPtr preds_len);
+        private static extern QForgeError qforge_inverse_hadamard(IntPtr prop, NativePredicate[] preds, UIntPtr preds_len);
 
-        public static void Swap(QuantumProperty p1, QuantumProperty p2, params Predicate[] preds)
+        public static void InverseHadamard(NativeQuantumProperty prop, params Predicate[] preds)
         {
             GCHandle handle = default;
             NativePredicate[] nativePreds = null;
-
             try
             {
                 if (preds != null)
@@ -276,86 +362,10 @@ namespace QRG.QuantumForge.Core
                     handle = GCHandle.Alloc(nativePreds, GCHandleType.Pinned);
                 }
 
-                QForgeError error = qforge_swap(p1.Handle, p2.Handle, nativePreds, (UIntPtr)(preds?.Length ?? 0));
+                QForgeError error = qforge_inverse_hadamard(prop.Handle, nativePreds, (UIntPtr)(preds?.Length ?? 0));
                 if (error != QForgeError.QFORGE_ERR_NONE)
                 {
-                    throw new InvalidOperationException($"Error in Swap: {error}");
-                }
-            }
-            catch (Exception ex)
-            {
-                Debug.LogError($"Exception: {ex.Message}");
-                throw;
-            }
-            finally
-            {
-                if (handle.IsAllocated)
-                {
-                    handle.Free();
-                }
-            }
-        }
-
-        [DllImport(QUANTUM_FORGE_LIB, CallingConvention = CallingConvention.Cdecl)]
-        private static extern QForgeError qforge_i_swap(IntPtr p1, IntPtr p2, NativePredicate[] preds,
-            UIntPtr preds_len);
-
-        public static void ISwap(QuantumProperty p1, QuantumProperty p2, params Predicate[] preds)
-        {
-            GCHandle handle = default;
-            NativePredicate[] nativePreds = null;
-
-            try
-            {
-                if (preds != null)
-                {
-                    nativePreds = preds.Select(p => new NativePredicate(p)).ToArray();
-                    handle = GCHandle.Alloc(nativePreds, GCHandleType.Pinned);
-                }
-
-                QForgeError error = qforge_i_swap(p1.Handle, p2.Handle, nativePreds, (UIntPtr)(preds?.Length ?? 0));
-                if (error != QForgeError.QFORGE_ERR_NONE)
-                {
-                    throw new InvalidOperationException($"Error in ISwap: {error}");
-                }
-            }
-            catch (Exception ex)
-            {
-                Debug.LogError($"Exception: {ex.Message}");
-                throw;
-            }
-            finally
-            {
-                if (handle.IsAllocated)
-                {
-                    handle.Free();
-                }
-            }
-        }
-
-        [DllImport(QUANTUM_FORGE_LIB, CallingConvention = CallingConvention.Cdecl)]
-        private static extern QForgeError qforge_fractional_i_swap(IntPtr p1, IntPtr p2, float fraction,
-            NativePredicate[] preds, UIntPtr preds_len);
-
-        public static void FractionalISwap(QuantumProperty p1, QuantumProperty p2, float fraction,
-            params Predicate[] preds)
-        {
-            GCHandle handle = default;
-            NativePredicate[] nativePreds = null;
-
-            try
-            {
-                if (preds != null)
-                {
-                    nativePreds = preds.Select(p => new NativePredicate(p)).ToArray();
-                    handle = GCHandle.Alloc(nativePreds, GCHandleType.Pinned);
-                }
-
-                QForgeError error = qforge_fractional_i_swap(p1.Handle, p2.Handle, fraction, nativePreds,
-                    (UIntPtr)(preds?.Length ?? 0));
-                if (error != QForgeError.QFORGE_ERR_NONE)
-                {
-                    throw new InvalidOperationException($"Error in FractionalISwap: {error}");
+                    throw new InvalidOperationException($"Error in Hadamard: {error}");
                 }
             }
             catch (Exception ex)
@@ -410,39 +420,26 @@ namespace QRG.QuantumForge.Core
             }
         }
 
-        public static void PhaseZ(params QuantumProperty[] props)
-        {
-            foreach (var prop in props)
-            {
-                var theta = 2 * Mathf.PI / prop.Dimension;
-                foreach (var i in Enumerable.Range(0, prop.Dimension))
-                {
-                    PhaseRotate(theta * i, prop.is_value(i));
-                }
-            }
-        }
-
         [DllImport(QUANTUM_FORGE_LIB, CallingConvention = CallingConvention.Cdecl)]
-        private static extern QForgeError qforge_phase_flip(NativePredicate[] preds, UIntPtr preds_len);
+        private static extern QForgeError qforge_swap(IntPtr p1, IntPtr p2, NativePredicate[] preds, UIntPtr preds_len);
 
-        public static void PhaseFlip(params Predicate[] preds)
+        public static void Swap(NativeQuantumProperty p1, NativeQuantumProperty p2, params Predicate[] preds)
         {
-            if (preds == null)
-            {
-                throw new ArgumentNullException(nameof(preds), "Predicates array cannot be null for PhaseFlip.");
-            }
-
             GCHandle handle = default;
+            NativePredicate[] nativePreds = null;
+
             try
             {
-                handle = GCHandle.Alloc(preds, GCHandleType.Pinned);
+                if (preds != null)
+                {
+                    nativePreds = preds.Select(p => new NativePredicate(p)).ToArray();
+                    handle = GCHandle.Alloc(nativePreds, GCHandleType.Pinned);
+                }
 
-                NativePredicate[] nativePreds = Array.ConvertAll(preds, p => new NativePredicate(p));
-
-                QForgeError error = qforge_phase_flip(nativePreds, (UIntPtr)preds.Length);
+                QForgeError error = qforge_swap(p1.Handle, p2.Handle, nativePreds, (UIntPtr)(preds?.Length ?? 0));
                 if (error != QForgeError.QFORGE_ERR_NONE)
                 {
-                    throw new InvalidOperationException($"Error in PhaseFlip: {error}");
+                    throw new InvalidOperationException($"Error in Swap: {error}");
                 }
             }
             catch (Exception ex)
@@ -460,10 +457,52 @@ namespace QRG.QuantumForge.Core
         }
 
         [DllImport(QUANTUM_FORGE_LIB, CallingConvention = CallingConvention.Cdecl)]
+        private static extern QForgeError qforge_i_swap(IntPtr p1, IntPtr p2, float fraction, NativePredicate[] preds,
+            UIntPtr preds_len);
+
+        public static void ISwap(NativeQuantumProperty p1, NativeQuantumProperty p2, float fraction, params Predicate[] preds)
+        {
+            GCHandle handle = default;
+            NativePredicate[] nativePreds = null;
+
+            try
+            {
+                if (preds != null)
+                {
+                    nativePreds = preds.Select(p => new NativePredicate(p)).ToArray();
+                    handle = GCHandle.Alloc(nativePreds, GCHandleType.Pinned);
+                }
+
+                QForgeError error = qforge_i_swap(p1.Handle, p2.Handle, fraction, nativePreds, (UIntPtr)(preds?.Length ?? 0));
+                if (error != QForgeError.QFORGE_ERR_NONE)
+                {
+                    throw new InvalidOperationException($"Error in ISwap: {error}");
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"Exception: {ex.Message}");
+                throw;
+            }
+            finally
+            {
+                if (handle.IsAllocated)
+                {
+                    handle.Free();
+                }
+            }
+        }
+
+        public static void ISwap(NativeQuantumProperty p1, NativeQuantumProperty p2, params Predicate[] preds)
+        {
+            ISwap(p1, p2, 1.0f, preds);
+        }
+
+        [DllImport(QUANTUM_FORGE_LIB, CallingConvention = CallingConvention.Cdecl)]
         private static extern QForgeError qforge_measure(IntPtr[] props, UIntPtr props_len, int[] output);
 
         // Public method to expose the measure function
-        public static int[] Measure(params QuantumProperty[] props)
+        public static int[] Measure(params NativeQuantumProperty[] props)
         {
             IntPtr[] propHandles = Array.ConvertAll(props, p => p.Handle);
             int[] output = new int[props.Length];
@@ -485,10 +524,50 @@ namespace QRG.QuantumForge.Core
         }
 
         [DllImport(QUANTUM_FORGE_LIB, CallingConvention = CallingConvention.Cdecl)]
+        private static extern QForgeError qforge_stochastic_projection(NativePredicate[] preds, UIntPtr preds_len, int[] output);
+
+        // Public method to expose the predicated measure function
+        public static int Measure(Predicate[] preds)
+        {
+            GCHandle handle = default;
+            NativePredicate[] nativePreds = null;
+
+            int[] output = new int[1];
+            try
+            {
+                if (preds != null)
+                {
+                    nativePreds = preds.Select(p => new NativePredicate(p)).ToArray();
+                    handle = GCHandle.Alloc(nativePreds, GCHandleType.Pinned);
+                }
+                
+                QForgeError error = qforge_stochastic_projection(nativePreds, (UIntPtr)(preds.Length), output);
+                if (error != QForgeError.QFORGE_ERR_NONE)
+                {
+                    throw new InvalidOperationException($"Error in predicated Measure: {error}");
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"Exception: {ex.Message}");
+                throw;
+            }
+            finally
+            {
+                if (handle.IsAllocated)
+                {
+                    handle.Free();
+                }
+            }
+
+            return output[0];
+        }
+
+        [DllImport(QUANTUM_FORGE_LIB, CallingConvention = CallingConvention.Cdecl)]
         private static extern QForgeError qforge_probabilities(IntPtr[] props, UIntPtr props_len, IntPtr output);
 
         // Public method to expose the probabilities function
-        public static BasisProbability[] Probabilities(params QuantumProperty[] props)
+        public static BasisProbability[] Probabilities(params NativeQuantumProperty[] props)
         {
             if (props == null || props.Length == 0)
             {
@@ -573,7 +652,7 @@ namespace QRG.QuantumForge.Core
         private static extern QForgeError qforge_reduced_density_matrix(IntPtr[] props, UIntPtr props_len, IntPtr real_output, IntPtr imag_ouput, int output_len);
 
         // Public method to expose the probabilities function
-        public static Complex[,] ReducedDensityMatrix(params QuantumProperty[] props)
+        public static Complex[,] ReducedDensityMatrix(params NativeQuantumProperty[] props)
         {
             IntPtr[] propHandles = Array.ConvertAll(props, p => p.Handle);
             int rowSize = 1;
@@ -1052,7 +1131,7 @@ namespace QRG.QuantumForge.Core
             return entropy;
         }
 
-        public static float[] MutualInformation(params QuantumProperty[] props)
+        public static float[] MutualInformation(params NativeQuantumProperty[] props)
         {
             float[] result = new float[props.Length];
             var r = ReducedDensityMatrix(props);
@@ -1060,9 +1139,9 @@ namespace QRG.QuantumForge.Core
 
             for (int i = 0; i < props.Length; ++i)
             {
-                var ra = ReducedDensityMatrix(new QuantumProperty[] { props[i] });
+                var ra = ReducedDensityMatrix(new NativeQuantumProperty[] { props[i] });
                 var sa = VonNeumannEntropy(ra);
-                var propsB = props.Except(new QuantumProperty[] { props[i] }).ToArray();
+                var propsB = props.Except(new NativeQuantumProperty[] { props[i] }).ToArray();
                 var rb = ReducedDensityMatrix(propsB);
                 var sb = VonNeumannEntropy(rb);
                 result[i] = sa + sb - s;
@@ -1071,7 +1150,7 @@ namespace QRG.QuantumForge.Core
         }
 
 
-        public static float[,] CorrelationMatrix(params QuantumProperty[] props)
+        public static float[,] CorrelationMatrix(params NativeQuantumProperty[] props)
         {
             if (props.Length != 2)
             {

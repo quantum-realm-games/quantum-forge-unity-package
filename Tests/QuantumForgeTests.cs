@@ -12,24 +12,24 @@ using static UnityEngine.GraphicsBuffer;
 
 public class QuantumForgeTests
 {
-    private QuantumForge.QuantumProperty qubit1;
-    private QuantumForge.QuantumProperty qubit2;
-    private QuantumForge.QuantumProperty qutrit1;
-    private QuantumForge.QuantumProperty qutrit2;
+    private QuantumForge.NativeQuantumProperty qubit1;
+    private QuantumForge.NativeQuantumProperty qubit2;
+    private QuantumForge.NativeQuantumProperty qutrit1;
+    private QuantumForge.NativeQuantumProperty qutrit2;
 
-    private QuantumForge.QuantumProperty bellQubit1;
-    private QuantumForge.QuantumProperty bellQubit2;
+    private QuantumForge.NativeQuantumProperty bellQubit1;
+    private QuantumForge.NativeQuantumProperty bellQubit2;
 
     [SetUp]
     public void Setup()
     {
-        qubit1 = new QuantumForge.QuantumProperty(2);
-        qubit2 = new QuantumForge.QuantumProperty(2);
-        qutrit1 = new QuantumForge.QuantumProperty(3);
-        qutrit2 = new QuantumForge.QuantumProperty(3);
+        qubit1 = new QuantumForge.NativeQuantumProperty(2);
+        qubit2 = new QuantumForge.NativeQuantumProperty(2);
+        qutrit1 = new QuantumForge.NativeQuantumProperty(3);
+        qutrit2 = new QuantumForge.NativeQuantumProperty(3);
 
-        bellQubit1 = new QuantumForge.QuantumProperty(2);
-        bellQubit2 = new QuantumForge.QuantumProperty(2);
+        bellQubit1 = new QuantumForge.NativeQuantumProperty(2);
+        bellQubit2 = new QuantumForge.NativeQuantumProperty(2);
         QuantumForge.Hadamard(bellQubit1);
         QuantumForge.Cycle(bellQubit2, new[] { bellQubit1.is_value(1) });
     }
@@ -46,7 +46,7 @@ public class QuantumForgeTests
     [Test]
     public void TestInitializeQuantumProperty()
     {
-        var q = new QuantumForge.QuantumProperty(3, 2);
+        var q = new QuantumForge.NativeQuantumProperty(3, 2);
         Assert.AreEqual(3, q.Dimension);
         Assert.AreEqual(2, QuantumForge.Measure(q)[0]);
     }
@@ -76,15 +76,15 @@ public class QuantumForgeTests
     }
 
     [Test]
-    public void ReverseCycle()
+    public void TestShift()
     {
-        Assert.DoesNotThrow(() => QuantumForge.ReverseCycle(qutrit1));
+        Assert.DoesNotThrow(() => QuantumForge.Shift(qutrit1));
         var m = QuantumForge.Measure(qutrit1);
         Assert.AreEqual(m[0], 2);
     }
 
     [Test]
-    public void TestSumD()
+    public void TestNCycle()
     {
         Assert.DoesNotThrow(() => QuantumForge.Hadamard(qutrit1));
         Assert.DoesNotThrow(() => QuantumForge.NCycle(qutrit1,qutrit2));
@@ -114,6 +114,19 @@ public class QuantumForgeTests
     }
 
     [Test]
+    public void TestInverseHadamard()
+    {
+        var predicate = qubit2.is_value(0);
+        Assert.DoesNotThrow(() => QuantumForge.Hadamard(qubit1, predicate));
+        Assert.DoesNotThrow(() => QuantumForge.InverseHadamard(qubit1, predicate));
+
+        var p = QuantumForge.Probabilities(qubit1);
+        Assert.AreEqual(p.Length, 2);
+        Assert.AreEqual(p[0].Probability, 1.0f);
+        Assert.AreEqual(p[1].Probability, 0.0f);
+    }
+
+    [Test]
     public void TestSwap()
     {
         Assert.DoesNotThrow(() => QuantumForge.Swap(qubit1, qubit2));
@@ -128,7 +141,7 @@ public class QuantumForgeTests
     [Test]
     public void TestFractionalISwap()
     {
-        Assert.DoesNotThrow(() => QuantumForge.FractionalISwap(qubit1, qubit2, 0.5f));
+        Assert.DoesNotThrow(() => QuantumForge.ISwap(qubit1, qubit2, 0.5f));
     }
 
     [Test]
@@ -139,19 +152,24 @@ public class QuantumForgeTests
     }
 
     [Test]
-    public void TestPhaseZ()
+    public void TestClock()
     {
         QuantumForge.Hadamard(qubit1);
-        QuantumForge.PhaseZ(qubit1);
-        QuantumForge.Hadamard(qubit1);
+        QuantumForge.Clock(qubit1);
+        QuantumForge.InverseHadamard(qubit1);
         var p = QuantumForge.Probabilities(qubit1);
         Assert.AreEqual(p.Length, 2);
         Assert.AreEqual(p[0].Probability, 0.0f);
         Assert.AreEqual(p[1].Probability, 1.0f);
 
+        p = QuantumForge.Probabilities(qutrit1);
+        Assert.AreEqual(p[0].Probability, 1.0f);
+        Assert.AreEqual(p[1].Probability, 0.0f);
+        Assert.AreEqual(p[2].Probability, 0.0f);
+
         QuantumForge.Hadamard(qutrit1);
-        QuantumForge.PhaseZ(qutrit1);
-        QuantumForge.Hadamard(qutrit1);
+        QuantumForge.Clock(qutrit1);
+        QuantumForge.InverseHadamard(qutrit1);
         p = QuantumForge.Probabilities(qutrit1);
         Assert.AreEqual(p.Length, 3);
         Assert.AreEqual(p[0].Probability, 0.0f);
@@ -159,45 +177,22 @@ public class QuantumForgeTests
         Assert.AreEqual(p[2].Probability, 1.0f);
 
         QuantumForge.Hadamard(qutrit1);
-        QuantumForge.PhaseZ(qutrit1);
+        QuantumForge.Clock(qutrit1);
+        QuantumForge.InverseHadamard(qutrit1);
+        p = QuantumForge.Probabilities(qutrit1);
+        Assert.AreEqual(p.Length, 3);
+        Assert.AreEqual(p[0].Probability, 0.0f);
+        Assert.AreEqual(p[1].Probability, 1.0f);
+        Assert.AreEqual(p[2].Probability, 0.0f);
+
         QuantumForge.Hadamard(qutrit1);
+        QuantumForge.Clock(qutrit1);
+        QuantumForge.InverseHadamard(qutrit1);
         p = QuantumForge.Probabilities(qutrit1);
         Assert.AreEqual(p.Length, 3);
         Assert.AreEqual(p[0].Probability, 1.0f);
         Assert.AreEqual(p[1].Probability, 0.0f);
         Assert.AreEqual(p[2].Probability, 0.0f);
-
-        QuantumForge.Cycle(qutrit1);
-        QuantumForge.Hadamard(qutrit1);
-        QuantumForge.PhaseZ(qutrit1);
-        QuantumForge.Hadamard(qutrit1);
-        p = QuantumForge.Probabilities(qutrit1);
-        Assert.AreEqual(p.Length, 3);
-        Assert.AreEqual(p[0].Probability, 0.0f);
-        Assert.AreEqual(p[1].Probability, 1.0f);
-        Assert.AreEqual(p[2].Probability, 0.0f);
-    }
-
-    [Test]
-    public void TestPhaseFlip()
-    {
-        var predicate = qubit1.is_value(1);
-        Assert.DoesNotThrow(() => QuantumForge.PhaseFlip(new[] { predicate }));
-
-        Assert.DoesNotThrow( () => QuantumForge.Hadamard(qubit1));
-        var p = QuantumForge.Probabilities(qubit1);
-        Assert.AreEqual(p.Length, 2);
-        Assert.AreEqual(p[0].Probability, 0.5f);
-        Assert.AreEqual(p[1].Probability, 0.5f);
-
-        Assert.DoesNotThrow(() => QuantumForge.PhaseFlip(new[] { predicate }));
-        Assert.DoesNotThrow(() => QuantumForge.Hadamard(qubit1));
-        p = QuantumForge.Probabilities(qubit1);
-        Assert.AreEqual(p.Length, 2);
-        Assert.AreEqual(p[0].Probability, 0.0f);
-        Assert.AreEqual(p[1].Probability, 1.0f);
-        Assert.AreEqual(p[1].QuditValues, new []{1});
-
     }
 
     [Test]
@@ -205,6 +200,13 @@ public class QuantumForgeTests
     {
         var result = QuantumForge.Measure(new[] { qubit1, qubit2 });
         Assert.AreEqual(2, result.Length);
+    }
+
+    [Test]
+    public void TestPredicatedMeasure()
+    {
+        var result = QuantumForge.Measure(new[] { qubit1.is_value(0), qubit2.is_not_value(1) });
+        Assert.AreEqual(result,1);
     }
 
     [Test]

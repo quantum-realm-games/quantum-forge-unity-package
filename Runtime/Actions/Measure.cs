@@ -31,6 +31,7 @@ namespace QRG.QuantumForge.Runtime
 
 
         [SerializeField] private QuantumProperty[] _targetProperties;
+        public QuantumProperty.Predicate[] Predicates { get; }
         public QuantumProperty[] TargetProperties => _targetProperties;
 
         [SerializeField] private int[] _lastResult;

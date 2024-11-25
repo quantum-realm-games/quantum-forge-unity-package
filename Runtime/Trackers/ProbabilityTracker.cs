@@ -49,7 +49,7 @@ namespace QRG.QuantumForge.Runtime
                 }
                 else
                 {
-                    Debug.LogError($"{gameObject.name}: No QuantumProperty found on this object. Set properties to track");
+                    Debug.LogError($"{gameObject.name}: No NativeQuantumProperty found on this object. Set properties to track");
                 }
             }
         }

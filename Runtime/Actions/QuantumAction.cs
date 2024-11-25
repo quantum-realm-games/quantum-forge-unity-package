@@ -22,9 +22,10 @@ using UnityEngine.Events;
 
 namespace QRG.QuantumForge.Runtime
 {
+
     public interface IQuantumAction 
     {
-        //public string ActionName { get; }
+        public QuantumProperty.Predicate[] Predicates { get; }
         public QuantumProperty[] TargetProperties { get; }
 
         public void apply();

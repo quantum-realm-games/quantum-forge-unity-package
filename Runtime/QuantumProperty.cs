@@ -30,7 +30,7 @@ namespace QRG.QuantumForge.Runtime
     public class QuantumProperty : MonoBehaviour
     {
         [SerializeField] private Basis _basis = null;
-        private QuantumForge.QuantumProperty _nativeQuantumProperty;
+        private QuantumForge.NativeQuantumProperty _nativeNativeQuantumProperty;
 
         [SerializeField, Dropdown("_basis.values")]
         private string Initial;
@@ -59,16 +59,17 @@ namespace QRG.QuantumForge.Runtime
                     initial = 0;
                     throw new Exception($"Initial value {initial} not found in basis, setting it to {_basis.values[0]}. Try selecting initial value again in Editor. Reload/recompile sometimes corrupts this field.");
                 }
-                _nativeQuantumProperty = new QuantumForge.QuantumProperty(Dimension, initial);
+                _nativeNativeQuantumProperty = new QuantumForge.NativeQuantumProperty(Dimension, initial);
             }
             catch (Exception e)
             {
                 UnityEngine.Debug.LogWarning(gameObject.name + ": " + e.Message);
-                _nativeQuantumProperty = null;
+                _nativeNativeQuantumProperty = null;
             }
 
         }
 
+        [Serializable]
         public struct Predicate
         {
             public QuantumProperty property;
@@ -109,13 +110,13 @@ namespace QRG.QuantumForge.Runtime
         internal static QuantumForge.Predicate[] ConvertPredicates(Predicate[] predicates)
         {
             return Array.ConvertAll(predicates,
-                p => new QuantumForge.Predicate(p.property._nativeQuantumProperty,
+                p => new QuantumForge.Predicate(p.property._nativeNativeQuantumProperty,
                     p.property._basis.values.IndexOf(p.value), p.is_equal));
         }
 
         public static void Cycle(QuantumProperty prop, params Predicate[] predicates)
         {
-            QuantumForge.Cycle(prop._nativeQuantumProperty, ConvertPredicates(predicates));
+            QuantumForge.Cycle(prop._nativeNativeQuantumProperty, ConvertPredicates(predicates));
         }
 
         public void Cycle(params Predicate[] predicates)
@@ -123,28 +124,95 @@ namespace QRG.QuantumForge.Runtime
             Cycle(this, predicates);
         }
 
-        public static void ReverseCycle(QuantumProperty prop, params Predicate[] predicates)
+        public static void Cycle(QuantumProperty prop, float fraction, params Predicate[] predicates)
+        {
+            QuantumForge.Cycle(prop._nativeNativeQuantumProperty, fraction, ConvertPredicates(predicates));
+        }
+
+        public void Cycle(float fraction, params Predicate[] predicates)
+        {
+            Cycle(this, fraction, predicates);
+        }
+
+        public static void Shift(QuantumProperty prop, params Predicate[] predicates)
         {
             var dimension = prop.Dimension;
             for (int i = 0; i < dimension; ++i)
             {
-                QuantumForge.Cycle(prop._nativeQuantumProperty, ConvertPredicates(predicates));
+                QuantumForge.Shift(prop._nativeNativeQuantumProperty, ConvertPredicates(predicates));
             }
         }
 
-        public void ReverseCycle(params Predicate[] predicates)
+        public void Shift(params Predicate[] predicates)
         {
-            ReverseCycle(this, predicates);
+            Shift(this, predicates);
+        }
+
+        public static void Shift(QuantumProperty prop, float fraction, params Predicate[] predicates)
+        {
+            var dimension = prop.Dimension;
+            for (int i = 0; i < dimension; ++i)
+            {
+                QuantumForge.Shift(prop._nativeNativeQuantumProperty, fraction, ConvertPredicates(predicates));
+            }
+        }
+
+        public void Shift(float fraction, params Predicate[] predicates)
+        {
+            Shift(this, fraction, predicates);
+        }
+
+        public static void Clock(QuantumProperty property, float fraction, params Predicate[] predicates)
+        {
+            QuantumForge.Clock(property._nativeNativeQuantumProperty, fraction, ConvertPredicates(predicates));
+        }
+
+        /// <summary>
+        /// The full qudit Z gate.
+        /// Applies a phase rotation to all basis values, based on the value.
+        /// Let w = exp(2*pi*i/Dimension)
+        /// For basis value v, the phase rotation is w^v
+        /// </summary>
+        public void Clock(float fraction, params Predicate[] predicates)
+        {
+            QuantumForge.Clock(_nativeNativeQuantumProperty, fraction, ConvertPredicates(predicates));
+        }
+
+
+        public static void Clock(QuantumProperty property, params Predicate[] predicates)
+        {
+            QuantumForge.Clock(property._nativeNativeQuantumProperty, ConvertPredicates(predicates));
+        }
+
+        /// <summary>
+        /// The full qudit Z gate.
+        /// Applies a phase rotation to all basis values, based on the value.
+        /// Let w = exp(2*pi*i/Dimension)
+        /// For basis value v, the phase rotation is w^v
+        /// </summary>
+        public void Clock(params Predicate[] predicates)
+        {
+            QuantumForge.Clock(_nativeNativeQuantumProperty, ConvertPredicates(predicates));
         }
 
         public static void Hadamard(QuantumProperty prop, params Predicate[] predicates)
         {
-            QuantumForge.Hadamard(prop._nativeQuantumProperty, ConvertPredicates(predicates));
+            QuantumForge.Hadamard(prop._nativeNativeQuantumProperty, ConvertPredicates(predicates));
         }
 
         public void Hadamard(params Predicate[] predicates)
         {
             Hadamard(this, predicates);
+        }
+
+        public static void InverseHadamard(QuantumProperty prop, params Predicate[] predicates)
+        {
+            QuantumForge.InverseHadamard(prop._nativeNativeQuantumProperty, ConvertPredicates(predicates));
+        }
+
+        public void InverseHadamard(params Predicate[] predicates)
+        {
+            InverseHadamard(this, predicates);
         }
 
         public static void PhaseRotate(float angle, params Predicate[] predicates)
@@ -163,52 +231,19 @@ namespace QRG.QuantumForge.Runtime
             PhaseRotate(angle, predicates);
         }
 
-        public static void PhaseFlip(params Predicate[] predicates)
-        {
-            QuantumForge.PhaseFlip(ConvertPredicates(predicates));
-        }
-
-        public static void PhaseAll(params QuantumProperty[] properties)
-        {
-            var props = Array.ConvertAll(properties, p => p._nativeQuantumProperty);
-            QuantumForge.PhaseZ(props);
-        }
-
-        /// <summary>
-        /// The full qudit Z gate.
-        /// Applies a phase rotation to all basis values, based on the value.
-        /// Let w = exp(2*pi*i/Dimension)
-        /// For basis value v, the phase rotation is w^v
-        /// </summary>
-        public void PhaseAll()
-        {
-            QuantumForge.PhaseZ(_nativeQuantumProperty);
-        }
-
-        public void PhaseFlip(params string[] values)
-        {
-            var predicates = new Predicate[values.Length];
-            for (int i = 0; i < values.Length; i++)
-            {
-                predicates[i] = this.is_value(values[i]);
-            }
-
-            PhaseFlip(predicates);
-        }
-
         public static void Swap(QuantumProperty prop1, QuantumProperty prop2, params Predicate[] predicates)
         {
-            QuantumForge.Swap(prop1._nativeQuantumProperty, prop2._nativeQuantumProperty, ConvertPredicates(predicates));
+            QuantumForge.Swap(prop1._nativeNativeQuantumProperty, prop2._nativeNativeQuantumProperty, ConvertPredicates(predicates));
         }
 
         public static void ISwap(QuantumProperty prop1, QuantumProperty prop2)
         {
-            QuantumForge.ISwap(prop1._nativeQuantumProperty, prop2._nativeQuantumProperty);
+            QuantumForge.ISwap(prop1._nativeNativeQuantumProperty, prop2._nativeNativeQuantumProperty);
         }
 
-        public static void FractionalISwap(QuantumProperty prop1, QuantumProperty prop2, float fraction)
+        public static void ISwap(QuantumProperty prop1, QuantumProperty prop2, float fraction)
         {
-            QuantumForge.FractionalISwap(prop1._nativeQuantumProperty, prop2._nativeQuantumProperty, fraction);
+            QuantumForge.ISwap(prop1._nativeNativeQuantumProperty, prop2._nativeNativeQuantumProperty, fraction);
         }
 
         /// <summary>
@@ -224,7 +259,7 @@ namespace QRG.QuantumForge.Runtime
         /// <param name="prop2"></param>
         public static void NCycle(QuantumProperty prop1, QuantumProperty prop2)
         {
-            QuantumForge.NCycle(prop1._nativeQuantumProperty, prop2._nativeQuantumProperty);
+            QuantumForge.NCycle(prop1._nativeNativeQuantumProperty, prop2._nativeNativeQuantumProperty);
         }
 
 
@@ -255,7 +290,7 @@ namespace QRG.QuantumForge.Runtime
                 Debug.LogWarning("No properties provided to calculate probabilities");
                 return new BasisProbability[0];
             }
-            var props = Array.ConvertAll(properties, p => p._nativeQuantumProperty);
+            var props = Array.ConvertAll(properties, p => p._nativeNativeQuantumProperty);
             var probs = QuantumForge.Probabilities(props);
             var numValues = properties.Length;
             var result = new BasisProbability[probs.Length];
@@ -275,25 +310,25 @@ namespace QRG.QuantumForge.Runtime
 
         public static Complex[,] ReducedDensityMatrix(params QuantumProperty[] properties)
         {
-            var props = Array.ConvertAll(properties, p => p._nativeQuantumProperty);
+            var props = Array.ConvertAll(properties, p => p._nativeNativeQuantumProperty);
             return QuantumForge.ReducedDensityMatrix(props);
         }
 
         public static float[] MutualInformation(params QuantumProperty[] properties)
         {
-            var props = Array.ConvertAll(properties, p => p._nativeQuantumProperty);
+            var props = Array.ConvertAll(properties, p => p._nativeNativeQuantumProperty);
             return QuantumForge.MutualInformation(props);
         }
 
         public static float[,] CorrelationMatrix(params QuantumProperty[] properties)
         {
-            var props = Array.ConvertAll(properties, p => p._nativeQuantumProperty);
+            var props = Array.ConvertAll(properties, p => p._nativeNativeQuantumProperty);
             return QuantumForge.CorrelationMatrix(props);
         }
 
         public static int[] Measure(params QuantumProperty[] properties)
         {
-            var props = Array.ConvertAll(properties, p => p._nativeQuantumProperty);
+            var props = Array.ConvertAll(properties, p => p._nativeNativeQuantumProperty);
             return QuantumForge.Measure(props);
         }
 

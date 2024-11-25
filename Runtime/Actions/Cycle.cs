@@ -24,8 +24,8 @@ namespace QRG.QuantumForge.Runtime
     [Serializable]
     public class Cycle : MonoBehaviour, IQuantumAction
     {
-        public string ActionName { get; }
-
+        [SerializeField] private QuantumProperty.Predicate[] _predicates;
+        public QuantumProperty.Predicate[] Predicates { get; }
 
         [SerializeField] private QuantumProperty[] _targetProperties;
         public QuantumProperty[] TargetProperties => _targetProperties;

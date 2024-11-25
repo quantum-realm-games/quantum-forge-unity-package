@@ -12,6 +12,7 @@ namespace QRG.QuantumForge.Runtime
 
         public string ActionName => "Swap";
         [SerializeField] private QuantumProperty[] _targetProperties;
+        public QuantumProperty.Predicate[] Predicates { get; }
         public QuantumProperty[] TargetProperties => _targetProperties;
 
         public void apply()
