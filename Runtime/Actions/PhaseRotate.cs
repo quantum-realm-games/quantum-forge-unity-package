@@ -24,41 +24,30 @@ namespace QRG.QuantumForge.Runtime
     [Serializable]
     public class PhaseRotate : MonoBehaviour, IQuantumAction
     {
-        [SerializeField] private QuantumProperty[] _targetProperties;
-        public QuantumProperty.Predicate[] Predicates { get; }
-        public QuantumProperty[] TargetProperties => _targetProperties;
+        [field: SerializeField] public QuantumProperty.Predicate[] Predicates { get; set; }
+        public QuantumProperty[] TargetProperties
+        {
+            get => GetProperties(Predicates);
+            set { Debug.LogError($"Attempting to set TargetProperties for PhaseRotate on {gameObject.name}. Must set Predicates instead."); }
+        }
+        [field: SerializeField, Range(0, 2*Mathf.PI)] public float Radians { get; set; }
 
-        [SerializeField] private Basis _basis = null;
-
-        [SerializeField, Dropdown("_basis.values")]
-        private string _value;
-
-        [SerializeField, Range(0, 2*Mathf.PI)] private float _radians = 1.0f;
-        public float Radians => _radians;
+        private static QuantumProperty[] GetProperties(params QuantumProperty.Predicate[] predicates)
+        {
+            var properties = new List<QuantumProperty>();
+            foreach (var predicate in predicates)
+            {
+                properties.Add(predicate.property);
+            }
+            return properties.ToArray();
+        }
 
         public void apply()
         {
-            apply(TargetProperties);
+            Debug.Log($"Applying phase rotation {Radians} with {Predicates.Length} predicates.");
+            QuantumProperty.PhaseRotate(Radians, Predicates);
         }
 
-        public void apply(params QuantumProperty[] targetProperties)
-        {
-            foreach (var quantumProperty in targetProperties)
-            {
-                if(quantumProperty.Basis != _basis)
-                {
-                    Debug.LogWarning($"Basis of {quantumProperty.gameObject.name} do not match the basis of the phase rotate action. Skipping.");
-                    continue;
-                }
-                Debug.Log($"Applying phase rotation to {quantumProperty.gameObject.name}");
-                quantumProperty.PhaseRotate(_radians,_value);
-            }
-        }
-
-        public void SetPhaseRadians(float radians)
-        {
-            _radians = radians;
-        }
     }
 
 }

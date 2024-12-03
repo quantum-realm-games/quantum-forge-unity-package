@@ -31,7 +31,8 @@ namespace QRG.QuantumForge.Runtime
                 return;
             }
             var action = GetComponent<IQuantumAction>();
-            action.apply(quantumProperty);
+            action.TargetProperties = new QuantumProperty[] { quantumProperty };
+            action.apply();
         }
 
         void OnTriggerEnter2D(Collider2D otherCollider)

@@ -24,20 +24,12 @@ namespace QRG.QuantumForge.Runtime
     [Serializable]
     public class NCycle : MonoBehaviour, IQuantumAction
     {
-        public string ActionName => "NCycle";
-
-        [SerializeField] private QuantumProperty[] _targetProperties;
-        public QuantumProperty.Predicate[] Predicates { get; }
-        public QuantumProperty[] TargetProperties => _targetProperties;
+        [field: SerializeField] public QuantumProperty.Predicate[] Predicates { get; set; }
+        [field: SerializeField] public QuantumProperty[] TargetProperties { get; set; }
 
         public void apply()
         {
-            apply(TargetProperties);
-        }
-
-        public void apply(params QuantumProperty[] targetProperties)
-        {
-            if (targetProperties.Length != 2)
+            if (TargetProperties.Length != 2)
             {
                 Debug.LogError("Must supply exactly 2 QuantumProperties to NCycle");
             }
@@ -46,6 +38,7 @@ namespace QRG.QuantumForge.Runtime
                 QuantumProperty.NCycle(TargetProperties[0], TargetProperties[1]);
             }
         }
+
     }
 
 }

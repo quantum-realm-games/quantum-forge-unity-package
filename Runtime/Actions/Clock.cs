@@ -24,22 +24,17 @@ namespace QRG.QuantumForge.Runtime
     [Serializable]
     public class Clock : MonoBehaviour, IQuantumAction
     {
-        public string ActionName => "Clock";
-        [SerializeField] private QuantumProperty[] _targetProperties;
-        public QuantumProperty.Predicate[] Predicates { get; }
-        public QuantumProperty[] TargetProperties => _targetProperties;
+        [field: SerializeField] public QuantumProperty.Predicate[] Predicates { get; set; }
+        [field: SerializeField] public QuantumProperty[] TargetProperties { get; set; }
+
+        public float fraction = 1.0f;
 
         public void apply()
         {
-            apply(TargetProperties);
-        }
-
-        public void apply(params QuantumProperty[] targetProperties)
-        {
-            foreach (var prop in targetProperties)
+            foreach (var prop in TargetProperties)
             {
-                UnityEngine.Debug.Log($"Applying Clock to {prop}");
-                prop.Clock();
+                UnityEngine.Debug.Log($"Applying {fraction} Clock to {prop} with {Predicates.Length} predicates");
+                prop.Clock(fraction, Predicates);
             }
         }
     }

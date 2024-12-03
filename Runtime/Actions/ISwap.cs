@@ -9,26 +9,21 @@ namespace QRG.QuantumForge.Runtime
     [Serializable]
     public class ISwap : MonoBehaviour, IQuantumAction
     {
+        [field: SerializeField] public QuantumProperty.Predicate[] Predicates { get; set; }
 
-        public string ActionName => "ISwap";
-        [SerializeField] private QuantumProperty[] _targetProperties;
-        public QuantumProperty.Predicate[] Predicates { get; }
-        public QuantumProperty[] TargetProperties => _targetProperties;
-        public float fraction;
+        [field: SerializeField] public QuantumProperty[] TargetProperties { get; set; }
+
+        public float fraction = 1.0f;
 
         public void apply()
         {
-            apply(TargetProperties);
-        }
-
-        public void apply(params QuantumProperty[] targetProperties)
-        {
-            if(targetProperties.Length != 2)
+            if (TargetProperties.Length != 2)
             {
                 Debug.LogError("ISwap requires exactly 2 target properties");
                 return;
             }
-            QuantumProperty.ISwap(targetProperties[0], targetProperties[1], fraction);
+            Debug.Log($"Applying {fraction} ISWap to {TargetProperties[0]} and {TargetProperties[1]} with {Predicates.Length} predicates.");
+            QuantumProperty.ISwap(TargetProperties[0], TargetProperties[1], fraction);
         }
     }
 

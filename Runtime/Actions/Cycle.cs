@@ -24,23 +24,18 @@ namespace QRG.QuantumForge.Runtime
     [Serializable]
     public class Cycle : MonoBehaviour, IQuantumAction
     {
-        [SerializeField] private QuantumProperty.Predicate[] _predicates;
-        public QuantumProperty.Predicate[] Predicates { get; }
+        [field: SerializeField] public QuantumProperty.Predicate[] Predicates { get; set; }
 
-        [SerializeField] private QuantumProperty[] _targetProperties;
-        public QuantumProperty[] TargetProperties => _targetProperties;
+        [field: SerializeField] public QuantumProperty[] TargetProperties { get; set; }
+
+        [SerializeField] private float fraction = 1.0f;
 
         public void apply()
         {
-            apply(TargetProperties);
-        }
-
-        public void apply(params QuantumProperty[] targetProperties)
-        {
-            foreach (var quantumProperty in targetProperties)
+            foreach (var quantumProperty in TargetProperties)
             {
-                Debug.Log($"Applying cycle to {quantumProperty.gameObject.name}");
-                quantumProperty.Cycle();
+                Debug.Log($"Applying {fraction} cycle to {quantumProperty.gameObject.name} with {Predicates.Length} predicates.");
+                quantumProperty.Cycle(fraction, Predicates);
             }
         }
     }

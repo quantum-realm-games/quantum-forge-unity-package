@@ -9,25 +9,17 @@ namespace QRG.QuantumForge.Runtime
     [Serializable]
     public class Swap : MonoBehaviour, IQuantumAction
     {
-
-        public string ActionName => "Swap";
-        [SerializeField] private QuantumProperty[] _targetProperties;
-        public QuantumProperty.Predicate[] Predicates { get; }
-        public QuantumProperty[] TargetProperties => _targetProperties;
+        [field: SerializeField] public QuantumProperty.Predicate[] Predicates { get; set; }
+        [field: SerializeField] public QuantumProperty[] TargetProperties { get; set; }
 
         public void apply()
         {
-            apply(TargetProperties);
-        }
-
-        public void apply(params QuantumProperty[] targetProperties)
-        {
-            if(targetProperties.Length != 2)
+            if (TargetProperties.Length != 2)
             {
                 Debug.LogError("Swap requires exactly 2 target properties");
                 return;
             }
-            QuantumProperty.Swap(targetProperties[0], targetProperties[1]);
+            QuantumProperty.Swap(TargetProperties[0], TargetProperties[1], Predicates);
         }
     }
 

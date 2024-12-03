@@ -25,25 +25,16 @@ namespace QRG.QuantumForge.Runtime
     [Serializable]
     public class Hadamard : MonoBehaviour, IQuantumAction
     {
-
-        public string ActionName => "Hadamard";
-        [SerializeField] private QuantumProperty[] _targetProperties;
-        public QuantumProperty.Predicate[] Predicates { get; }
-        public QuantumProperty[] TargetProperties => _targetProperties;
+        [field: SerializeField] public QuantumProperty.Predicate[] Predicates { get; set; }
+        [field: SerializeField] public QuantumProperty[] TargetProperties { get; set; }
 
         public void apply()
         {
-            apply(TargetProperties);
-        }
-
-        public void apply(params QuantumProperty[] targetProperties)
-        {
-            foreach (var prop in targetProperties)
+            foreach (var prop in TargetProperties)
             {
-                UnityEngine.Debug.Log($"Applying Hadamard to {prop}");
-                prop.Hadamard();
+                UnityEngine.Debug.Log($"Applying Hadamard to {prop} with {Predicates.Length} predicates");
+                prop.Hadamard(Predicates);
             }
         }
     }
-
 }

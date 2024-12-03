@@ -16,26 +16,31 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace QRG.QuantumForge.Runtime
 {
 
     [Serializable]
-    public class InverseHadamard : MonoBehaviour, IQuantumAction
+    public class MeasurePredicates : MonoBehaviour, IQuantumAction
     {
+        public UnityEvent OnMeasure;
+        public QuantumPropertyEvent OnMeasureQuantumProperty;
+
         [field: SerializeField] public QuantumProperty.Predicate[] Predicates { get; set; }
-        [field: SerializeField] public QuantumProperty[] TargetProperties { get; set; }
+
+        public QuantumProperty[] TargetProperties { get; set; }// not shown in inspector
+
+        [field: SerializeField] public int LastResult { get; private set; }
 
         public void apply()
         {
-            foreach (var prop in TargetProperties)
-            {
-                UnityEngine.Debug.Log($"Applying InverseHadamard to {prop} with {Predicates.Length} predicates");
-                prop.InverseHadamard(Predicates);
-            }
+            if (TargetProperties.Length == 0) return;
+            LastResult = QuantumProperty.Measure(Predicates);
+            OnMeasure.Invoke();
         }
+
     }
 
 }

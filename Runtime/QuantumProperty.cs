@@ -220,17 +220,6 @@ namespace QRG.QuantumForge.Runtime
             QuantumForge.PhaseRotate(angle, ConvertPredicates(predicates));
         }
 
-        public void PhaseRotate(float angle, params string[] values)
-        {
-            var predicates = new Predicate[values.Length];
-            for (int i = 0; i < values.Length; i++)
-            {
-                predicates[i] = this.is_value(values[i]);
-            }
-
-            PhaseRotate(angle, predicates);
-        }
-
         public static void Swap(QuantumProperty prop1, QuantumProperty prop2, params Predicate[] predicates)
         {
             QuantumForge.Swap(prop1._nativeNativeQuantumProperty, prop2._nativeNativeQuantumProperty, ConvertPredicates(predicates));
@@ -330,6 +319,10 @@ namespace QRG.QuantumForge.Runtime
         {
             var props = Array.ConvertAll(properties, p => p._nativeNativeQuantumProperty);
             return QuantumForge.Measure(props);
+        }
+        public static int Measure(params QuantumProperty.Predicate[] predicates)
+        {
+            return QuantumForge.Measure(ConvertPredicates(predicates));
         }
 
     }

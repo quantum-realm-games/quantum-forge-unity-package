@@ -23,37 +23,31 @@ namespace QRG.QuantumForge.Runtime
 {
 
     [Serializable]
-    public class Measure : MonoBehaviour, IQuantumAction
+    public class MeasureProperties : MonoBehaviour, IQuantumAction
     {
         public UnityEvent OnMeasure;
         public QuantumPropertyEvent OnMeasureQuantumProperty;
-        public string ActionName { get; }
 
+        public QuantumProperty.Predicate[] Predicates { get; set; }// not shown in inspector
 
-        [SerializeField] private QuantumProperty[] _targetProperties;
-        public QuantumProperty.Predicate[] Predicates { get; }
-        public QuantumProperty[] TargetProperties => _targetProperties;
+        [field: SerializeField] public QuantumProperty[] TargetProperties { get; set; }
 
-        [SerializeField] private int[] _lastResult;
-        public int[] LastResult => _lastResult;
-
+        [field: SerializeField] public int[] LastResult { get; private set; }
 
         public void apply()
         {
-            apply(TargetProperties);
-        }
-
-        public void apply(params QuantumProperty[] targetProperties)
-        {
-            if (targetProperties.Length == 0) return;
-            foreach (var quantumProperty in targetProperties)
+            var results = new List<int>();
+            if (TargetProperties.Length == 0) return;
+            foreach (var quantumProperty in TargetProperties)
             {
-                Debug.Log($"Measuring to {quantumProperty.gameObject.name}");
-                _lastResult = QuantumProperty.Measure(quantumProperty);
+                Debug.Log($"Measuring {quantumProperty.gameObject.name}");
+                results.Add(QuantumProperty.Measure(quantumProperty)[0]);
                 OnMeasureQuantumProperty.Invoke(quantumProperty);
             }
             OnMeasure.Invoke();
+            LastResult = results.ToArray();
         }
+
     }
 
 }
