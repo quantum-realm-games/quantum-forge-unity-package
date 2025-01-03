@@ -25,7 +25,7 @@ namespace QRG.QuantumForge.Utility
     {
         [SerializeField] private ProbabilityTracker _probabilityTracker;
 
-        [SerializeField] private string _scaleOnValue = "";
+        [SerializeField] private BasisValue _scaleOnValue;
 
         [SerializeField] private bool _scaleX;
         [SerializeField] private bool _scaleY;

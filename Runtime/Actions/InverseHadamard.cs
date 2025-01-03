@@ -25,7 +25,7 @@ namespace QRG.QuantumForge.Runtime
     [Serializable]
     public class InverseHadamard : MonoBehaviour, IQuantumAction
     {
-        [field: SerializeField] public QuantumProperty.Predicate[] Predicates { get; set; }
+        [field: SerializeField] public Predicate[] Predicates { get; set; }
         [field: SerializeField] public QuantumProperty[] TargetProperties { get; set; }
 
         public void apply()

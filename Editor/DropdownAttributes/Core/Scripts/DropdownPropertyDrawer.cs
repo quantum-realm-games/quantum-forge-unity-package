@@ -20,7 +20,7 @@ public class DropdownAttributeDrawer : PropertyDrawer
         for (int i = 0; i < property.arraySize; i++)
         {
             SerializedProperty item = property.GetArrayElementAtIndex(i);
-            //Debug.Log($"found item in list: {item.name}");
+            //Debug.Log($"found item in list: {item.Name}");
             result.Add(item.objectReferenceValue);
         }
         return result;
@@ -40,7 +40,7 @@ public class DropdownAttributeDrawer : PropertyDrawer
     {//Find the list in the serializedobject using the path
 
         SerializedProperty foundProperty = obj.FindProperty(path);
-        //Debug.Log($"Found list result: {result.name}");
+        //Debug.Log($"Found list result: {result.Name}");
         if (foundProperty != null)
         {
             return SerializedPropertyToList(foundProperty);
@@ -135,17 +135,17 @@ public class DropdownAttributeDrawer : PropertyDrawer
             else
             {
                 string name = GetItemName(baseMaster, obj);
-                //Debug.Log($"get name : {name}");
+                //Debug.Log($"get Name : {Name}");
                 if (name == null)
                 {
-                    name = "[ERROR]wrong property name";
+                    name = "[ERROR]wrong property Name";
                     errorCount++;
                 }
 
                 result[i] = name;
             }
         }
-        if (errorCount >= result.Length) return null;//All wrong that mean the property name is wrong.
+        if (errorCount >= result.Length) return null;//All wrong that mean the property Name is wrong.
         return result;
     }
     public int FindSelectedID<T>(List<T> list, T obj)
@@ -235,9 +235,9 @@ public class DropdownAttributeDrawer : PropertyDrawer
                     #region Draw the list dropdown
 
                     int SelectedID = FindSelectedID(UnityObjectList, obj);//Update the selectedID
-                    string[] arr = ListToStringArray(UnityObjectList, GetItemName, BaseMaster);//convert the objects into name list using GetItemName delegate method
+                    string[] arr = ListToStringArray(UnityObjectList, GetItemName, BaseMaster);//convert the objects into Name list using GetItemName delegate method
                     if(arr == null)
-                    {//Cannot find property name
+                    {//Cannot find property Name
                         EditorGUI.LabelField(position, property.name, $"Cannot find property: \"[item].{dropdownAttribute.ItemNameProperty}\"", GetGUIColor(Color.red));
                         return;
                     }
@@ -250,7 +250,7 @@ public class DropdownAttributeDrawer : PropertyDrawer
                         Object selectedObject = UnityObjectList[SelectedID];
                         property.objectReferenceValue = selectedObject;
                         //EditorUtility.SetDirty(property.serializedObject.targetObject);//repaint
-                        //Debug.Log($"changed to {property.objectReferenceValue.name}");
+                        //Debug.Log($"changed to {property.objectReferenceValue.Name}");
                     }
 
                     #endregion
@@ -261,7 +261,7 @@ public class DropdownAttributeDrawer : PropertyDrawer
                     /*foreach(object o in SystemObjectList)
                     {
                         Debug.Log($" object tostring: {(o.ToString())}");
-                        Debug.Log($" object name: {dropdownAttribute.GetItemName(o)}");
+                        Debug.Log($" object Name: {dropdownAttribute.GetItemName(o)}");
                     }*/
                     object obj = property.GetValue();
                     #region Draw the list dropdown

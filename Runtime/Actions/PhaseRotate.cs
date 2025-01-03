@@ -24,7 +24,18 @@ namespace QRG.QuantumForge.Runtime
     [Serializable]
     public class PhaseRotate : MonoBehaviour, IQuantumAction
     {
-        [field: SerializeField] public QuantumProperty.Predicate[] Predicates { get; set; }
+        [SerializeField]
+        Predicate[] _predicates;
+        public Predicate[] Predicates
+        {
+            get { return _predicates;}
+            //get { return new Predicate[]{predicate}; }
+            set { _predicates = value; }
+            //set { predicate = value[0]; }
+        }
+
+        //public Predicate predicate;
+
         public QuantumProperty[] TargetProperties
         {
             get => GetProperties(Predicates);
@@ -32,7 +43,7 @@ namespace QRG.QuantumForge.Runtime
         }
         [field: SerializeField, Range(0, 2*Mathf.PI)] public float Radians { get; set; }
 
-        private static QuantumProperty[] GetProperties(params QuantumProperty.Predicate[] predicates)
+        private static QuantumProperty[] GetProperties(params Predicate[] predicates)
         {
             var properties = new List<QuantumProperty>();
             foreach (var predicate in predicates)

@@ -25,7 +25,7 @@ namespace QRG.QuantumForge.Runtime
 
     public interface IQuantumAction 
     {
-        public QuantumProperty.Predicate[] Predicates { get; set; }
+        public Predicate[] Predicates { get; set; }
         public QuantumProperty[] TargetProperties { get; set; }
 
         public void apply();

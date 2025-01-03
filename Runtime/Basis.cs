@@ -13,22 +13,34 @@
 //# See the License for the specific language governing permissions and
 //# limitations under the License.
 
-using System.Collections;
+using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using JetBrains.Annotations;
 using UnityEngine;
 
 namespace QRG.QuantumForge.Runtime
 {
-    // Suggestion, keep Basisjhk list small.
+
+    [Serializable]
+    public class BasisValue
+    {
+        //[SerializeField] private Basis _basis;
+        public string Name;
+    }
+
+
+    // Suggestion, keep Basis list small.
     [CreateAssetMenu(fileName = "Basis", menuName = "Quantum/Basis", order = 1)]
     public class Basis : ScriptableObject
     {
-        [SerializeReference] public List<string> values;
+        public List<BasisValue> values;
 
         public int Dimension
         {
             get { return values.Count; }
         }
+
     }
 
 }

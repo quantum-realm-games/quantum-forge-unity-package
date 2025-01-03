@@ -28,7 +28,7 @@ namespace QRG.QuantumForge.Runtime
         public UnityEvent OnMeasure;
         public QuantumPropertyEvent OnMeasureQuantumProperty;
 
-        public QuantumProperty.Predicate[] Predicates { get; set; }// not shown in inspector
+        public Predicate[] Predicates { get; set; }// not shown in inspector
 
         [field: SerializeField] public QuantumProperty[] TargetProperties { get; set; }
 

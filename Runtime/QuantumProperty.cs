@@ -15,9 +15,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Numerics;
 using System.Runtime.InteropServices;
 using QRG.QuantumForge.Core;
+using Unity.Properties;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
 
@@ -27,37 +29,42 @@ namespace QRG.QuantumForge.Runtime
     using QuantumForge = QuantumForge.Core.QuantumForge;
 
     [Serializable]
+    public class Predicate
+    {
+        public QuantumProperty property = null;
+
+        [BasisValueDropdown]
+        public BasisValue value;
+        public bool is_equal;
+    }
+
+    [Serializable]
     public class QuantumProperty : MonoBehaviour
     {
-        [SerializeField] private Basis _basis = null;
         private QuantumForge.NativeQuantumProperty _nativeNativeQuantumProperty;
 
-        [SerializeField, Dropdown("_basis.values")]
-        private string Initial;
+        public Basis basis = null;
+
+        [SerializeField, BasisValueDropdown] private BasisValue Initial;
 
         public int Dimension
         {
-            get => _basis.Dimension;
-        }
-
-        public Basis Basis
-        {
-            get => _basis;
+            get => basis.Dimension;
         }
 
         void Awake()
         {
             try
             {
-                if (_basis == null)
+                if (basis == null)
                 {
                     throw new Exception("Basis not set. Try setting basis in Editor. Reload/recompile sometimes corrupts this field.");
                 }
-                int initial = _basis.values.IndexOf(Initial);
+                int initial = basis.values.IndexOf(Initial);
                 if(initial == -1)
                 {
                     initial = 0;
-                    throw new Exception($"Initial value {initial} not found in basis, setting it to {_basis.values[0]}. Try selecting initial value again in Editor. Reload/recompile sometimes corrupts this field.");
+                    throw new Exception($"Initial value_string {initial} not found in basis, setting it to {basis.values[0]}. Try selecting initial value_string again in Editor. Reload/recompile sometimes corrupts this field.");
                 }
                 _nativeNativeQuantumProperty = new QuantumForge.NativeQuantumProperty(Dimension, initial);
             }
@@ -69,15 +76,7 @@ namespace QRG.QuantumForge.Runtime
 
         }
 
-        [Serializable]
-        public struct Predicate
-        {
-            public QuantumProperty property;
-            public string value;
-            public bool is_equal;
-        }
-
-        public Predicate is_value(string value)
+        public Predicate is_value(BasisValue value)
         {
             return new Predicate()
             {
@@ -87,12 +86,17 @@ namespace QRG.QuantumForge.Runtime
             };
         }
 
-        public Predicate is_value(int value)
+        public Predicate is_value(string valueName)
         {
-            return is_value(_basis.values[value]);
+            return is_value(basis.values.Find(v => v.Name == valueName));
         }
 
-        public Predicate is_not_value(string value)
+        public Predicate is_value(int valueIndex)
+        {
+            return is_value(basis.values[valueIndex]);
+        }
+
+        public Predicate is_not_value(BasisValue value)
         {
             return new Predicate()
             {
@@ -102,16 +106,21 @@ namespace QRG.QuantumForge.Runtime
             };
         }
 
+        public Predicate is_not_value(string valueName)
+        {
+            return is_not_value(basis.values.Find(v => v.Name == valueName));
+        }
+
         public Predicate is_not_value(int value)
         {
-            return is_value(_basis.values[value]);
+            return is_value(basis.values[value]);
         }
 
         internal static QuantumForge.Predicate[] ConvertPredicates(Predicate[] predicates)
         {
             return Array.ConvertAll(predicates,
                 p => new QuantumForge.Predicate(p.property._nativeNativeQuantumProperty,
-                    p.property._basis.values.IndexOf(p.value), p.is_equal));
+                    p.property.basis.values.IndexOf(p.value), p.is_equal));
         }
 
         public static void Cycle(QuantumProperty prop, params Predicate[] predicates)
@@ -169,9 +178,9 @@ namespace QRG.QuantumForge.Runtime
 
         /// <summary>
         /// The full qudit Z gate.
-        /// Applies a phase rotation to all basis values, based on the value.
+        /// Applies a phase rotation to all basis values, based on the value_string.
         /// Let w = exp(2*pi*i/Dimension)
-        /// For basis value v, the phase rotation is w^v
+        /// For basis value_string v, the phase rotation is w^v
         /// </summary>
         public void Clock(float fraction, params Predicate[] predicates)
         {
@@ -186,9 +195,9 @@ namespace QRG.QuantumForge.Runtime
 
         /// <summary>
         /// The full qudit Z gate.
-        /// Applies a phase rotation to all basis values, based on the value.
+        /// Applies a phase rotation to all basis values, based on the value_string.
         /// Let w = exp(2*pi*i/Dimension)
-        /// For basis value v, the phase rotation is w^v
+        /// For basis value_string v, the phase rotation is w^v
         /// </summary>
         public void Clock(params Predicate[] predicates)
         {
@@ -236,7 +245,7 @@ namespace QRG.QuantumForge.Runtime
         }
 
         /// <summary>
-        /// Entangling operation. Performs a number of predicated (controlled) cycles on prop2 based on the value of prop1.
+        /// Entangling operation. Performs a number of predicated (controlled) cycles on prop2 based on the value_string of prop1.
         /// Ex. Prop1 is in superposition of 0, 1, and 2 : |prop1> = 1/sqrt(3) * (|0> + |1> + |2>)
         ///     Prop2 starts in state 0: |prop2> = |0>
         ///     Result: |prop1,prop2> = 1/sqrt(3) * (|0,0> + |1,1> + |2,2>)
@@ -244,8 +253,8 @@ namespace QRG.QuantumForge.Runtime
         /// Ex. Prop2 starts in state 1: |prop2> = |1>
         ///     Result: |prop1,prop2> = 1/sqrt(3) * (|0,1> + |1,2> + |2,0>)
         /// </summary>
-        /// <param name="prop1"></param>
-        /// <param name="prop2"></param>
+        /// <param Name="prop1"></param>
+        /// <param Name="prop2"></param>
         public static void NCycle(QuantumProperty prop1, QuantumProperty prop2)
         {
             QuantumForge.NCycle(prop1._nativeNativeQuantumProperty, prop2._nativeNativeQuantumProperty);
@@ -256,19 +265,19 @@ namespace QRG.QuantumForge.Runtime
         public struct BasisProbability
         {
             public float Probability;
-            public string[] BasisValues;
+            public BasisValue[] BasisValues;
             [SerializeField] private string _basisValues; // Editor conveinence
 
-            public BasisProbability(float probability, string[] basisValues)
+            public BasisProbability(float probability, BasisValue[] basisValues)
             {
                 Probability = probability;
                 BasisValues = basisValues;
-                _basisValues = string.Join(",", basisValues);
+                _basisValues = string.Join(",", basisValues.Select(x => x.Name));
             }
 
             public override string ToString()
             {
-                return $"{Probability.ToString("0.00")} : {string.Join(",", BasisValues)}";
+                return $"{Probability.ToString("0.00")} : {string.Join(",", BasisValues.Select(x => x.Name))}";
             }
         }
 
@@ -285,10 +294,10 @@ namespace QRG.QuantumForge.Runtime
             var result = new BasisProbability[probs.Length];
             for (int i = 0; i < probs.Length; i++)
             {
-                var values = new string[properties.Length];
+                var values = new BasisValue[properties.Length];
                 for (int j = 0; j < properties.Length; ++j)
                 {
-                    values[j] = properties[j]._basis.values[probs[i].QuditValues[j]];
+                    values[j] = properties[j].basis.values[probs[i].QuditValues[j]];
                 }
 
                 result[i] = new BasisProbability(probs[i].Probability, values);
@@ -320,7 +329,7 @@ namespace QRG.QuantumForge.Runtime
             var props = Array.ConvertAll(properties, p => p._nativeNativeQuantumProperty);
             return QuantumForge.Measure(props);
         }
-        public static int Measure(params QuantumProperty.Predicate[] predicates)
+        public static int Measure(params Predicate[] predicates)
         {
             return QuantumForge.Measure(ConvertPredicates(predicates));
         }

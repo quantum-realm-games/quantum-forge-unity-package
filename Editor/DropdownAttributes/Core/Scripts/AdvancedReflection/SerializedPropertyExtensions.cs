@@ -49,7 +49,7 @@ public static class SerializedPropertyExtensions
         SetPathComponentValue(container, deferredToken, value);
     }
 
-    // Union type representing either a property name or array element index.  The element
+    // Union type representing either a property Name or array element index.  The element
     // index is valid only if propertyName is null.
     struct PropertyPathComponent
     {
@@ -60,7 +60,7 @@ public static class SerializedPropertyExtensions
     static Regex arrayElementRegex = new Regex(@"\GArray\.data\[(\d+)\]", RegexOptions.Compiled);
 
     // Parse the next path component from a SerializedProperty.propertyPath.  For simple field/property access,
-    // this is just tokenizing on '.' and returning each field/property name.  Array/list access is via
+    // this is just tokenizing on '.' and returning each field/property Name.  Array/list access is via
     // the pseudo-property "Array.data[N]", so this method parses that and returns just the array/list index N.
     //
     // Call this method repeatedly to access all path components.  For example:

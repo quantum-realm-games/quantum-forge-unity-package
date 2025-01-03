@@ -13,7 +13,7 @@ public class ReflectionItem
     public object BaseMaster;//the first master object.
     public object Master;//the master object
     public Type MasterType;//the master object
-    public string Target;//the Target variable name
+    public string Target;//the Target variable Name
     private void debug(object obj)
     {
         if (ReflectionSystem.DebugMode)

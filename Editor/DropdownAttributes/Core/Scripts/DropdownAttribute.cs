@@ -22,7 +22,7 @@ public class DropdownAttribute : PropertyAttribute
     public int SelectedID = -1;
     public GetItemNameCallback GetItemName = null;
     public DropdownAttribute(string listPath, string ItemNameProperty)
-    {//With property name to get name
+    {//With property Name to get Name
         //[Dropdown("SkillDatabase.Instance.SkillList", "skillID")]
         ListPath = listPath;
         GetItemName = ( (baseMaster, obj) =>
@@ -38,7 +38,7 @@ public class DropdownAttribute : PropertyAttribute
         {
             if(master is Object)
             {//is Unity Object
-                return master.GetType().GetProperty("name").GetValue(master).ToString();
+                return master.GetType().GetProperty("Name").GetValue(master).ToString();
             }
             else if(master is string)
             {//string

@@ -9,7 +9,7 @@ namespace QRG.QuantumForge.Runtime
     [Serializable]
     public class ISwap : MonoBehaviour, IQuantumAction
     {
-        [field: SerializeField] public QuantumProperty.Predicate[] Predicates { get; set; }
+        [field: SerializeField] public Predicate[] Predicates { get; set; }
 
         [field: SerializeField] public QuantumProperty[] TargetProperties { get; set; }
 
