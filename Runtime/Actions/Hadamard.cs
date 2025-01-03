@@ -18,6 +18,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using UnityEngine;
+using Debug = UnityEngine.Debug;
 
 namespace QRG.QuantumForge.Runtime
 {
@@ -30,6 +31,11 @@ namespace QRG.QuantumForge.Runtime
 
         public void apply()
         {
+            if (TargetProperties == null)
+            {
+                Debug.LogError($"No target properties set for {gameObject.name} Hadamard to apply");
+                return;
+            }
             foreach (var prop in TargetProperties)
             {
                 UnityEngine.Debug.Log($"Applying Hadamard to {prop} with {Predicates.Length} predicates");

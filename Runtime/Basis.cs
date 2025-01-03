@@ -23,9 +23,29 @@ namespace QRG.QuantumForge.Runtime
 {
 
     [Serializable]
-    public class BasisValue
+    public class BasisValue : IEquatable<BasisValue>
     {
         public string Name;
+
+        public bool Equals(BasisValue other)
+        {
+            if (other is null) return false;
+            if (ReferenceEquals(this, other)) return true;
+            return Name == other.Name;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj is null) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != GetType()) return false;
+            return Equals((BasisValue)obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return (Name != null ? Name.GetHashCode() : 0);
+        }
     }
 
 

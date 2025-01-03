@@ -64,7 +64,7 @@ namespace QRG.QuantumForge.Runtime
                 if(initial == -1)
                 {
                     initial = 0;
-                    throw new Exception($"Initial value_string {initial} not found in basis, setting it to {basis.values[0]}. Try selecting initial value_string again in Editor. Reload/recompile sometimes corrupts this field.");
+                    throw new Exception($"Initial value {Initial.Name} not found in basis, setting it to {basis.values[0].Name}. Try selecting initial value again in Editor. Reload/recompile sometimes corrupts this field.");
                 }
                 _nativeNativeQuantumProperty = new QuantumForge.NativeQuantumProperty(Dimension, initial);
             }

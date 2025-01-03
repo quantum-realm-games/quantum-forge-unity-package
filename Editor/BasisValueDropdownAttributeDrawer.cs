@@ -30,7 +30,7 @@ namespace QRG.QuantumForge.Editor
                 var basisField = fields.FirstOrDefault(x => x.FieldType.Name.Equals("Basis"));
                 if (basisField != null)
                 {
-                    Debug.Log($"Basis Field: {basisField.Name} type: {basisField.FieldType.Name}");
+                    //Debug.Log($"Basis Field: {basisField.Name} type: {basisField.FieldType.Name}");
                     string listPath = basisField.Name + ".values";
                     var listObj = ReflectionSystem.GetValue(baseMaster, listPath);
                     if (listObj != null)
@@ -40,30 +40,19 @@ namespace QRG.QuantumForge.Editor
                         return;
                     }
                 }
-                
-                
-
                 // No basis sibling found, look for QuantumProperty
 
                 // parse propertyPath
                 int idx = property.propertyPath.LastIndexOf('.');
 
                 var parentPath = idx == -1 ? "" : property.propertyPath.Substring(0, idx);
-                Debug.Log($"ParentPath: {parentPath}");
+                //Debug.Log($"ParentPath: {parentPath}");
 
-                // find a Basis or QuantumProperty in the parent
                 var parentProperty = parentPath == "" ? property : property.serializedObject.FindProperty(parentPath);
-                Debug.Log($"ParentProperty: {parentProperty.name} Type: {parentProperty.propertyType} Type2: {parentProperty.type}");
-
-                if (parentProperty == null)
-                {
-                    EditorGUI.LabelField(position, property.name, $"The object containing Basis: \"{parentPath}\" could not be found", errorStyle);
-                    return;
-                }
+                //Debug.Log($"ParentProperty: {parentProperty.name} Type: {parentProperty.propertyType} Type2: {parentProperty.type}");
 
                 do
                 {
-
                     if (parentProperty.type.Contains("QuantumProperty"))
                     {
                         //Debug.Log($"QuantumProperty: {parentProperty.name} Type: {parentProperty.propertyType} Type2: {parentProperty.type}");
@@ -133,8 +122,8 @@ namespace QRG.QuantumForge.Editor
                 EditorUtility.SetDirty(property.serializedObject.targetObject);
             }
 
-            BasisValue tbv = (BasisValue)property.GetValue();
-            Debug.Log($"Selected ID: {selectedID} BasisValue: {tbv.Name}");
+            //BasisValue tbv = (BasisValue)property.GetValue();
+            //Debug.Log($"Selected ID: {selectedID} BasisValue: {tbv.Name}");
         }
     }
 }
