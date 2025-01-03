@@ -25,7 +25,6 @@ namespace QRG.QuantumForge.Runtime
     [Serializable]
     public class BasisValue
     {
-        //[SerializeField] private Basis _basis;
         public string Name;
     }
 

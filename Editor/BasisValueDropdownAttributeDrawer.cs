@@ -26,13 +26,22 @@ namespace QRG.QuantumForge.Editor
 
                 // Look for basis sibling
                 var baseMaster = property.serializedObject.targetObject;
-                var listObj = ReflectionSystem.GetValue(baseMaster, "basis.values");
-                if (listObj != null)
+                var fields = baseMaster.GetType().GetFields(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance);
+                var basisField = fields.FirstOrDefault(x => x.FieldType.Name.Equals("Basis"));
+                if (basisField != null)
                 {
-                    IList ilist = (IList)listObj;
-                    DrawListDropdown(position, property, ilist);
-                    return;
+                    Debug.Log($"Basis Field: {basisField.Name} type: {basisField.FieldType.Name}");
+                    string listPath = basisField.Name + ".values";
+                    var listObj = ReflectionSystem.GetValue(baseMaster, listPath);
+                    if (listObj != null)
+                    {
+                        IList ilist = (IList)listObj;
+                        DrawListDropdown(position, property, ilist);
+                        return;
+                    }
                 }
+                
+                
 
                 // No basis sibling found, look for QuantumProperty
 
