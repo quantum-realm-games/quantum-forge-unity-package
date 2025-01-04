@@ -113,6 +113,7 @@ namespace QRG.QuantumForge.Editor
                     break;
                 }
             }
+            property.SetValue(ilist[selectedID]);
 
             int newSelectedID = EditorGUI.Popup(position, property.name, selectedID, names);
             if (newSelectedID != selectedID)
