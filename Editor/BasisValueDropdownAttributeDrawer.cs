@@ -101,7 +101,8 @@ namespace QRG.QuantumForge.Editor
             string[] names = ilist.Cast<BasisValue>().Select(x => x.Name).ToArray();
 
             object target = property.GetValue();
-            int selectedID = 0;
+
+            int selectedID = -1;
             for (int i = 0; i < ilist.Count; ++i)
             {
                 var value = ilist[i];
@@ -113,7 +114,13 @@ namespace QRG.QuantumForge.Editor
                     break;
                 }
             }
-            property.SetValue(ilist[selectedID]);
+
+            if (selectedID == -1)
+            {
+                property.SetValue(ilist[0]);
+                EditorUtility.SetDirty(property.serializedObject.targetObject);
+                return;
+            }
 
             int newSelectedID = EditorGUI.Popup(position, property.name, selectedID, names);
             if (newSelectedID != selectedID)
@@ -121,6 +128,7 @@ namespace QRG.QuantumForge.Editor
                 selectedID = newSelectedID;
                 property.SetValue(ilist[selectedID]);
                 EditorUtility.SetDirty(property.serializedObject.targetObject);
+                return;
             }
 
             //BasisValue tbv = (BasisValue)property.GetValue();

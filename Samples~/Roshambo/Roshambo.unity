@@ -673,8 +673,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 535d0a2ffef28484db6129962bfdf77e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _targetProperties:
+  <Predicates>k__BackingField: []
+  <TargetProperties>k__BackingField:
   - {fileID: 690924836}
+  fraction: 1
 --- !u!114 &331422197
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1421,8 +1423,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e681316c3a4754642b7e95ec147aa85d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _basis: {fileID: 11400000, guid: 1da58b1857dea32479561f4af9615ad0, type: 2}
-  Initial: rock
+  basis: {fileID: 11400000, guid: 1da58b1857dea32479561f4af9615ad0, type: 2}
+  Initial:
+    Name: rock
 --- !u!114 &690924838
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1780,8 +1783,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 206353086517b2d439ff4a4cf7ebf004, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _targetProperties:
+  <Predicates>k__BackingField: []
+  <TargetProperties>k__BackingField:
   - {fileID: 690924836}
+  fraction: 1
 --- !u!114 &879929770
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2004,8 +2009,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 535d0a2ffef28484db6129962bfdf77e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _targetProperties:
+  <Predicates>k__BackingField: []
+  <TargetProperties>k__BackingField:
   - {fileID: 1705627141}
+  fraction: 1
 --- !u!95 &908776517
 Animator:
   serializedVersion: 5
@@ -2210,8 +2217,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 206353086517b2d439ff4a4cf7ebf004, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _targetProperties:
+  <Predicates>k__BackingField: []
+  <TargetProperties>k__BackingField:
   - {fileID: 1705627141}
+  fraction: 1
 --- !u!114 &929780739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2906,7 +2915,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d21e091f04ef652419ea6a4090982a83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _targetProperties:
+  <Predicates>k__BackingField: []
+  <TargetProperties>k__BackingField:
   - {fileID: 1705627141}
   - {fileID: 690924836}
 --- !u!114 &1100906875
@@ -4085,8 +4095,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e681316c3a4754642b7e95ec147aa85d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _basis: {fileID: 11400000, guid: 1da58b1857dea32479561f4af9615ad0, type: 2}
-  Initial: rock
+  basis: {fileID: 11400000, guid: 1da58b1857dea32479561f4af9615ad0, type: 2}
+  Initial:
+    Name: rock
 --- !u!114 &1705627143
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4273,7 +4284,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef6525c3029252b48870f359eca62c3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _targetProperties:
+  <Predicates>k__BackingField: []
+  <TargetProperties>k__BackingField:
   - {fileID: 1705627141}
 --- !u!222 &1735048783
 CanvasRenderer:
@@ -4423,7 +4435,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d21e091f04ef652419ea6a4090982a83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _targetProperties:
+  <Predicates>k__BackingField: []
+  <TargetProperties>k__BackingField:
   - {fileID: 690924836}
   - {fileID: 1705627141}
 --- !u!222 &1782671633
@@ -4683,7 +4696,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef6525c3029252b48870f359eca62c3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _targetProperties:
+  <Predicates>k__BackingField: []
+  <TargetProperties>k__BackingField:
   - {fileID: 690924836}
 --- !u!114 &2094413063
 MonoBehaviour:

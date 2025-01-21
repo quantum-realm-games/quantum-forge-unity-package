@@ -59,9 +59,8 @@ namespace QRG.QuantumForge.Platformer
                 {
                     float topProbability = 0.0f;
                     float bottomProbability = 0.0f;
-
-                    topProbability = probabilities.First(x => x.BasisValues[0] == "top").Probability;
-                    bottomProbability = probabilities.First(x => x.BasisValues[0] == "bottom").Probability;
+                    topProbability = probabilities.First(x => x.BasisValues[0].Name == "top").Probability;
+                    bottomProbability = probabilities.First(x => x.BasisValues[0].Name == "bottom").Probability;
 
                     topPlayer.SetActive(topProbability > 0.0f);
                     bottomPlayer.SetActive(bottomProbability > 0.0f);

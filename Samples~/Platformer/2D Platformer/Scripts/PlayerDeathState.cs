@@ -8,11 +8,11 @@ namespace Platformer
     {
         public float jumpForce;
 
-        private Rigidbody2D rigidbody;
+        private Rigidbody2D _rigidbody;
         void Start()
         {
-            rigidbody = GetComponent<Rigidbody2D>();
-            rigidbody.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
+            _rigidbody = GetComponent<Rigidbody2D>();
+            _rigidbody.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
         }
     }
 }

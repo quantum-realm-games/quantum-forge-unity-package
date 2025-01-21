@@ -13,15 +13,19 @@
 //# See the License for the specific language governing permissions and
 //# limitations under the License.
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using QRG.QuantumForge.Runtime;
 using Unity.VisualScripting;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 namespace QRG.QuantumForge.Roshambo
 {
+ 
     [RequireComponent(typeof(ProbabilityTracker))]
     public class TokenDisplay : MonoBehaviour
     {
@@ -29,8 +33,8 @@ namespace QRG.QuantumForge.Roshambo
         [SerializeField] private Image player1;
         [SerializeField] private Image player2;
 
-        [SerializeField] private Sprite rock;
-        [SerializeField] private Sprite paper;
+        [SerializeField] private Sprite rock; 
+        [SerializeField] private Sprite paper; 
         [SerializeField] private Sprite scissors;
 
         private ProbabilityTracker probabilityTracker;
@@ -53,14 +57,13 @@ namespace QRG.QuantumForge.Roshambo
                 var probs = probabilityTracker.Probabilities;
                 if (probs != null && probs.Length != 0)
                 {
-                    QuantumProperty.BasisProbability selected;
                     float totalProb = 0;
                     foreach (var basisProbability in probs)
                     {
                         totalProb += basisProbability.Probability;
                         if (rand < totalProb)
                         {
-                            player1.sprite = basisProbability.BasisValues[0] switch
+                            player1.sprite = basisProbability.BasisValues[0].Name switch
                             {
                                 "rock" => rock,
                                 "paper" => paper,
@@ -68,7 +71,7 @@ namespace QRG.QuantumForge.Roshambo
                                 _ => null
                             };
 
-                            player2.sprite = basisProbability.BasisValues[1] switch
+                            player2.sprite = basisProbability.BasisValues[1].Name switch
                             {
                                 "rock" => rock,
                                 "paper" => paper,

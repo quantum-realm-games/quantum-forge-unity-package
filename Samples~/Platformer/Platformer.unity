@@ -401,7 +401,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _probabilityTracker: {fileID: 1255100754}
-  _scaleOnValue: top
+  _scaleOnValue:
+    Name: 
   _scaleX: 0
   _scaleY: 1
   _scaleZ: 0
@@ -734,11 +735,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4058159fb4f1a8244ba1fe87b06b624a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _targetProperties:
-  - {fileID: 1255100755}
-  _basis: {fileID: 11400000, guid: 024945ceca1e5a9438f2ec45ebfafe69, type: 2}
-  _value: bottom
-  _radians: 1.04
+  _predicates:
+  - property: {fileID: 1255100755}
+    value:
+      Name: top
+    is_equal: 1
+  <Radians>k__BackingField: 1.45
 --- !u!114 &364311889
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1380,8 +1382,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef6525c3029252b48870f359eca62c3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _targetProperties:
-  - {fileID: 1255100755}
+  <Predicates>k__BackingField: []
+  <TargetProperties>k__BackingField: []
 --- !u!1 &661255061
 GameObject:
   m_ObjectHideFlags: 0
@@ -20872,7 +20874,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef6525c3029252b48870f359eca62c3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _targetProperties:
+  <Predicates>k__BackingField: []
+  <TargetProperties>k__BackingField:
   - {fileID: 1255100755}
 --- !u!1 &1116687336
 GameObject:
@@ -21312,8 +21315,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e681316c3a4754642b7e95ec147aa85d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _basis: {fileID: 11400000, guid: 024945ceca1e5a9438f2ec45ebfafe69, type: 2}
-  Initial: bottom
+  basis: {fileID: 11400000, guid: 024945ceca1e5a9438f2ec45ebfafe69, type: 2}
+  Initial:
+    Name: bottom
 --- !u!4 &1255100756
 Transform:
   m_ObjectHideFlags: 0
@@ -21850,8 +21854,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 206353086517b2d439ff4a4cf7ebf004, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _targetProperties:
-  - {fileID: 1255100755}
+  <Predicates>k__BackingField: []
+  <TargetProperties>k__BackingField: []
+  fraction: 1
 --- !u!114 &1604452358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22041,8 +22046,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 206353086517b2d439ff4a4cf7ebf004, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _targetProperties:
+  <Predicates>k__BackingField: []
+  <TargetProperties>k__BackingField:
   - {fileID: 1255100755}
+  fraction: 1
 --- !u!114 &1757200120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23049,7 +23056,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _probabilityTracker: {fileID: 1255100754}
-  _scaleOnValue: bottom
+  _scaleOnValue:
+    Name: 
   _scaleX: 0
   _scaleY: 1
   _scaleZ: 0

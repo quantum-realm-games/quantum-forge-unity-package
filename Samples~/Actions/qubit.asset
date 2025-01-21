@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 34c5e161cd333554eb5e7f414f10ba1a, type: 3}
-  m_Name: Lane
+  m_Name: qubit
   m_EditorClassIdentifier: 
   values:
-  - Name: top
-  - Name: bottom
+  - Name: zero
+  - Name: one

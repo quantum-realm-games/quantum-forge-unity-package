@@ -1,6 +1,6 @@
 {
   "name": "com.qrg.quantumforge",
-  "version": "0.2.2",
+  "version": "1.0.0",
   "displayName": "Quantum Forge",
   "description": "A set of tools for adding genuine quantum behavior to Unity projects.",
   "unity": "2022.3",
@@ -24,13 +24,13 @@
     },
     {
       "displayName": "Platformer",
-      "description": "An example of a quantum mechanic in a platformer",
+      "description": "An example of a quantum mechanic in a platformer.",
       "path": "Samples~/Platformer"
     },
     {
-      "displayName": "FaQtory",
-      "description": "An example of a game mechanic inspired by the Deustch-Jozsa quantum algorithm.",
-      "path": "Samples~/FaQtory"
+      "displayName": "Actions",
+      "description": "A sample showing various actions and their effects using visualization tools.",
+      "path": "Samples~/Actions"
     }
   ]
 }

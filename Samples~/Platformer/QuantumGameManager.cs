@@ -18,6 +18,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Platformer;
+using UnityEngine.SceneManagement;
 
 namespace QRG.QuantumForge.Platformer
 {
@@ -57,7 +58,8 @@ namespace QRG.QuantumForge.Platformer
 
         private void ReloadLevel()
         {
-            Application.LoadLevel(Application.loadedLevel);
+            //Application.LoadLevel(Application.loadedLevel);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 }

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: RockPaperScissors
   m_EditorClassIdentifier: 
   values:
-  - rock
-  - paper
-  - scissors
+  - Name: rock
+  - Name: paper
+  - Name: scissors
