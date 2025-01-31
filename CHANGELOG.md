@@ -13,3 +13,7 @@
     Other renames and QOL fixes.
 
 0.2.1 Fixed broken samples.
+
+1.0.0 First release
+
+1.0.1 Fixed bug with fractional shift, and added test.

@@ -84,6 +84,18 @@ public class QuantumForgeTests
     }
 
     [Test]
+    public void TestFractionalShift()
+    {
+        var m = QuantumForge.Measure(qubit1);
+        Assert.AreEqual(m[0], 0);
+        Assert.DoesNotThrow(() => QuantumForge.Shift(qubit1, 1.0f / 3.0f));
+        Assert.DoesNotThrow(() => QuantumForge.Shift(qubit1, 1.0f / 3.0f));
+        Assert.DoesNotThrow(() => QuantumForge.Shift(qubit1, 1.0f / 3.0f));
+        m = QuantumForge.Measure(qubit1);
+        Assert.AreEqual(m[0], 1);
+    }
+
+    [Test]
     public void TestNCycle()
     {
         Assert.DoesNotThrow(() => QuantumForge.Hadamard(qutrit1));

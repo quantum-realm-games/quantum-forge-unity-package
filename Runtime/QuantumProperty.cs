@@ -145,11 +145,7 @@ namespace QRG.QuantumForge.Runtime
 
         public static void Shift(QuantumProperty prop, params Predicate[] predicates)
         {
-            var dimension = prop.Dimension;
-            for (int i = 0; i < dimension; ++i)
-            {
-                QuantumForge.Shift(prop._nativeNativeQuantumProperty, ConvertPredicates(predicates));
-            }
+            QuantumForge.Shift(prop._nativeNativeQuantumProperty, ConvertPredicates(predicates));
         }
 
         public void Shift(params Predicate[] predicates)
@@ -159,11 +155,7 @@ namespace QRG.QuantumForge.Runtime
 
         public static void Shift(QuantumProperty prop, float fraction, params Predicate[] predicates)
         {
-            var dimension = prop.Dimension;
-            for (int i = 0; i < dimension; ++i)
-            {
-                QuantumForge.Shift(prop._nativeNativeQuantumProperty, fraction, ConvertPredicates(predicates));
-            }
+            QuantumForge.Shift(prop._nativeNativeQuantumProperty, fraction, ConvertPredicates(predicates));
         }
 
         public void Shift(float fraction, params Predicate[] predicates)
