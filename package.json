@@ -1,6 +1,6 @@
 {
   "name": "com.qrg.quantumforge",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "displayName": "Quantum Forge",
   "description": "A set of tools for adding genuine quantum behavior to Unity projects.",
   "unity": "2022.3",
