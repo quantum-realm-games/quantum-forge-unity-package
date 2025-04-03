@@ -19,3 +19,5 @@
 1.0.1 Fixed bug with fractional shift, and added test.
 
 1.0.2 Add MacOS support.
+
+1.0.3 Update MacOS, Linux, and WebGL support.
