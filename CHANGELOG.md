@@ -23,3 +23,5 @@
 1.0.3 Update MacOS, Linux, and WebGL support.
 
 1.0.4 Change Windows dll to release instead of debug binary.
+
+1.0.5 Fix bug with predicated measurement.
