@@ -21,21 +21,38 @@ using Unity.VisualScripting;
 
 namespace QRG.QuantumForge.Runtime
 {
+    /// <summary>
+    /// Tracks correlations between specified quantum properties.
+    /// </summary>
     public class CorrelationTracker : MonoBehaviour
     {
+        /// <summary>
+        /// Quantum properties to track correlations for.
+        /// </summary>
         [Tooltip("Quantum properties to track correlations for.")]
         [SerializeField] private QuantumProperty[] quantumProperties;
 
+        /// <summary>
+        /// Matrix representing the correlations between quantum properties.
+        /// </summary>
         [Tooltip("Matrix representing the correlations between quantum properties.")]
         [SerializeField] private float[,] correlationMatrix;
 
+        /// <summary>
+        /// Indicates whether the correlation matrix should be updated continuously.
+        /// </summary>
         [Tooltip("Indicates whether the correlation matrix should be updated continuously.")]
         [SerializeField] private bool continuous = true;
 
+        /// <summary>
+        /// String representation of the correlation matrix for debugging purposes.
+        /// </summary>
         [Tooltip("String representation of the correlation matrix for debugging purposes.")]
         [SerializeField, TextArea(5, 20)] private string matrixData = "";
 
-        // Start is called before the first frame update
+        /// <summary>
+        /// Initializes the tracker and ensures quantum properties are set.
+        /// </summary>
         void OnEnable()
         {
             if (quantumProperties == null || quantumProperties.Length == 0)
@@ -52,7 +69,9 @@ namespace QRG.QuantumForge.Runtime
             }
         }
 
-        // Update is called once per frame
+        /// <summary>
+        /// Updates the correlation matrix if continuous tracking is enabled.
+        /// </summary>
         void Update()
         {
             if (continuous)
@@ -61,6 +80,10 @@ namespace QRG.QuantumForge.Runtime
             }
         }
 
+        /// <summary>
+        /// Calculates and returns the correlation matrix of the quantum properties.
+        /// </summary>
+        /// <returns>The correlation matrix as a 2D float array.</returns>
         public float[,] UpdateCorrelationMatrix()
         {
             correlationMatrix = QuantumProperty.CorrelationMatrix(quantumProperties);
@@ -68,6 +91,9 @@ namespace QRG.QuantumForge.Runtime
             return correlationMatrix;
         }
 
+        /// <summary>
+        /// Updates the string representation of the correlation matrix for debugging.
+        /// </summary>
         private void SetMatrixData()
         {
             matrixData = "";

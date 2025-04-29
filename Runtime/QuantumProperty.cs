@@ -28,39 +28,60 @@ namespace QRG.QuantumForge.Runtime
 {
     using QuantumForge = QuantumForge.Core.QuantumForge;
 
-    [Tooltip("Represents a condition or predicate for quantum operations.")]
+    /// <summary>
+    /// Represents a condition or predicate for quantum operations.
+    /// </summary>
     [Serializable]
     public class Predicate
     {
-        [Tooltip("The quantum property associated with this predicate.")]
+        /// <summary>
+        /// The quantum property associated with this predicate.
+        /// </summary>
         public QuantumProperty property = null;
 
-        [Tooltip("The basis value to compare against.")]
+        /// <summary>
+        /// The basis value to compare against.
+        /// </summary>
         [BasisValueDropdown]
         public BasisValue value;
 
-        [Tooltip("Indicates whether the predicate checks for equality or inequality.")]
+        /// <summary>
+        /// Indicates whether the predicate checks for equality or inequality.
+        /// </summary>
         public bool is_equal;
     }
 
-    [Tooltip("Gives an object the ability to exist in a quantum state.")]
+    /// <summary>
+    /// Represents a quantum property and provides various quantum operations.
+    /// This is the core of the Quantum Forge Toolkit, allowing you to add 
+    /// quantum functionality to GameObjects and perform quantum operations on them.
+    /// </summary>
     [Serializable]
     public class QuantumProperty : MonoBehaviour
     {
         private QuantumForge.NativeQuantumProperty _nativeNativeQuantumProperty;
 
-        [Tooltip("The basis associated with this quantum property.")]
+        /// <summary>
+        /// The basis associated with this quantum property.
+        /// </summary>
         public Basis basis = null;
 
-        [Tooltip("The initial basis value for this quantum property.")]
+        /// <summary>
+        /// The initial basis value for this quantum property.
+        /// </summary>
         [SerializeField, BasisValueDropdown] private BasisValue Initial;
 
-        [Tooltip("The dimension of the basis associated with this quantum property.")]
+        /// <summary>
+        /// The dimension of the basis associated with this quantum property.
+        /// </summary>
         public int Dimension
         {
             get => basis.Dimension;
         }
 
+        /// <summary>
+        /// Initializes the quantum property and sets its initial state.
+        /// </summary>
         void Awake()
         {
             try
@@ -85,6 +106,11 @@ namespace QRG.QuantumForge.Runtime
 
         }
 
+        /// <summary>
+        /// Creates a predicate that checks if the quantum property has a specific value.
+        /// </summary>
+        /// <param name="value">The basis value to check against.</param>
+        /// <returns>A predicate representing the condition.</returns>
         public Predicate is_value(BasisValue value)
         {
             return new Predicate()
@@ -95,16 +121,11 @@ namespace QRG.QuantumForge.Runtime
             };
         }
 
-        public Predicate is_value(string valueName)
-        {
-            return is_value(basis.values.Find(v => v.Name == valueName));
-        }
-
-        public Predicate is_value(int valueIndex)
-        {
-            return is_value(basis.values[valueIndex]);
-        }
-
+        /// <summary>
+        /// Creates a predicate that checks if the quantum property does not have a specific value.
+        /// </summary>
+        /// <param name="value">The basis value to check against.</param>
+        /// <returns>A predicate representing the condition.</returns>
         public Predicate is_not_value(BasisValue value)
         {
             return new Predicate()
@@ -115,16 +136,11 @@ namespace QRG.QuantumForge.Runtime
             };
         }
 
-        public Predicate is_not_value(string valueName)
-        {
-            return is_not_value(basis.values.Find(v => v.Name == valueName));
-        }
-
-        public Predicate is_not_value(int value)
-        {
-            return is_value(basis.values[value]);
-        }
-
+        /// <summary>
+        /// Converts an array of predicates to their native representation.
+        /// </summary>
+        /// <param name="predicates">The predicates to convert.</param>
+        /// <returns>An array of native predicates.</returns>
         internal static QuantumForge.Predicate[] ConvertPredicates(Predicate[] predicates)
         {
             return Array.ConvertAll(predicates,
@@ -132,130 +148,80 @@ namespace QRG.QuantumForge.Runtime
                     p.property.basis.values.IndexOf(p.value), p.is_equal));
         }
 
-        public static void Cycle(QuantumProperty prop, params Predicate[] predicates)
-        {
-            QuantumForge.Cycle(prop._nativeNativeQuantumProperty, ConvertPredicates(predicates));
-        }
-
-        public void Cycle(params Predicate[] predicates)
-        {
-            Cycle(this, predicates);
-        }
-
-        public static void Cycle(QuantumProperty prop, float fraction, params Predicate[] predicates)
-        {
-            QuantumForge.Cycle(prop._nativeNativeQuantumProperty, fraction, ConvertPredicates(predicates));
-        }
-
+        /// <summary>
+        /// Applies a cycle operation to the quantum property.
+        /// </summary>
+        /// <param name="fraction">The fraction of the cycle to apply.</param>
+        /// <param name="predicates">The conditions under which the operation is applied.</param>
         public void Cycle(float fraction, params Predicate[] predicates)
         {
             Cycle(this, fraction, predicates);
         }
 
-        public static void Shift(QuantumProperty prop, params Predicate[] predicates)
-        {
-            QuantumForge.Shift(prop._nativeNativeQuantumProperty, ConvertPredicates(predicates));
-        }
-
-        public void Shift(params Predicate[] predicates)
-        {
-            Shift(this, predicates);
-        }
-
-        public static void Shift(QuantumProperty prop, float fraction, params Predicate[] predicates)
-        {
-            QuantumForge.Shift(prop._nativeNativeQuantumProperty, fraction, ConvertPredicates(predicates));
-        }
-
+        /// <summary>
+        /// Applies a shift operation to the quantum property.
+        /// </summary>
+        /// <param name="fraction">The fraction of the shift to apply.</param>
+        /// <param name="predicates">The conditions under which the operation is applied.</param>
         public void Shift(float fraction, params Predicate[] predicates)
         {
             Shift(this, fraction, predicates);
         }
 
-        public static void Clock(QuantumProperty property, float fraction, params Predicate[] predicates)
-        {
-            QuantumForge.Clock(property._nativeNativeQuantumProperty, fraction, ConvertPredicates(predicates));
-        }
-
         /// <summary>
-        /// The full qudit Z gate.
-        /// Applies a phase rotation to all basis values, based on the value_string.
-        /// Let w = exp(2*pi*i/Dimension)
-        /// For basis value_string v, the phase rotation is w^v
+        /// Applies a clock operation to the quantum property.
         /// </summary>
+        /// <param name="fraction">The fraction of the clock cycle to apply.</param>
+        /// <param name="predicates">The conditions under which the operation is applied.</param>
         public void Clock(float fraction, params Predicate[] predicates)
         {
             QuantumForge.Clock(_nativeNativeQuantumProperty, fraction, ConvertPredicates(predicates));
         }
 
-
-        public static void Clock(QuantumProperty property, params Predicate[] predicates)
-        {
-            QuantumForge.Clock(property._nativeNativeQuantumProperty, ConvertPredicates(predicates));
-        }
-
         /// <summary>
-        /// The full qudit Z gate.
-        /// Applies a phase rotation to all basis values, based on the value_string.
-        /// Let w = exp(2*pi*i/Dimension)
-        /// For basis value_string v, the phase rotation is w^v
+        /// Applies a Hadamard operation to the quantum property.
         /// </summary>
-        public void Clock(params Predicate[] predicates)
-        {
-            QuantumForge.Clock(_nativeNativeQuantumProperty, ConvertPredicates(predicates));
-        }
-
-        public static void Hadamard(QuantumProperty prop, params Predicate[] predicates)
-        {
-            QuantumForge.Hadamard(prop._nativeNativeQuantumProperty, ConvertPredicates(predicates));
-        }
-
+        /// <param name="predicates">The conditions under which the operation is applied.</param>
         public void Hadamard(params Predicate[] predicates)
         {
             Hadamard(this, predicates);
         }
 
-        public static void InverseHadamard(QuantumProperty prop, params Predicate[] predicates)
-        {
-            QuantumForge.InverseHadamard(prop._nativeNativeQuantumProperty, ConvertPredicates(predicates));
-        }
-
+        /// <summary>
+        /// Applies an inverse Hadamard operation to the quantum property.
+        /// </summary>
+        /// <param name="predicates">The conditions under which the operation is applied.</param>
         public void InverseHadamard(params Predicate[] predicates)
         {
             InverseHadamard(this, predicates);
         }
 
+        /// <summary>
+        /// Applies a phase rotation to the quantum property.
+        /// </summary>
+        /// <param name="angle">The angle of rotation in radians.</param>
+        /// <param name="predicates">The conditions under which the operation is applied.</param>
         public static void PhaseRotate(float angle, params Predicate[] predicates)
         {
             QuantumForge.PhaseRotate(angle, ConvertPredicates(predicates));
         }
 
+        /// <summary>
+        /// Swaps the states of two quantum properties.
+        /// </summary>
+        /// <param name="prop1">The first quantum property.</param>
+        /// <param name="prop2">The second quantum property.</param>
+        /// <param name="predicates">The conditions under which the operation is applied.</param>
         public static void Swap(QuantumProperty prop1, QuantumProperty prop2, params Predicate[] predicates)
         {
             QuantumForge.Swap(prop1._nativeNativeQuantumProperty, prop2._nativeNativeQuantumProperty, ConvertPredicates(predicates));
         }
 
-        public static void ISwap(QuantumProperty prop1, QuantumProperty prop2)
-        {
-            QuantumForge.ISwap(prop1._nativeNativeQuantumProperty, prop2._nativeNativeQuantumProperty);
-        }
-
-        public static void ISwap(QuantumProperty prop1, QuantumProperty prop2, float fraction)
-        {
-            QuantumForge.ISwap(prop1._nativeNativeQuantumProperty, prop2._nativeNativeQuantumProperty, fraction);
-        }
-
         /// <summary>
-        /// Entangling operation. Performs a number of predicated (controlled) cycles on prop2 based on the value_string of prop1.
-        /// Ex. Prop1 is in superposition of 0, 1, and 2 : |prop1> = 1/sqrt(3) * (|0> + |1> + |2>)
-        ///     Prop2 starts in state 0: |prop2> = |0>
-        ///     Result: |prop1,prop2> = 1/sqrt(3) * (|0,0> + |1,1> + |2,2>)
-        /// Note: if prop2 starts in a different state, the result will be a different entanglement structure.
-        /// Ex. Prop2 starts in state 1: |prop2> = |1>
-        ///     Result: |prop1,prop2> = 1/sqrt(3) * (|0,1> + |1,2> + |2,0>)
+        /// Performs an entangling operation between two quantum properties.
         /// </summary>
-        /// <param Name="prop1"></param>
-        /// <param Name="prop2"></param>
+        /// <param name="prop1">The first quantum property.</param>
+        /// <param name="prop2">The second quantum property.</param>
         public static void NCycle(QuantumProperty prop1, QuantumProperty prop2)
         {
             QuantumForge.NCycle(prop1._nativeNativeQuantumProperty, prop2._nativeNativeQuantumProperty);
@@ -282,6 +248,11 @@ namespace QRG.QuantumForge.Runtime
             }
         }
 
+        /// <summary>
+        /// Calculates the probabilities of basis states for the specified quantum properties.
+        /// </summary>
+        /// <param name="properties">The quantum properties to calculate probabilities for.</param>
+        /// <returns>An array of basis probabilities.</returns>
         public static BasisProbability[] Probabilities(params QuantumProperty[] properties)
         {
             if (properties == null || properties.Length == 0)
@@ -307,24 +278,22 @@ namespace QRG.QuantumForge.Runtime
             return result;
         }
 
+        /// <summary>
+        /// Calculates the reduced density matrix for the specified quantum properties.
+        /// </summary>
+        /// <param name="properties">The quantum properties to calculate the matrix for.</param>
+        /// <returns>The reduced density matrix as a 2D complex array.</returns>
         public static Complex[,] ReducedDensityMatrix(params QuantumProperty[] properties)
         {
             var props = Array.ConvertAll(properties, p => p._nativeNativeQuantumProperty);
             return QuantumForge.ReducedDensityMatrix(props);
         }
 
-        public static float[] MutualInformation(params QuantumProperty[] properties)
-        {
-            var props = Array.ConvertAll(properties, p => p._nativeNativeQuantumProperty);
-            return QuantumForge.MutualInformation(props);
-        }
-
-        public static float[,] CorrelationMatrix(params QuantumProperty[] properties)
-        {
-            var props = Array.ConvertAll(properties, p => p._nativeNativeQuantumProperty);
-            return QuantumForge.CorrelationMatrix(props);
-        }
-
+        /// <summary>
+        /// Measures the quantum properties and returns the resulting basis indices.
+        /// </summary>
+        /// <param name="properties">The quantum properties to measure.</param>
+        /// <returns>An array of basis indices representing the measurement results.</returns>
         public static int[] Measure(params QuantumProperty[] properties)
         {
             var props = Array.ConvertAll(properties, p => p._nativeNativeQuantumProperty);

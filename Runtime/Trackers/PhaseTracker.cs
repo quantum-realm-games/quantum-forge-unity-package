@@ -23,25 +23,45 @@ using Unity.VisualScripting;
 
 namespace QRG.QuantumForge.Runtime
 {
+    /// <summary>
+    /// Tracks phase information for specified quantum properties.
+    /// </summary>
     public class PhaseTracker : MonoBehaviour
     {
+        /// <summary>
+        /// Quantum properties to track phase information for.
+        /// </summary>
         [Tooltip("Quantum properties to track phase information for.")]
         [SerializeField] private QuantumProperty[] quantumProperties;
 
+        /// <summary>
+        /// Matrix representing the phase information between quantum properties.
+        /// </summary>
         [Tooltip("Matrix representing the phase information between quantum properties.")]
         [SerializeField] private float[,] phaseMatrix;
         public float[,] PhaseMatrix => phaseMatrix;
 
+        /// <summary>
+        /// Indicates whether the phase matrix should be updated continuously.
+        /// </summary>
         [Tooltip("Indicates whether the phase matrix should be updated continuously.")]
         [SerializeField] private bool continuous = true;
 
+        /// <summary>
+        /// Indicates whether the phase values are represented in radians.
+        /// </summary>
         [Tooltip("Indicates whether the phase values are represented in radians.")]
         [SerializeField] private bool radians = true;
 
+        /// <summary>
+        /// String representation of the phase matrix for debugging purposes.
+        /// </summary>
         [Tooltip("String representation of the phase matrix for debugging purposes.")]
         [SerializeField, TextArea(5,20)] private string matrixData = "";
 
-        // Start is called before the first frame update
+        /// <summary>
+        /// Initializes the tracker and ensures quantum properties are set.
+        /// </summary>
         void OnEnable()
         {
             if (quantumProperties == null || quantumProperties.Length == 0)
@@ -65,7 +85,9 @@ namespace QRG.QuantumForge.Runtime
             phaseMatrix = new float[size, size];
         }
 
-        // Update is called once per frame
+        /// <summary>
+        /// Updates the phase matrix if continuous tracking is enabled.
+        /// </summary>
         void Update()
         {
             if (continuous)
@@ -74,6 +96,10 @@ namespace QRG.QuantumForge.Runtime
             }
         }
 
+        /// <summary>
+        /// Calculates and returns the phase matrix of the quantum properties.
+        /// </summary>
+        /// <returns>The phase matrix as a 2D float array.</returns>
         public float[,] UpdatePhaseMatrix()
         {
             var rdm = QuantumProperty.ReducedDensityMatrix(quantumProperties);
@@ -92,6 +118,9 @@ namespace QRG.QuantumForge.Runtime
             return phaseMatrix;
         }
 
+        /// <summary>
+        /// Updates the string representation of the phase matrix for debugging.
+        /// </summary>
         private void SetMatrixData()
         {
             matrixData = "";

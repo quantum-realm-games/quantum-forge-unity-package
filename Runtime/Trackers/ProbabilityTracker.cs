@@ -21,11 +21,20 @@ using Unity.VisualScripting;
 
 namespace QRG.QuantumForge.Runtime
 {
+    /// <summary>
+    /// Tracks basis probabilities of specified quantum properties.
+    /// </summary>
     public class ProbabilityTracker : MonoBehaviour
     {
+        /// <summary>
+        /// Quantum properties to track probabilities for.
+        /// </summary>
         [Tooltip("Quantum properties to track probabilities for.")]
         [SerializeField] private QuantumProperty[] quantumProperties;
 
+        /// <summary>
+        /// Array representing the basis probabilities of the quantum properties.
+        /// </summary>
         [Tooltip("Array representing the basis probabilities of the quantum properties.")]
         [SerializeField] private QuantumProperty.BasisProbability[] _probabilities;
         public QuantumProperty.BasisProbability[] Probabilities
@@ -37,10 +46,15 @@ namespace QRG.QuantumForge.Runtime
             }
         } 
 
+        /// <summary>
+        /// Indicates whether the probabilities should be updated continuously.
+        /// </summary>
         [Tooltip("Indicates whether the probabilities should be updated continuously.")]
         [SerializeField] private bool continuous = true;
 
-        // Start is called before the first frame update
+        /// <summary>
+        /// Initializes the tracker and ensures quantum properties are set.
+        /// </summary>
         void OnEnable()
         {
             if (quantumProperties == null || quantumProperties.Length == 0)
@@ -57,7 +71,9 @@ namespace QRG.QuantumForge.Runtime
             }
         }
 
-        // Update is called once per frame
+        /// <summary>
+        /// Updates the probabilities if continuous tracking is enabled.
+        /// </summary>
         void Update()
         {
             if (continuous)
@@ -66,6 +82,10 @@ namespace QRG.QuantumForge.Runtime
             }
         }
 
+        /// <summary>
+        /// Calculates and returns the basis probabilities of the quantum properties.
+        /// </summary>
+        /// <returns>An array of basis probabilities.</returns>
         public QuantumProperty.BasisProbability[] GetBasisProbabilities()
         {
             _probabilities = QuantumProperty.Probabilities(quantumProperties);

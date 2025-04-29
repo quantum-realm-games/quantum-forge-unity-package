@@ -1,0 +1,326 @@
+\hypertarget{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_quantum_property}{}\doxysection{QRG.\+Quantum\+Forge.\+Runtime.\+Quantum\+Property Class Reference}
+\label{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_quantum_property}\index{QRG.QuantumForge.Runtime.QuantumProperty@{QRG.QuantumForge.Runtime.QuantumProperty}}
+
+
+Represents a quantum property and provides various quantum operations. This is the core of the Quantum Forge Toolkit, allowing you to add quantum functionality to Game\+Objects and perform quantum operations on them.  
+
+
+Inheritance diagram for QRG.\+Quantum\+Forge.\+Runtime.\+Quantum\+Property\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_quantum_property}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_quantum_property_1_1_basis_probability}{Basis\+Probability}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_predicate}{Predicate}} \mbox{\hyperlink{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_quantum_property_add4996d803da69c1533e2b4639d89824}{is\+\_\+value}} (\mbox{\hyperlink{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_basis_value}{Basis\+Value}} value)
+\begin{DoxyCompactList}\small\item\em Creates a predicate that checks if the quantum property has a specific value. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_predicate}{Predicate}} \mbox{\hyperlink{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_quantum_property_af45058bd3ca2e22e8e7b603714711633}{is\+\_\+not\+\_\+value}} (\mbox{\hyperlink{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_basis_value}{Basis\+Value}} value)
+\begin{DoxyCompactList}\small\item\em Creates a predicate that checks if the quantum property does not have a specific value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_quantum_property_aa7da4d30f98845e6a3f39d05d33e2f51}{Cycle}} (float fraction, params \mbox{\hyperlink{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_predicate}{Predicate}}\mbox{[}$\,$\mbox{]} predicates)
+\begin{DoxyCompactList}\small\item\em Applies a cycle operation to the quantum property. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_quantum_property_ac35017f84c2b8aa5a67600619eb511c7}{Shift}} (float fraction, params \mbox{\hyperlink{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_predicate}{Predicate}}\mbox{[}$\,$\mbox{]} predicates)
+\begin{DoxyCompactList}\small\item\em Applies a shift operation to the quantum property. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_quantum_property_a8e36755ffde8adeac6f6cf8b30457895}{Clock}} (float fraction, params \mbox{\hyperlink{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_predicate}{Predicate}}\mbox{[}$\,$\mbox{]} predicates)
+\begin{DoxyCompactList}\small\item\em Applies a clock operation to the quantum property. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_quantum_property_a374b8cf68c57a2589caba69599ea7884}{Hadamard}} (params \mbox{\hyperlink{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_predicate}{Predicate}}\mbox{[}$\,$\mbox{]} predicates)
+\begin{DoxyCompactList}\small\item\em Applies a \mbox{\hyperlink{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_hadamard}{Hadamard}} operation to the quantum property. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_quantum_property_a3f2c35050a2c7d31410e9dc3667d2bda}{Inverse\+Hadamard}} (params \mbox{\hyperlink{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_predicate}{Predicate}}\mbox{[}$\,$\mbox{]} predicates)
+\begin{DoxyCompactList}\small\item\em Applies an inverse \mbox{\hyperlink{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_hadamard}{Hadamard}} operation to the quantum property. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_quantum_property_ade008b5cd449f32bb2ee1f5532c86b9a}{Phase\+Rotate}} (float angle, params \mbox{\hyperlink{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_predicate}{Predicate}}\mbox{[}$\,$\mbox{]} predicates)
+\begin{DoxyCompactList}\small\item\em Applies a phase rotation to the quantum property. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_quantum_property_aa24bdaa226ea0c8d9fe7eedd4938e468}{Swap}} (\mbox{\hyperlink{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_quantum_property}{Quantum\+Property}} prop1, \mbox{\hyperlink{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_quantum_property}{Quantum\+Property}} prop2, params \mbox{\hyperlink{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_predicate}{Predicate}}\mbox{[}$\,$\mbox{]} predicates)
+\begin{DoxyCompactList}\small\item\em Swaps the states of two quantum properties. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_quantum_property_adbb575df25e501f339de1cb05d7b17b7}{NCycle}} (\mbox{\hyperlink{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_quantum_property}{Quantum\+Property}} prop1, \mbox{\hyperlink{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_quantum_property}{Quantum\+Property}} prop2)
+\begin{DoxyCompactList}\small\item\em Performs an entangling operation between two quantum properties. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{struct_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_quantum_property_1_1_basis_probability}{Basis\+Probability}}\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_quantum_property_ada80e9da8e4d46057f663fb887549c32}{Probabilities}} (params \mbox{\hyperlink{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_quantum_property}{Quantum\+Property}}\mbox{[}$\,$\mbox{]} properties)
+\begin{DoxyCompactList}\small\item\em Calculates the probabilities of basis states for the specified quantum properties. \end{DoxyCompactList}\item 
+static Complex\mbox{[},\mbox{]} \mbox{\hyperlink{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_quantum_property_a0dee79317025ce9dc5657042e27b622a}{Reduced\+Density\+Matrix}} (params \mbox{\hyperlink{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_quantum_property}{Quantum\+Property}}\mbox{[}$\,$\mbox{]} properties)
+\begin{DoxyCompactList}\small\item\em Calculates the reduced density matrix for the specified quantum properties. \end{DoxyCompactList}\item 
+static int\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_quantum_property_af9da3e484aee7e1cd49d5af0cf562a0c}{Measure}} (params \mbox{\hyperlink{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_quantum_property}{Quantum\+Property}}\mbox{[}$\,$\mbox{]} properties)
+\begin{DoxyCompactList}\small\item\em Measures the quantum properties and returns the resulting basis indices. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_quantum_property_a8111705b52507f097b35b74e8da233b5}\label{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_quantum_property_a8111705b52507f097b35b74e8da233b5}} 
+static int {\bfseries Measure} (params \mbox{\hyperlink{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_predicate}{Predicate}}\mbox{[}$\,$\mbox{]} predicates)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_basis}{Basis}} \mbox{\hyperlink{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_quantum_property_ae36bef7b6cca2fc1df2aa1d333e245d3}{basis}} = null
+\begin{DoxyCompactList}\small\item\em The basis associated with this quantum property. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_quantum_property_aef1ba322b9d6f4a1f15c90ca5a47ae57}{Dimension}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The dimension of the basis associated with this quantum property. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a quantum property and provides various quantum operations. This is the core of the Quantum Forge Toolkit, allowing you to add quantum functionality to Game\+Objects and perform quantum operations on them. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_quantum_property_a8e36755ffde8adeac6f6cf8b30457895}\label{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_quantum_property_a8e36755ffde8adeac6f6cf8b30457895}} 
+\index{QRG.QuantumForge.Runtime.QuantumProperty@{QRG.QuantumForge.Runtime.QuantumProperty}!Clock@{Clock}}
+\index{Clock@{Clock}!QRG.QuantumForge.Runtime.QuantumProperty@{QRG.QuantumForge.Runtime.QuantumProperty}}
+\doxysubsubsection{\texorpdfstring{Clock()}{Clock()}}
+{\footnotesize\ttfamily void QRG.\+Quantum\+Forge.\+Runtime.\+Quantum\+Property.\+Clock (\begin{DoxyParamCaption}\item[{float}]{fraction,  }\item[{params \mbox{\hyperlink{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_predicate}{Predicate}}\mbox{[}$\,$\mbox{]}}]{predicates }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Applies a clock operation to the quantum property. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fraction} & The fraction of the clock cycle to apply.\\
+\hline
+{\em predicates} & The conditions under which the operation is applied.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_quantum_property_aa7da4d30f98845e6a3f39d05d33e2f51}\label{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_quantum_property_aa7da4d30f98845e6a3f39d05d33e2f51}} 
+\index{QRG.QuantumForge.Runtime.QuantumProperty@{QRG.QuantumForge.Runtime.QuantumProperty}!Cycle@{Cycle}}
+\index{Cycle@{Cycle}!QRG.QuantumForge.Runtime.QuantumProperty@{QRG.QuantumForge.Runtime.QuantumProperty}}
+\doxysubsubsection{\texorpdfstring{Cycle()}{Cycle()}}
+{\footnotesize\ttfamily void QRG.\+Quantum\+Forge.\+Runtime.\+Quantum\+Property.\+Cycle (\begin{DoxyParamCaption}\item[{float}]{fraction,  }\item[{params \mbox{\hyperlink{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_predicate}{Predicate}}\mbox{[}$\,$\mbox{]}}]{predicates }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Applies a cycle operation to the quantum property. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fraction} & The fraction of the cycle to apply.\\
+\hline
+{\em predicates} & The conditions under which the operation is applied.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_quantum_property_a374b8cf68c57a2589caba69599ea7884}\label{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_quantum_property_a374b8cf68c57a2589caba69599ea7884}} 
+\index{QRG.QuantumForge.Runtime.QuantumProperty@{QRG.QuantumForge.Runtime.QuantumProperty}!Hadamard@{Hadamard}}
+\index{Hadamard@{Hadamard}!QRG.QuantumForge.Runtime.QuantumProperty@{QRG.QuantumForge.Runtime.QuantumProperty}}
+\doxysubsubsection{\texorpdfstring{Hadamard()}{Hadamard()}}
+{\footnotesize\ttfamily void QRG.\+Quantum\+Forge.\+Runtime.\+Quantum\+Property.\+Hadamard (\begin{DoxyParamCaption}\item[{params \mbox{\hyperlink{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_predicate}{Predicate}}\mbox{[}$\,$\mbox{]}}]{predicates }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Applies a \mbox{\hyperlink{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_hadamard}{Hadamard}} operation to the quantum property. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em predicates} & The conditions under which the operation is applied.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_quantum_property_a3f2c35050a2c7d31410e9dc3667d2bda}\label{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_quantum_property_a3f2c35050a2c7d31410e9dc3667d2bda}} 
+\index{QRG.QuantumForge.Runtime.QuantumProperty@{QRG.QuantumForge.Runtime.QuantumProperty}!InverseHadamard@{InverseHadamard}}
+\index{InverseHadamard@{InverseHadamard}!QRG.QuantumForge.Runtime.QuantumProperty@{QRG.QuantumForge.Runtime.QuantumProperty}}
+\doxysubsubsection{\texorpdfstring{InverseHadamard()}{InverseHadamard()}}
+{\footnotesize\ttfamily void QRG.\+Quantum\+Forge.\+Runtime.\+Quantum\+Property.\+Inverse\+Hadamard (\begin{DoxyParamCaption}\item[{params \mbox{\hyperlink{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_predicate}{Predicate}}\mbox{[}$\,$\mbox{]}}]{predicates }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Applies an inverse \mbox{\hyperlink{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_hadamard}{Hadamard}} operation to the quantum property. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em predicates} & The conditions under which the operation is applied.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_quantum_property_af45058bd3ca2e22e8e7b603714711633}\label{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_quantum_property_af45058bd3ca2e22e8e7b603714711633}} 
+\index{QRG.QuantumForge.Runtime.QuantumProperty@{QRG.QuantumForge.Runtime.QuantumProperty}!is\_not\_value@{is\_not\_value}}
+\index{is\_not\_value@{is\_not\_value}!QRG.QuantumForge.Runtime.QuantumProperty@{QRG.QuantumForge.Runtime.QuantumProperty}}
+\doxysubsubsection{\texorpdfstring{is\_not\_value()}{is\_not\_value()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_predicate}{Predicate}} QRG.\+Quantum\+Forge.\+Runtime.\+Quantum\+Property.\+is\+\_\+not\+\_\+value (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_basis_value}{Basis\+Value}}}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Creates a predicate that checks if the quantum property does not have a specific value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & The basis value to check against.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A predicate representing the condition.
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_quantum_property_add4996d803da69c1533e2b4639d89824}\label{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_quantum_property_add4996d803da69c1533e2b4639d89824}} 
+\index{QRG.QuantumForge.Runtime.QuantumProperty@{QRG.QuantumForge.Runtime.QuantumProperty}!is\_value@{is\_value}}
+\index{is\_value@{is\_value}!QRG.QuantumForge.Runtime.QuantumProperty@{QRG.QuantumForge.Runtime.QuantumProperty}}
+\doxysubsubsection{\texorpdfstring{is\_value()}{is\_value()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_predicate}{Predicate}} QRG.\+Quantum\+Forge.\+Runtime.\+Quantum\+Property.\+is\+\_\+value (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_basis_value}{Basis\+Value}}}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Creates a predicate that checks if the quantum property has a specific value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & The basis value to check against.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A predicate representing the condition.
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_quantum_property_af9da3e484aee7e1cd49d5af0cf562a0c}\label{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_quantum_property_af9da3e484aee7e1cd49d5af0cf562a0c}} 
+\index{QRG.QuantumForge.Runtime.QuantumProperty@{QRG.QuantumForge.Runtime.QuantumProperty}!Measure@{Measure}}
+\index{Measure@{Measure}!QRG.QuantumForge.Runtime.QuantumProperty@{QRG.QuantumForge.Runtime.QuantumProperty}}
+\doxysubsubsection{\texorpdfstring{Measure()}{Measure()}}
+{\footnotesize\ttfamily static int \mbox{[}$\,$\mbox{]} QRG.\+Quantum\+Forge.\+Runtime.\+Quantum\+Property.\+Measure (\begin{DoxyParamCaption}\item[{params \mbox{\hyperlink{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_quantum_property}{Quantum\+Property}}\mbox{[}$\,$\mbox{]}}]{properties }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Measures the quantum properties and returns the resulting basis indices. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em properties} & The quantum properties to measure.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An array of basis indices representing the measurement results.
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_quantum_property_adbb575df25e501f339de1cb05d7b17b7}\label{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_quantum_property_adbb575df25e501f339de1cb05d7b17b7}} 
+\index{QRG.QuantumForge.Runtime.QuantumProperty@{QRG.QuantumForge.Runtime.QuantumProperty}!NCycle@{NCycle}}
+\index{NCycle@{NCycle}!QRG.QuantumForge.Runtime.QuantumProperty@{QRG.QuantumForge.Runtime.QuantumProperty}}
+\doxysubsubsection{\texorpdfstring{NCycle()}{NCycle()}}
+{\footnotesize\ttfamily static void QRG.\+Quantum\+Forge.\+Runtime.\+Quantum\+Property.\+NCycle (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_quantum_property}{Quantum\+Property}}}]{prop1,  }\item[{\mbox{\hyperlink{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_quantum_property}{Quantum\+Property}}}]{prop2 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Performs an entangling operation between two quantum properties. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em prop1} & The first quantum property.\\
+\hline
+{\em prop2} & The second quantum property.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_quantum_property_ade008b5cd449f32bb2ee1f5532c86b9a}\label{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_quantum_property_ade008b5cd449f32bb2ee1f5532c86b9a}} 
+\index{QRG.QuantumForge.Runtime.QuantumProperty@{QRG.QuantumForge.Runtime.QuantumProperty}!PhaseRotate@{PhaseRotate}}
+\index{PhaseRotate@{PhaseRotate}!QRG.QuantumForge.Runtime.QuantumProperty@{QRG.QuantumForge.Runtime.QuantumProperty}}
+\doxysubsubsection{\texorpdfstring{PhaseRotate()}{PhaseRotate()}}
+{\footnotesize\ttfamily static void QRG.\+Quantum\+Forge.\+Runtime.\+Quantum\+Property.\+Phase\+Rotate (\begin{DoxyParamCaption}\item[{float}]{angle,  }\item[{params \mbox{\hyperlink{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_predicate}{Predicate}}\mbox{[}$\,$\mbox{]}}]{predicates }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Applies a phase rotation to the quantum property. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em angle} & The angle of rotation in radians.\\
+\hline
+{\em predicates} & The conditions under which the operation is applied.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_quantum_property_ada80e9da8e4d46057f663fb887549c32}\label{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_quantum_property_ada80e9da8e4d46057f663fb887549c32}} 
+\index{QRG.QuantumForge.Runtime.QuantumProperty@{QRG.QuantumForge.Runtime.QuantumProperty}!Probabilities@{Probabilities}}
+\index{Probabilities@{Probabilities}!QRG.QuantumForge.Runtime.QuantumProperty@{QRG.QuantumForge.Runtime.QuantumProperty}}
+\doxysubsubsection{\texorpdfstring{Probabilities()}{Probabilities()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{struct_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_quantum_property_1_1_basis_probability}{Basis\+Probability}} \mbox{[}$\,$\mbox{]} QRG.\+Quantum\+Forge.\+Runtime.\+Quantum\+Property.\+Probabilities (\begin{DoxyParamCaption}\item[{params \mbox{\hyperlink{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_quantum_property}{Quantum\+Property}}\mbox{[}$\,$\mbox{]}}]{properties }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Calculates the probabilities of basis states for the specified quantum properties. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em properties} & The quantum properties to calculate probabilities for.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An array of basis probabilities.
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_quantum_property_a0dee79317025ce9dc5657042e27b622a}\label{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_quantum_property_a0dee79317025ce9dc5657042e27b622a}} 
+\index{QRG.QuantumForge.Runtime.QuantumProperty@{QRG.QuantumForge.Runtime.QuantumProperty}!ReducedDensityMatrix@{ReducedDensityMatrix}}
+\index{ReducedDensityMatrix@{ReducedDensityMatrix}!QRG.QuantumForge.Runtime.QuantumProperty@{QRG.QuantumForge.Runtime.QuantumProperty}}
+\doxysubsubsection{\texorpdfstring{ReducedDensityMatrix()}{ReducedDensityMatrix()}}
+{\footnotesize\ttfamily static Complex \mbox{[},\mbox{]} QRG.\+Quantum\+Forge.\+Runtime.\+Quantum\+Property.\+Reduced\+Density\+Matrix (\begin{DoxyParamCaption}\item[{params \mbox{\hyperlink{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_quantum_property}{Quantum\+Property}}\mbox{[}$\,$\mbox{]}}]{properties }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Calculates the reduced density matrix for the specified quantum properties. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em properties} & The quantum properties to calculate the matrix for.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The reduced density matrix as a 2D complex array.
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_quantum_property_ac35017f84c2b8aa5a67600619eb511c7}\label{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_quantum_property_ac35017f84c2b8aa5a67600619eb511c7}} 
+\index{QRG.QuantumForge.Runtime.QuantumProperty@{QRG.QuantumForge.Runtime.QuantumProperty}!Shift@{Shift}}
+\index{Shift@{Shift}!QRG.QuantumForge.Runtime.QuantumProperty@{QRG.QuantumForge.Runtime.QuantumProperty}}
+\doxysubsubsection{\texorpdfstring{Shift()}{Shift()}}
+{\footnotesize\ttfamily void QRG.\+Quantum\+Forge.\+Runtime.\+Quantum\+Property.\+Shift (\begin{DoxyParamCaption}\item[{float}]{fraction,  }\item[{params \mbox{\hyperlink{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_predicate}{Predicate}}\mbox{[}$\,$\mbox{]}}]{predicates }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Applies a shift operation to the quantum property. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fraction} & The fraction of the shift to apply.\\
+\hline
+{\em predicates} & The conditions under which the operation is applied.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_quantum_property_aa24bdaa226ea0c8d9fe7eedd4938e468}\label{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_quantum_property_aa24bdaa226ea0c8d9fe7eedd4938e468}} 
+\index{QRG.QuantumForge.Runtime.QuantumProperty@{QRG.QuantumForge.Runtime.QuantumProperty}!Swap@{Swap}}
+\index{Swap@{Swap}!QRG.QuantumForge.Runtime.QuantumProperty@{QRG.QuantumForge.Runtime.QuantumProperty}}
+\doxysubsubsection{\texorpdfstring{Swap()}{Swap()}}
+{\footnotesize\ttfamily static void QRG.\+Quantum\+Forge.\+Runtime.\+Quantum\+Property.\+Swap (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_quantum_property}{Quantum\+Property}}}]{prop1,  }\item[{\mbox{\hyperlink{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_quantum_property}{Quantum\+Property}}}]{prop2,  }\item[{params \mbox{\hyperlink{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_predicate}{Predicate}}\mbox{[}$\,$\mbox{]}}]{predicates }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Swaps the states of two quantum properties. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em prop1} & The first quantum property.\\
+\hline
+{\em prop2} & The second quantum property.\\
+\hline
+{\em predicates} & The conditions under which the operation is applied.\\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_quantum_property_ae36bef7b6cca2fc1df2aa1d333e245d3}\label{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_quantum_property_ae36bef7b6cca2fc1df2aa1d333e245d3}} 
+\index{QRG.QuantumForge.Runtime.QuantumProperty@{QRG.QuantumForge.Runtime.QuantumProperty}!basis@{basis}}
+\index{basis@{basis}!QRG.QuantumForge.Runtime.QuantumProperty@{QRG.QuantumForge.Runtime.QuantumProperty}}
+\doxysubsubsection{\texorpdfstring{basis}{basis}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_basis}{Basis}} QRG.\+Quantum\+Forge.\+Runtime.\+Quantum\+Property.\+basis = null}
+
+
+
+The basis associated with this quantum property. 
+
+
+
+\doxysubsection{Property Documentation}
+\mbox{\Hypertarget{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_quantum_property_aef1ba322b9d6f4a1f15c90ca5a47ae57}\label{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_quantum_property_aef1ba322b9d6f4a1f15c90ca5a47ae57}} 
+\index{QRG.QuantumForge.Runtime.QuantumProperty@{QRG.QuantumForge.Runtime.QuantumProperty}!Dimension@{Dimension}}
+\index{Dimension@{Dimension}!QRG.QuantumForge.Runtime.QuantumProperty@{QRG.QuantumForge.Runtime.QuantumProperty}}
+\doxysubsubsection{\texorpdfstring{Dimension}{Dimension}}
+{\footnotesize\ttfamily int QRG.\+Quantum\+Forge.\+Runtime.\+Quantum\+Property.\+Dimension\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+The dimension of the basis associated with this quantum property. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Runtime/Quantum\+Property.\+cs\end{DoxyCompactItemize}

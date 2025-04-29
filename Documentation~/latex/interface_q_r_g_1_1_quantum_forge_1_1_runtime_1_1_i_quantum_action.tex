@@ -1,0 +1,75 @@
+\hypertarget{interface_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_i_quantum_action}{}\doxysection{QRG.\+Quantum\+Forge.\+Runtime.\+IQuantum\+Action Interface Reference}
+\label{interface_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_i_quantum_action}\index{QRG.QuantumForge.Runtime.IQuantumAction@{QRG.QuantumForge.Runtime.IQuantumAction}}
+
+
+Defines the interface for quantum actions that can be applied to quantum properties.  
+
+
+Inheritance diagram for QRG.\+Quantum\+Forge.\+Runtime.\+IQuantum\+Action\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=11.313131cm]{interface_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_i_quantum_action}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{interface_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_i_quantum_action_a89f929ba3b1125696b16d7128d473a91}{apply}} ()
+\begin{DoxyCompactList}\small\item\em Applies the quantum action to the target quantum properties. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_predicate}{Predicate}}\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{interface_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_i_quantum_action_a99a69234fbd866e217f88594bc7d53cd}{Predicates}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets or sets the predicates that determine the conditions for this action. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_quantum_property}{Quantum\+Property}}\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{interface_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_i_quantum_action_ae7e76005e6e03a5634b34003463f679a}{Target\+Properties}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets or sets the quantum properties that this action targets. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Defines the interface for quantum actions that can be applied to quantum properties. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{interface_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_i_quantum_action_a89f929ba3b1125696b16d7128d473a91}\label{interface_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_i_quantum_action_a89f929ba3b1125696b16d7128d473a91}} 
+\index{QRG.QuantumForge.Runtime.IQuantumAction@{QRG.QuantumForge.Runtime.IQuantumAction}!apply@{apply}}
+\index{apply@{apply}!QRG.QuantumForge.Runtime.IQuantumAction@{QRG.QuantumForge.Runtime.IQuantumAction}}
+\doxysubsubsection{\texorpdfstring{apply()}{apply()}}
+{\footnotesize\ttfamily void QRG.\+Quantum\+Forge.\+Runtime.\+IQuantum\+Action.\+apply (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Applies the quantum action to the target quantum properties. 
+
+
+
+Implemented in \mbox{\hyperlink{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_swap_a6a8677737b46517369a515e04d437437}{QRG.\+Quantum\+Forge.\+Runtime.\+Swap}}, \mbox{\hyperlink{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_shift_ad4973ed488471ac823f381e3de645a90}{QRG.\+Quantum\+Forge.\+Runtime.\+Shift}}, \mbox{\hyperlink{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_phase_rotate_a7a29f62a1394fb411d4bb2ea5e7178ab}{QRG.\+Quantum\+Forge.\+Runtime.\+Phase\+Rotate}}, \mbox{\hyperlink{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_n_cycle_ae8524afc38f4b8ee8ecefc2c2a81bb77}{QRG.\+Quantum\+Forge.\+Runtime.\+NCycle}}, \mbox{\hyperlink{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_measure_properties_aba2d854dc1da24abe97224d0525ad373}{QRG.\+Quantum\+Forge.\+Runtime.\+Measure\+Properties}}, \mbox{\hyperlink{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_measure_predicates_aec6a095c4047b1216c4f54dae50fc857}{QRG.\+Quantum\+Forge.\+Runtime.\+Measure\+Predicates}}, \mbox{\hyperlink{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_i_swap_ad440b5951f5e3730dc413b3e1523f90d}{QRG.\+Quantum\+Forge.\+Runtime.\+ISwap}}, \mbox{\hyperlink{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_inverse_hadamard_a02f563c8000d46d5da4b150567f5d6e5}{QRG.\+Quantum\+Forge.\+Runtime.\+Inverse\+Hadamard}}, \mbox{\hyperlink{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_hadamard_a6c18d8136f418cb383b2f6a122a31337}{QRG.\+Quantum\+Forge.\+Runtime.\+Hadamard}}, \mbox{\hyperlink{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_cycle_a65d08f1a887f5bf9d389302133029d1c}{QRG.\+Quantum\+Forge.\+Runtime.\+Cycle}}, and \mbox{\hyperlink{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_clock_a1625c701aa662eafb63b217960c178d8}{QRG.\+Quantum\+Forge.\+Runtime.\+Clock}}.
+
+
+
+\doxysubsection{Property Documentation}
+\mbox{\Hypertarget{interface_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_i_quantum_action_a99a69234fbd866e217f88594bc7d53cd}\label{interface_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_i_quantum_action_a99a69234fbd866e217f88594bc7d53cd}} 
+\index{QRG.QuantumForge.Runtime.IQuantumAction@{QRG.QuantumForge.Runtime.IQuantumAction}!Predicates@{Predicates}}
+\index{Predicates@{Predicates}!QRG.QuantumForge.Runtime.IQuantumAction@{QRG.QuantumForge.Runtime.IQuantumAction}}
+\doxysubsubsection{\texorpdfstring{Predicates}{Predicates}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_predicate}{Predicate}} \mbox{[}$\,$\mbox{]} QRG.\+Quantum\+Forge.\+Runtime.\+IQuantum\+Action.\+Predicates\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Gets or sets the predicates that determine the conditions for this action. 
+
+\mbox{\Hypertarget{interface_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_i_quantum_action_ae7e76005e6e03a5634b34003463f679a}\label{interface_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_i_quantum_action_ae7e76005e6e03a5634b34003463f679a}} 
+\index{QRG.QuantumForge.Runtime.IQuantumAction@{QRG.QuantumForge.Runtime.IQuantumAction}!TargetProperties@{TargetProperties}}
+\index{TargetProperties@{TargetProperties}!QRG.QuantumForge.Runtime.IQuantumAction@{QRG.QuantumForge.Runtime.IQuantumAction}}
+\doxysubsubsection{\texorpdfstring{TargetProperties}{TargetProperties}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_quantum_property}{Quantum\+Property}} \mbox{[}$\,$\mbox{]} QRG.\+Quantum\+Forge.\+Runtime.\+IQuantum\+Action.\+Target\+Properties\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Gets or sets the quantum properties that this action targets. 
+
+
+
+The documentation for this interface was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Runtime/\+Actions/Quantum\+Action.\+cs\end{DoxyCompactItemize}

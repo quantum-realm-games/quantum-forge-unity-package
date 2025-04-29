@@ -24,18 +24,32 @@ using Unity.VisualScripting;
 
 namespace QRG.QuantumForge.Runtime
 {
+    /// <summary>
+    /// Tracks mutual information to measure entanglement between specified quantum properties.
+    /// </summary>
     public class EntanglementTracker : MonoBehaviour
     {
+        /// <summary>
+        /// Quantum properties to track entanglement for.
+        /// </summary>
         [Tooltip("Quantum properties to track entanglement for.")]
         [SerializeField] private QuantumProperty[] quantumProperties;
 
+        /// <summary>
+        /// Array representing the mutual information between quantum properties.
+        /// </summary>
         [Tooltip("Array representing the mutual information between quantum properties.")]
         [SerializeField] private float[] mutualInformation;
 
+        /// <summary>
+        /// Indicates whether the mutual information should be updated continuously.
+        /// </summary>
         [Tooltip("Indicates whether the mutual information should be updated continuously.")]
         [SerializeField] private bool continuous = true;
 
-        // Start is called before the first frame update
+        /// <summary>
+        /// Initializes the tracker and ensures quantum properties are set.
+        /// </summary>
         void OnEnable()
         {
             if (quantumProperties == null || quantumProperties.Length == 0)
@@ -52,7 +66,9 @@ namespace QRG.QuantumForge.Runtime
             }
         }
 
-        // Update is called once per frame
+        /// <summary>
+        /// Updates the mutual information if continuous tracking is enabled.
+        /// </summary>
         void Update()
         {
             if (continuous)
@@ -60,8 +76,6 @@ namespace QRG.QuantumForge.Runtime
                 mutualInformation = QuantumProperty.MutualInformation(quantumProperties);
             }
         }
-
-
     }
 }
 
