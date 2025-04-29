@@ -24,24 +24,24 @@ namespace QRG.QuantumForge.Runtime
     [Serializable]
     public class PhaseRotate : MonoBehaviour, IQuantumAction
     {
+        [Tooltip("Predicates that determine the conditions for this action.")]
         [SerializeField]
         Predicate[] _predicates;
         public Predicate[] Predicates
         {
-            get { return _predicates;}
-            //get { return new Predicate[]{predicate}; }
+            get { return _predicates; }
             set { _predicates = value; }
-            //set { predicate = value[0]; }
         }
 
-        //public Predicate predicate;
-
+        [Tooltip("Quantum properties that this action targets.")]
         public QuantumProperty[] TargetProperties
         {
             get => GetProperties(Predicates);
             set { Debug.LogError($"Attempting to set TargetProperties for PhaseRotate on {gameObject.name}. Must set Predicates instead."); }
         }
-        [field: SerializeField, Range(0, 2*Mathf.PI)] public float Radians { get; set; }
+
+        [Tooltip("The angle of rotation in radians.")]
+        [field: SerializeField, Range(0, 2 * Mathf.PI)] public float Radians { get; set; }
 
         private static QuantumProperty[] GetProperties(params Predicate[] predicates)
         {

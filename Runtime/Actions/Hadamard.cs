@@ -26,7 +26,10 @@ namespace QRG.QuantumForge.Runtime
     [Serializable]
     public class Hadamard : MonoBehaviour, IQuantumAction
     {
+        [Tooltip("Predicates that determine the conditions for this action.")]
         [field: SerializeField] public Predicate[] Predicates { get; set; }
+
+        [Tooltip("Quantum properties that this action targets.")]
         [field: SerializeField] public QuantumProperty[] TargetProperties { get; set; }
 
         public void apply()

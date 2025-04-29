@@ -25,13 +25,19 @@ namespace QRG.QuantumForge.Runtime
     [Serializable]
     public class MeasureProperties : MonoBehaviour, IQuantumAction
     {
+        [Tooltip("Event triggered when a measurement is performed.")]
         public UnityEvent OnMeasure;
+
+        [Tooltip("Event triggered with a QuantumProperty when a measurement is performed.")]
         public QuantumPropertyEvent OnMeasureQuantumProperty;
 
+        [Tooltip("Predicates that determine the conditions for this action.")]
         public Predicate[] Predicates { get; set; }// not shown in inspector
 
+        [Tooltip("Quantum properties that this action targets.")]
         [field: SerializeField] public QuantumProperty[] TargetProperties { get; set; }
 
+        [Tooltip("The last results of the measurements.")]
         [field: SerializeField] public int[] LastResult { get; private set; }
 
         public void apply()

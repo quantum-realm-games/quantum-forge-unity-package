@@ -23,12 +23,16 @@ namespace QRG.QuantumForge.Runtime
 {
     public class CorrelationTracker : MonoBehaviour
     {
+        [Tooltip("Quantum properties to track correlations for.")]
         [SerializeField] private QuantumProperty[] quantumProperties;
 
+        [Tooltip("Matrix representing the correlations between quantum properties.")]
         [SerializeField] private float[,] correlationMatrix;
 
+        [Tooltip("Indicates whether the correlation matrix should be updated continuously.")]
         [SerializeField] private bool continuous = true;
 
+        [Tooltip("String representation of the correlation matrix for debugging purposes.")]
         [SerializeField, TextArea(5, 20)] private string matrixData = "";
 
         // Start is called before the first frame update

@@ -25,14 +25,20 @@ namespace QRG.QuantumForge.Runtime
 {
     public class PhaseTracker : MonoBehaviour
     {
+        [Tooltip("Quantum properties to track phase information for.")]
         [SerializeField] private QuantumProperty[] quantumProperties;
 
+        [Tooltip("Matrix representing the phase information between quantum properties.")]
         [SerializeField] private float[,] phaseMatrix;
         public float[,] PhaseMatrix => phaseMatrix;
 
+        [Tooltip("Indicates whether the phase matrix should be updated continuously.")]
         [SerializeField] private bool continuous = true;
+
+        [Tooltip("Indicates whether the phase values are represented in radians.")]
         [SerializeField] private bool radians = true;
 
+        [Tooltip("String representation of the phase matrix for debugging purposes.")]
         [SerializeField, TextArea(5,20)] private string matrixData = "";
 
         // Start is called before the first frame update

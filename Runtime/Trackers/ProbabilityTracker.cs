@@ -23,8 +23,10 @@ namespace QRG.QuantumForge.Runtime
 {
     public class ProbabilityTracker : MonoBehaviour
     {
+        [Tooltip("Quantum properties to track probabilities for.")]
         [SerializeField] private QuantumProperty[] quantumProperties;
 
+        [Tooltip("Array representing the basis probabilities of the quantum properties.")]
         [SerializeField] private QuantumProperty.BasisProbability[] _probabilities;
         public QuantumProperty.BasisProbability[] Probabilities
         {
@@ -35,6 +37,7 @@ namespace QRG.QuantumForge.Runtime
             }
         } 
 
+        [Tooltip("Indicates whether the probabilities should be updated continuously.")]
         [SerializeField] private bool continuous = true;
 
         // Start is called before the first frame update

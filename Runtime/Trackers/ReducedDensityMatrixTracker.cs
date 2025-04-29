@@ -24,13 +24,17 @@ namespace QRG.QuantumForge.Runtime
 {
     public class ReducedDensityMatrixTracker : MonoBehaviour
     {
+        [Tooltip("Quantum properties to track the reduced density matrix for.")]
         [SerializeField] private QuantumProperty[] quantumProperties;
 
+        [Tooltip("Complex valued reduced density matrix.")]
         [SerializeField] private Complex[,] reducedDensityMatrix;
         public Complex[,] ReducedDensityMatrix => reducedDensityMatrix;
 
+        [Tooltip("Indicates whether the reduced density matrix should be updated continuously.")]
         [SerializeField] private bool continuous = true;
 
+        [Tooltip("String representation of the reduced density matrix for debugging purposes.")]
         [SerializeField, TextArea(5,20)] private string matrixData = "";
 
         // Start is called before the first frame update

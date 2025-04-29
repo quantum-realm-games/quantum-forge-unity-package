@@ -26,10 +26,13 @@ namespace QRG.QuantumForge.Runtime
 {
     public class EntanglementTracker : MonoBehaviour
     {
+        [Tooltip("Quantum properties to track entanglement for.")]
         [SerializeField] private QuantumProperty[] quantumProperties;
 
+        [Tooltip("Array representing the mutual information between quantum properties.")]
         [SerializeField] private float[] mutualInformation;
 
+        [Tooltip("Indicates whether the mutual information should be updated continuously.")]
         [SerializeField] private bool continuous = true;
 
         // Start is called before the first frame update

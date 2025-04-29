@@ -9,10 +9,13 @@ namespace QRG.QuantumForge.Runtime
     [Serializable]
     public class ISwap : MonoBehaviour, IQuantumAction
     {
+        [Tooltip("Predicates that determine the conditions for this action.")]
         [field: SerializeField] public Predicate[] Predicates { get; set; }
 
+        [Tooltip("Quantum properties that this action targets.")]
         [field: SerializeField] public QuantumProperty[] TargetProperties { get; set; }
 
+        [Tooltip("Fraction of the ISwap operation to apply.")]
         public float fraction = 1.0f;
 
         public void apply()

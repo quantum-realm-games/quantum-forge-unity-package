@@ -28,25 +28,34 @@ namespace QRG.QuantumForge.Runtime
 {
     using QuantumForge = QuantumForge.Core.QuantumForge;
 
+    [Tooltip("Represents a condition or predicate for quantum operations.")]
     [Serializable]
     public class Predicate
     {
+        [Tooltip("The quantum property associated with this predicate.")]
         public QuantumProperty property = null;
 
+        [Tooltip("The basis value to compare against.")]
         [BasisValueDropdown]
         public BasisValue value;
+
+        [Tooltip("Indicates whether the predicate checks for equality or inequality.")]
         public bool is_equal;
     }
 
+    [Tooltip("Gives an object the ability to exist in a quantum state.")]
     [Serializable]
     public class QuantumProperty : MonoBehaviour
     {
         private QuantumForge.NativeQuantumProperty _nativeNativeQuantumProperty;
 
+        [Tooltip("The basis associated with this quantum property.")]
         public Basis basis = null;
 
+        [Tooltip("The initial basis value for this quantum property.")]
         [SerializeField, BasisValueDropdown] private BasisValue Initial;
 
+        [Tooltip("The dimension of the basis associated with this quantum property.")]
         public int Dimension
         {
             get => basis.Dimension;
