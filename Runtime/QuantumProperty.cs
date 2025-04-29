@@ -28,33 +28,60 @@ namespace QRG.QuantumForge.Runtime
 {
     using QuantumForge = QuantumForge.Core.QuantumForge;
 
+    /// <summary>
+    /// Represents a condition or predicate for quantum operations.
+    /// </summary>
     [Tooltip("Represents a condition or predicate for quantum operations.")]
     [Serializable]
     public class Predicate
     {
+        /// <summary>
+        /// The quantum property associated with this predicate.
+        /// </summary>
         [Tooltip("The quantum property associated with this predicate.")]
         public QuantumProperty property = null;
 
+        /// <summary>
+        /// The basis value to compare against.
+        /// </summary>
         [Tooltip("The basis value to compare against.")]
         [BasisValueDropdown]
         public BasisValue value;
 
+        /// <summary>
+        /// Indicates whether the predicate checks for equality or inequality.
+        /// </summary>
         [Tooltip("Indicates whether the predicate checks for equality or inequality.")]
         public bool is_equal;
     }
 
+    /// <summary>
+    /// Gives an object the ability to exist in a quantum state.
+    /// </summary>
     [Tooltip("Gives an object the ability to exist in a quantum state.")]
     [Serializable]
     public class QuantumProperty : MonoBehaviour
     {
+        /// <summary>
+        /// The native quantum property associated with this object.
+        /// </summary>
         private QuantumForge.NativeQuantumProperty _nativeNativeQuantumProperty;
 
+        /// <summary>
+        /// The basis associated with this quantum property.
+        /// </summary>
         [Tooltip("The basis associated with this quantum property.")]
         public Basis basis = null;
 
+        /// <summary>
+        /// The initial basis value for this quantum property.
+        /// </summary>
         [Tooltip("The initial basis value for this quantum property.")]
         [SerializeField, BasisValueDropdown] private BasisValue Initial;
 
+        /// <summary>
+        /// The dimension, or number of basis values, of the quantum property.
+        /// </summary>
         [Tooltip("The dimension of the basis associated with this quantum property.")]
         public int Dimension
         {
@@ -85,6 +112,11 @@ namespace QRG.QuantumForge.Runtime
 
         }
 
+        /// <summary>
+        /// Creates a predicate that checks if the quantum property has the specified basis value.
+        /// </summary>
+        /// <param name="value">The basis value to check.</param>
+        /// <returns>A predicate representing the condition.</returns>
         public Predicate is_value(BasisValue value)
         {
             return new Predicate()
@@ -95,16 +127,31 @@ namespace QRG.QuantumForge.Runtime
             };
         }
 
+        /// <summary>
+        /// Creates a predicate that checks if the quantum property has the specified basis value by name.
+        /// </summary>
+        /// <param name="valueName">The name of the basis value to check.</param>
+        /// <returns>A predicate representing the condition.</returns>
         public Predicate is_value(string valueName)
         {
             return is_value(basis.values.Find(v => v.Name == valueName));
         }
 
+        /// <summary>
+        /// Creates a predicate that checks if the quantum property has the specified basis value by index.
+        /// </summary>
+        /// <param name="valueIndex">The index of the basis value to check.</param>
+        /// <returns>A predicate representing the condition.</returns>
         public Predicate is_value(int valueIndex)
         {
             return is_value(basis.values[valueIndex]);
         }
 
+        /// <summary>
+        /// Creates a predicate that checks if the quantum property does not have the specified basis value.
+        /// </summary>
+        /// <param name="value">The basis value to check against.</param>
+        /// <returns>A predicate representing the condition.</returns>
         public Predicate is_not_value(BasisValue value)
         {
             return new Predicate()
@@ -115,11 +162,21 @@ namespace QRG.QuantumForge.Runtime
             };
         }
 
+        /// <summary>
+        /// Creates a predicate that checks if the quantum property does not have the specified basis value by name.
+        /// </summary>
+        /// <param name="valueName">The name of the basis value to check against.</param>
+        /// <returns>A predicate representing the condition.</returns>
         public Predicate is_not_value(string valueName)
         {
             return is_not_value(basis.values.Find(v => v.Name == valueName));
         }
 
+        /// <summary>
+        /// Creates a predicate that checks if the quantum property does not have the specified basis value by index.
+        /// </summary>
+        /// <param name="value">The index of the basis value to check against.</param>
+        /// <returns>A predicate representing the condition.</returns>
         public Predicate is_not_value(int value)
         {
             return is_value(basis.values[value]);
