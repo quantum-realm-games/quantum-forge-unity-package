@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['fraction_130',['fraction',['../class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_clock.html#a4ddf3130da33faacc02921973695b19d',1,'QRG.QuantumForge.Runtime.Clock.fraction()'],['../class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_i_swap.html#ac82241455b3e97f997038f24649a5aab',1,'QRG.QuantumForge.Runtime.ISwap.fraction()']]]
+  ['is_5fequal_109',['is_equal',['../class_q_r_g_1_1_quantum_forge_1_1_runtime_1_1_predicate.html#a852de3aa072056db98445bba7e4dc653',1,'QRG::QuantumForge::Runtime::Predicate']]]
 ];
