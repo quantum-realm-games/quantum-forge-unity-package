@@ -25,3 +25,5 @@
 1.0.4 Change Windows dll to release instead of debug binary.
 
 1.0.5 Fix bug with predicated measurement.
+
+1.0.6 Add Documentation.
