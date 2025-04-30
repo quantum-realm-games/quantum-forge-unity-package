@@ -22,6 +22,9 @@ using UnityEngine.Events;
 namespace QRG.QuantumForge.Runtime
 {
 
+    [Serializable]
+    public class MeasurePredicateEvent : UnityEvent<bool> { };
+
     /// <summary>
     /// Represents a quantum action that measures predicates and triggers events.
     /// </summary>
@@ -37,10 +40,10 @@ namespace QRG.QuantumForge.Runtime
         /// <summary>
         /// Event triggered with a QuantumProperty when a measurement is performed.
         /// </summary>
-        [Tooltip("Event triggered with a QuantumProperty when a measurement is performed.")]
-        public QuantumPropertyEvent OnMeasureQuantumProperty;
-
+        [Tooltip("Event triggered with a bool when a measurement is performed. Triggers with true if the predicates are satisfied, false otherwise.")]
+        public MeasurePredicateEvent OnMeasurePredicates;
         /// <summary>
+
         /// Gets or sets the predicates that determine the conditions for this action.
         /// </summary>
         [Tooltip("Predicates that determine the conditions for this action.")]
@@ -62,7 +65,7 @@ namespace QRG.QuantumForge.Runtime
         /// </summary>
         public void apply()
         {
-            if (TargetProperties.Length == 0) return;
+            if (Predicates.Length == 0) return;
             LastResult = QuantumProperty.Measure(Predicates);
             OnMeasure.Invoke();
         }
