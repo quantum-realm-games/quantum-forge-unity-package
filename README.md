@@ -1,10 +1,14 @@
-<div style="display: flex; align-items: center;">
-    <img src="Documentation~/images/quantum_forge_logo_dark.png" alt="Quantum Forge Logo" width="300" style="margin-right: 10px;">
-    <div>
-        <h1>Quantum Forge Unity Package</h1>
-        <span style="margin: 0;">You bring the creativity, we'll handle the math.</span>
-    </div>
-</div>
+<table>
+  <tr>
+    <td style="min-width: 200px; border: none;">
+      <img src="Documentation~/images/quantum_forge_logo_dark.png" alt="Quantum Forge Logo" width="300">
+    </td>
+    <td style="border: none;">
+      <h1 style="margin: 0;">Quantum Forge Unity Package</h1>
+      <span style="margin: 0;">You bring the creativity, we'll handle the math.</span>
+    </td>
+  </tr>
+</table>
 
 ## Overview
 The Quantum Forge Unity Package provides a wrapper around the quantum-forge c-api, and allows developers to easily plug genuine quantum behaviour directly into their gameplay mechanics. It provides a set of MonoBehaviours that can be added to game objects to interface with the underlying quantum simulation library.
