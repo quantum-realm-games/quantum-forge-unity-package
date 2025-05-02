@@ -73,8 +73,27 @@ namespace QRG.QuantumForge.Runtime
         {
             if (continuous)
             {
-                mutualInformation = QuantumProperty.MutualInformation(quantumProperties);
+                GetMutualInformation();
             }
+        }
+
+        public float[] GetMutualInformation()
+        {
+            if (quantumProperties == null || quantumProperties.Length == 0)
+            {
+                var prop = GetComponent<QuantumProperty>();
+                if (prop != null)
+                {
+                    quantumProperties = new QuantumProperty[] { prop };
+                }
+                else
+                {
+                    Debug.LogError($"{gameObject.name}: No NativeQuantumProperty found on this object. Set properties to track");
+                }
+            }
+
+            mutualInformation = QuantumProperty.MutualInformation(quantumProperties);
+            return mutualInformation;
         }
     }
 }

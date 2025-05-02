@@ -1,5 +1,5 @@
 <div style="display: flex; align-items: center;">
-    <img src="Documentation~/images/quantum_forge_logo.png" alt="Quantum Forge Logo" width="100" style="margin-right: 10px;">
+    <img src="Documentation~/images/quantum_forge_logo_dark.png" alt="Quantum Forge Logo" width="100" style="margin-right: 10px;">
     <div>
         <h1>Quantum Forge Unity Package</h1>
         <span style="margin: 0;">You bring the creativity, we'll handle the math.</span>
