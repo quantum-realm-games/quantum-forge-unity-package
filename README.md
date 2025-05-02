@@ -223,7 +223,8 @@ This can be used to show the player when different QuantumProperties are correla
 | **Field**       | **Type**         | **Description**                                                                 |
 |------------------|------------------|---------------------------------------------------------------------------------|
 | `QuantumProperties` | `List<QuantumProperty>` | The QuantumProperties to track. |
-| `Mutual Information` | `List<float>` | The mutual information between each QuantumProperty, and all others in the list. |
+| `Mutual Information` | `List<List<float>>` | Private field, for editor display of mutual information. |
+| `Last Updated Mutual Information` | `List<float>` | The mutual information between each QuantumProperty, and all others in the list. Can be updated by calling the ```UpdateMutualInformation()``` function. |
 | `Continuous` | `bool` | Whether to update the probabilities in UpdateI() on every frame. |
 
 #### CorrelationTracker

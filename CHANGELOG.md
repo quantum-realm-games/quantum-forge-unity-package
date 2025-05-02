@@ -29,3 +29,5 @@
 1.0.6 Add Documentation.
 
 1.0.7 Fix bug with MeasurePredicates Monobehaviour.
+
+1.0.8 Fixes for EntanglementTracker.

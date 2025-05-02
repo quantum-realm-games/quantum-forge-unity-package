@@ -41,30 +41,13 @@ namespace QRG.QuantumForge.Runtime
         [Tooltip("Array representing the mutual information between quantum properties.")]
         [SerializeField] private float[] mutualInformation;
 
+        public float[] LastUpdatedMutualInformation => mutualInformation;
+
         /// <summary>
         /// Indicates whether the mutual information should be updated continuously.
         /// </summary>
         [Tooltip("Indicates whether the mutual information should be updated continuously.")]
         [SerializeField] private bool continuous = true;
-
-        /// <summary>
-        /// Initializes the tracker and ensures quantum properties are set.
-        /// </summary>
-        void OnEnable()
-        {
-            if (quantumProperties == null || quantumProperties.Length == 0)
-            {
-                var prop = GetComponent<QuantumProperty>();
-                if (prop != null)
-                {
-                    quantumProperties = new QuantumProperty[] { prop };
-                }
-                else
-                {
-                    Debug.LogError($"{gameObject.name}: No NativeQuantumProperty found on this object. Set properties to track");
-                }
-            }
-        }
 
         /// <summary>
         /// Updates the mutual information if continuous tracking is enabled.
@@ -73,23 +56,16 @@ namespace QRG.QuantumForge.Runtime
         {
             if (continuous)
             {
-                GetMutualInformation();
+                UpdateMutualInformation();
             }
         }
 
-        public float[] GetMutualInformation()
+        public float[] UpdateMutualInformation()
         {
-            if (quantumProperties == null || quantumProperties.Length == 0)
+            if (quantumProperties == null || quantumProperties.Length < 2)
             {
-                var prop = GetComponent<QuantumProperty>();
-                if (prop != null)
-                {
-                    quantumProperties = new QuantumProperty[] { prop };
-                }
-                else
-                {
-                    Debug.LogError($"{gameObject.name}: No NativeQuantumProperty found on this object. Set properties to track");
-                }
+                Debug.LogError($"{gameObject.name}: Set at least two properties to track");
+                return null;
             }
 
             mutualInformation = QuantumProperty.MutualInformation(quantumProperties);
