@@ -1,7 +1,7 @@
 <table>
   <tr>
     <td style="min-width: 200px; border: none;">
-      <img src="Documentation~/images/quantum_forge_logo_dark.png" alt="Quantum Forge Logo" width="300">
+      <img src="Documentation~/images/logo.png" alt="Quantum Forge Logo" width="300">
     </td>
     <td style="border: none;">
       <h1 style="margin: 0;">Quantum Forge Unity Package</h1>
@@ -66,7 +66,7 @@ Quantum can be confusing, and can quickly grow out of control. Keep things as si
 For example, in chess there are 12 pieces, and empty. You would need a 13 element Basis to represent this. However, if you consider the state of the square, you can encode it in a 2 element Basis with the values ```empty``` and ```not empty```. The type of piece can be stored in a separate, completely classical, list. (Note: this does require extra thought for how the pieces interact)
 
 ### 2. Give the players control
-Quantum is a powerful tool, but it can be difficult to understand. Give the players access to ways to manipulate the quantum state. They may well discover effects in your game that you didn't expect. This happened in the development of [Quantum Chess](#https://store.steampowered.com/app/453870/Quantum_Chess/). Players were given access to quantum evolution through movement, and some discovered strange interference effects that at first glance seemed impossible (we thought they were bugs).
+Quantum is a powerful tool, but it can be difficult to understand. Give the players access to ways to manipulate the quantum state. They may well discover effects in your game that you didn't expect. This happened in the development of [Quantum Chess](https://store.steampowered.com/app/453870/Quantum_Chess/). Players were given access to quantum evolution through movement, and some discovered strange interference effects that at first glance seemed impossible (we thought they were bugs).
 
 Quantum game development is new, you're at the forefront. Experiment, and have fun!
 
@@ -220,7 +220,7 @@ Continuous updating calls the native API once per frame, and recalculates probab
 | `Continuous` | `bool` | Whether to update the probabilities in UpdateI() on every frame. |
 
 #### EntanglementTracker
-MonoBehaviour that keeps an updated list of [entanglement](#entanglement), as measured by [quantum mutual information](#https://en.wikipedia.org/wiki/Quantum_mutual_information), between each [QuantumProperty](#quantumproperty) and the combined state of the other properties in the list. It is presentated as a column of values, where each row corresponds to a QuantumProperty.
+MonoBehaviour that keeps an updated list of [entanglement](https://en.wikipedia.org/wiki/Quantum_mutual_information), as measured by [quantum mutual information](https://en.wikipedia.org/wiki/Quantum_mutual_information), between each [QuantumProperty](#quantumproperty) and the combined state of the other properties in the list. It is presentated as a column of values, where each row corresponds to a QuantumProperty.
 
 This can be used to show the player when different QuantumProperties are correlated in ways that are beyond classical.
 
@@ -232,7 +232,7 @@ This can be used to show the player when different QuantumProperties are correla
 | `Continuous` | `bool` | Whether to update the probabilities in UpdateI() on every frame. |
 
 #### CorrelationTracker
-MonoBehaviour that keeps an updated matrix of [Pearson's correlations](#https://en.wikipedia.org/wiki/Pearson_correlation_coefficient) calculated by the joint probability distribution of all permutations of all basis values for a set of QuantumProperties.
+MonoBehaviour that keeps an updated matrix of [Pearson's correlations](https://en.wikipedia.org/wiki/Pearson_correlation_coefficient) calculated by the joint probability distribution of all permutations of all basis values for a set of QuantumProperties.
 
 Note: The editor field ```MatrixData``` is generally used for visualization purposes only. The actual data can be obtained by calling the ```UpdateCorrelationMatrix()``` function, which returns a 2D array of floats.
 
@@ -297,3 +297,9 @@ A measurement is the process of obtaining information about a quantum system. Wh
 
 ### Interference
 Interference is the phenomenon that occurs when two or more waves interact with each other. In quantum mechanics, interference can occur when two or more quantum states interfere with each other.
+
+## Links
+
+- [Quantum Chess](https://store.steampowered.com/app/453870/Quantum_Chess/)
+- [Quantum Mutual Information](https://en.wikipedia.org/wiki/Quantum_mutual_information)
+- [Pearson's Correlation Coefficient](https://en.wikipedia.org/wiki/Pearson_correlation_coefficient)
