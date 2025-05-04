@@ -1,7 +1,7 @@
 <table>
   <tr>
     <td style="min-width: 200px; border: none;">
-      <img src="Documentation~/images/logo.png" alt="Quantum Forge Logo" width="300">
+      <img src="Documentation~/images/logo.png" alt="Quantum Forge Logo" width="150">
     </td>
     <td style="border: none;">
       <h1 style="margin: 0;">Quantum Forge Unity Package</h1>
