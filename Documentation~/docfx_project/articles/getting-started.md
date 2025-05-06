@@ -19,7 +19,7 @@ Follow these simple steps to add quantum behavior to your game:
 1. **Create a Basis**
    - Navigate to `Assets/Create/Quantum` in the Unity menu
    - Create a new Basis
-   - Define the values this basis can have (up to 10 values)
+   - Define the values this basis can have (up to 3 values)
 
 2. **Add QuantumProperty**
    - Add the `QuantumProperty` component to a game object
@@ -66,7 +66,7 @@ The Quantum Forge package includes several sample projects that demonstrate diff
 - **Platformer**: Shows how quantum mechanics can be applied to a simple platformer game
 - **Roshambo**: A quantum version of rock-paper-scissors
 
-To access these samples, look in the `Samples~` folder of the package.
+To access these samples, install them from the Unity Package Manager window.
 
 ## Next Steps
 

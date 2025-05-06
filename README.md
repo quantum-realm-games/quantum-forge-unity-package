@@ -94,7 +94,7 @@ A struct that defines a single value in a Basis.
 | `Dimension`     | `int`            | The number of possible values in the basis.                                    |
 
 
-The underlying engine has a hard limit of the number of values a Basis can have, **10** at the moment. If you need more, consider your design. If you still think you need more, please open an issue on github.
+The underlying engine has a hard limit of the number of values a Basis can have, **3** at the moment. If you need more, consider your design. If you still think you need more, please open an issue on github.
 
 ### QuantumProperty
 A MonoBehaviour that can be added to a game object to interface with the underlying Quantum Forge library. This is the hook into the quantum world. A quantum property allows aome aspect of a game object to exist in a superposition of values defined by a Basis. 

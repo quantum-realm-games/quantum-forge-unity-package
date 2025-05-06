@@ -9,6 +9,8 @@ Quantum can be confusing and can quickly grow out of control. Keep things as sim
 
 **Example**: In chess, there are 12 pieces plus empty squares (13 states total). Rather than creating a 13-element Basis, you could use a 2-element Basis (`empty` and `not empty`) and store the piece type in a separate, classical variable.
 
+Also keep the number of quantum properties small. There is a limit to the number of quantum properties that can exist, and interact with each other. At the time of writing, this limit is 20.
+
 ### Give Players Control
 Quantum is a powerful tool but can be difficult to understand. Give players access to ways to manipulate the quantum state. They may discover effects in your game that you didn't expect.
 
@@ -40,7 +42,7 @@ Understanding probability distributions is key to designing quantum game mechani
 ## Advanced Trackers
 
 ### CorrelationTracker
-This tracker helps you visualize the correlation between different quantum properties, which is especially useful for understanding entanglement effects. It calculates [Pearson's correlation coefficient](https://en.wikipedia.org/wiki/Pearson_correlation_coefficient) between properties.
+This tracker helps you visualize the correlation between different quantum properties, which is especially useful for understanding what will happen when measurements occur. It calculates [Pearson's correlation coefficient](https://en.wikipedia.org/wiki/Pearson_correlation_coefficient) between properties.
 
 ```csharp
 // To get the correlation matrix programmatically:
@@ -51,7 +53,7 @@ var correlationMatrix = corTracker.UpdateCorrelationMatrix();
 Measures the quantum mutual information between properties, providing a quantitative measure of entanglement. This can help players understand when properties are correlated in non-classical ways.
 
 ### ReducedDensityMatrixTracker
-Provides access to the reduced density matrix of your quantum system, which is the full mathematical representation of the quantum state. While technically complex, this can be useful for advanced quantum algorithms.
+Provides access to the reduced density matrix of your quantum system, which is the full mathematical representation of the quantum state. This can be useful for understanding the state of the system and for debugging.
 
 ## Quantum Operations Reference
 
