@@ -11,7 +11,7 @@ The Quantum Forge Core API is designed around the idea of the [NativeQuantumProp
 The Quantum Forge Runtime API provides [QuantumProperty](QRG.QuantumForge.Runtime.QuantumProperty.yml), a Monobehaviour wrapper for the native quantum property.  The [Basis](QRG.QuantumForge.Runtime.Basis.yml) can be created from the Unity `Assets/Create/Quantum` menu.The runtume api also provides a set of `Actions` that can be applied to a quantum property to manipulate its state, and a set of `Trackers` that can be used to gather certain information about the quantum state.
 
 ### Actions
-Actions are used to manipulate the state of a quantum property. The [QuantumForge.Actions](QRG.QuantumForge.Runtime.Actions.yml) namespace provides a set of supported actions.
+Actions are used to manipulate the state of a quantum property. There are several types of actions that can be applied to a quantum property:
 
 - [Hadamard](QRG.QuantumForge.Runtime.Hadamard.yml): **This creates superposition from a classical state.**
 - [Clock](QRG.QuantumForge.Runtime.Clock.yml): Details about the `Clock` action.
@@ -26,7 +26,7 @@ Actions are used to manipulate the state of a quantum property. The [QuantumForg
 - [ISwap](QRG.QuantumForge.Runtime.ISwap.yml): Learn about the `ISwap` action.
 
 ### Trackers
-Trackers are used to gather information about the quantum state. The [QuantumForge.Trackers](QRG.QuantumForge.Runtime.Trackers.yml) namespace provides a set of supported trackers.
+Trackers are used to gather information about the quantum state. 
 
 - [CorrelationTracker](QRG.QuantumForge.Runtime.CorrelationTracker.yml): Learn about the `CorrelationTracker`.
 - [EntanglementTracker](QRG.QuantumForge.Runtime.EntanglementTracker.yml): Explore the `EntanglementTracker`.
