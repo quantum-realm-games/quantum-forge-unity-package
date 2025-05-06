@@ -10,8 +10,13 @@
   </tr>
 </table>
 
+## About
+Quantum Forge was born of a desire to make it easy to build the next generation of genuine quantum games. It has been years in the making, building from the lessons learned in the creation of [Quantum Chess](https://store.steampowered.com/app/453870/Quantum_Chess/), and has gone through many iterations. We're excited to share it with you. If you appreciate the vision, and the effort that has gone into this project, consider supporting our work. 
+
+<a href="https://www.buymeacoffee.com/quantum_forge"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=☕&slug=quantum_forge&button_colour=fc6e23&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=FFDD00" /></a>
+
 ## Overview
-The Quantum Forge Unity Package provides a wrapper around the quantum-forge c-api, and allows developers to easily plug genuine quantum behaviour directly into their gameplay mechanics. It provides a set of MonoBehaviours that can be added to game objects to interface with the underlying quantum simulation library.
+The Quantum Forge Unity Package provides a wrapper around the quantum-forge c-api, and allows developers to easily plug genuine quantum behaviour directly into their gameplay mechanics. It also provides a set of MonoBehaviours that can be added to game objects, for easy Unity editor integration.
 
 ## Installation
 To install the Quantum Forge Unity Package, follow these steps:
