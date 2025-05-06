@@ -1,4 +1,4 @@
-<h1 align="center">📘 Quantum Forge Unity API</h1>
+<h1 align="center">Quantum Forge Unity API</h1>
 <h3 align="center">Unleash your creativity, we'll handle the physics.</h3>
 
 <p align="center">
