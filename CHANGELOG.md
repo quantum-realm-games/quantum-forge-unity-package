@@ -31,3 +31,5 @@
 1.0.7 Fix bug with MeasurePredicates Monobehaviour.
 
 1.0.8 Fixes for EntanglementTracker.
+
+1.1.0 Change quantum-forge.dll to support 16 qudits of dimension 4.
