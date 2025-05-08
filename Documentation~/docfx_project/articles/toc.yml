@@ -2,3 +2,9 @@
   href: getting-started.md
 - name: Advanced Topics
   href: advanced-topics.md
+- name: Legal
+  items:
+    - name: License
+      href: legal/license.md
+    - name: Proprietary Notice
+      href: legal/proprietary-notice.md

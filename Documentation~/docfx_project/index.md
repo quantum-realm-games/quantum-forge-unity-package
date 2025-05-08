@@ -5,7 +5,7 @@
   <img src="images/logo.png" alt="Quantum Forge Logo" width="250">
 </p>
 
-# Welcome to Quantum Forge 🧪🎮
+# Welcome to Quantum Forge
 For developers pushing the boundaries of gameplay design, **Quantum Forge** offers a foundation for creating the next generation of quantum-native games.
 
 Born of a desire to make it easy to integrate genuine quantum physics into game design, this project took years of experimentation—including lessons learned while creating [Quantum Chess](https://store.steampowered.com/app/453870/Quantum_Chess/). The resulting toolkit reflects countless iterations, late nights, and thought experiments. Designed to make the quantum realm more accessible, **Quantum Forge** opens the door to creating games that break free from classical constraints.
@@ -26,3 +26,6 @@ Dive deeper into advanced features and use cases.
 
 ## [API Reference](api/index.md)
 Explore the complete API documentation for the Quantum Forge Unity package.
+
+## [Legal](articles/legal/license.md)
+View license information and proprietary notices for the Quantum Forge Unity package.

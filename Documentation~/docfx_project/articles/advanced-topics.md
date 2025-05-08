@@ -107,13 +107,15 @@ The quantum simulation becomes more computationally intensive as you add quantum
 
 Here's an example of a quantum-powered game mechanic:
 
-1. Create a quantum door with two basis states: `locked` and `unlocked`
-2. Apply a Hadamard to put it in superposition (50% locked, 50% unlocked)
-3. Create a quantum key entangled with the door
-4. When the player uses the key, it forces a measurement
+1. Create a quantum door with two basis states: `world 1` and `world 2`
+2. Apply a Hadamard to put it in superposition (50% world 1, 50% world 2)
+3. Create a quantum key that the player can load quantum operations into
+4. When the player uses the key, it applies the quantum operations to the door and measures
 5. The door's state is determined at that moment, creating uncertainty
 
-This creates gameplay where the player isn't certain if the door will open until they try the key.
+This creates gameplay where the player isn't certain which world they'll enter. But they can influence the probability of each world by loading different quantum operations into the key.
+
+> **Note**: This is a very basic example to illustrate simple quantum mechanics. Once you start introducing multiple quantum objects and allow them to interact (through controlled operations or shared measurements), you can begin to observe unusual quantum behavior such as entanglement, non-local correlations, and complex interference patterns that have no classical analog.
 
 ## Glossary of Quantum Concepts
 

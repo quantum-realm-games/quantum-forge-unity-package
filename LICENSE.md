@@ -2,11 +2,15 @@ Quantum Forge Unity Package License 2.0 ("License")
 
 1. Definitions.
 
-   a. "Proprietary Library" refers to the binary library included in the Plugins folder of this package, which is protected under this License.
+   a. "Proprietary Library" refers specifically to the quantum-forge binary library (.dll, .so, .dylib, etc.) included in the Plugins folder of this package. This binary library contains the core quantum simulation functionality and is protected under this License.
 
    b. "Adapted Work" means material subject to copyright and similar rights that is derived from or based upon the Licensed Material and in which the Licensed Material is included as a component.
 
-   c. "You" means the individual or entity exercising the Licensed Rights under this License. "Your" has a corresponding meaning.
+   c. "Build Product" means any compiled application, game, or other software created using Unity that incorporates the Package.
+
+   d. "End User" refers to any person or entity that uses a Build Product.
+
+   e. "You" means the individual or entity exercising the Licensed Rights under this License. "Your" has a corresponding meaning.
 
 2. License Grant.
 
@@ -14,15 +18,19 @@ Quantum Forge Unity Package License 2.0 ("License")
 
    a. The Proprietary Library may only be used as part of this Package or in projects created using this Package. It may not be extracted, modified, or used independently of this Package.
 
-   b. You may not use the Proprietary Library to create a competing product or service.
+   b. You may distribute the Proprietary Library as part of your Build Product. Such distribution is permitted and necessary for the proper functioning of the Build Product.
 
-   c. Any project created using this Package must include attribution to QRG in a manner specified in the documentation accompanying this Package.
+   c. You may not use the Proprietary Library to create a competing product or service.
+
+   d. Any project created using this Package must include attribution to QRG in a manner specified in the documentation accompanying this Package.
 
 3. Restrictions.
 
    a. You may not sublicense, sell, rent, lease, or otherwise transfer the Proprietary Library or this License to another party.
 
    b. You may not reverse engineer, decompile, or disassemble the Proprietary Library, except to the extent expressly permitted by applicable law.
+   
+   c. End Users of your Build Product are subject to the restrictions in this License regarding the Proprietary Library. The Proprietary Library may only be used by End Users for the specific purpose of using your Build Product as intended and may not be extracted or repurposed.
 
 4. Attribution.
 
