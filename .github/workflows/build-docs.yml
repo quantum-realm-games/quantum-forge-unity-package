@@ -43,7 +43,8 @@ jobs:
     - name: Build Documentation
       run: |
         cd Documentation~/docfx_project
-        docfx
+        docfx metadata
+        docfx build
     
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v3
