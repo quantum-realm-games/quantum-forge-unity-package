@@ -26,6 +26,8 @@ Thank you for joining us on this journey.
 ## Overview
 The Quantum Forge Unity Package provides a wrapper around the quantum-forge c-api, and allows developers to easily plug genuine quantum behaviour directly into their gameplay mechanics. It also provides a set of MonoBehaviours that can be added to game objects, for easy Unity editor integration.
 
+This README can get you started. For more information, including advanced topics and the full Unity script API, see our [Full Documentation](https://quantum-realm-games.github.io/quantum-forge-unity-package/index.html)
+
 ## Installation
 
 Quantum Forge currently supports Unity 2022.3.1f1 or later, and can be used to build for Windows, Mac, Linux, and WebGL.
