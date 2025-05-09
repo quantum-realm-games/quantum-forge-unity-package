@@ -4,6 +4,8 @@ This guide will help you quickly integrate quantum behavior into your Unity proj
 
 ## Installation
 
+<span class="brand-font">Quantum Forge</span> currently supports Unity 2022.3.1f1 or later, and can be used to build for Windows, Mac, Linux, and WebGL.
+
 To install the <span class="brand-font">Quantum Forge</span> Unity Package:
 
 1. Open the Unity Package Manager (Window > Package Manager)
@@ -57,6 +59,9 @@ When you run the game and click the button, you'll see the probability distribut
 ## Troubleshooting
 
 If you encounter a DLL not found error, or if all tests fail, try closing and reopening Unity. The Unity editor sometimes has issues with loading the underlying quantum-forge library immediately after installation.
+
+On MacOS, the quantum-forge library is not signed (yet), so you may need to add an exception to your security settings.
+* Under System Preferences > Security & Privacy > General, click the "Open Anyway" button for the quantum-forge library
 
 ## Sample Projects
 

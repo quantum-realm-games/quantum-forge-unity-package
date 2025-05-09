@@ -5,7 +5,7 @@
     </td>
     <td style="border: none;">
       <h1 style="margin: 0;">Quantum Forge Unity Package</h1>
-      <span style="margin: 0;">Unleash your creativity, we'll handle the physics.</span>
+      <span style="margin: 0;">Unleash your creativity &mdash; we'll handle the quantum mechanics.</span>
     </td>
   </tr>
 </table>
@@ -21,17 +21,23 @@ If you believe in this vision and want to help push the boundaries of what's pos
 
 <a href="https://www.buymeacoffee.com/quantum_forge"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=☕&slug=quantum_forge&button_colour=fc6e23&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=FFDD00" /></a>
 
-Thank you for joining us on this journey to discover what is possible in the ultimate creative expression of our quantum universe.
+Thank you for joining us on this journey.
+
 ## Overview
 The Quantum Forge Unity Package provides a wrapper around the quantum-forge c-api, and allows developers to easily plug genuine quantum behaviour directly into their gameplay mechanics. It also provides a set of MonoBehaviours that can be added to game objects, for easy Unity editor integration.
 
 ## Installation
-To install the Quantum Forge Unity Package, follow these steps:
-1. Open the Unity Package Manager (Window > Package Manager).
-2. Click the "+" button in the top left corner.
-3. Select "Add package from git URL...".
-4. Enter the following URL: https://github.com/quantum-realm-games/quantum-forge-unity-package.git
-5. Click "Add".
+
+Quantum Forge currently supports Unity 2022.3.1f1 or later, and can be used to build for Windows, Mac, Linux, and WebGL.
+
+To install the Quantum Forge Unity Package:
+
+1. Open the Unity Package Manager (Window > Package Manager)
+2. Click the "+" button in the top left corner
+3. Select "Add package from git URL..."
+4. Enter the following URL: `https://github.com/quantum-realm-games/quantum-forge-unity-package.git`
+5. Click "Add"
+
 
 For more information, please refer to Unity's [Package Manager Window](https://docs.unity3d.com/Manual/upm-ui.html) documentation.
 
@@ -54,6 +60,11 @@ For more information, please refer to Unity's [Package](https://docs.unity3d.com
 
 ## Troubleshooting
 If you encounter a dll not found error, or if all tests fail, try closing and reopening Unity. The Unity editor sometimes has issues with loading the underlying quantum-forge library immediately after installation.
+
+
+On MacOS, the quantum-forge library is not signed (yet), so you may need to add an exception to your security settings.
+* Under System Preferences > Security & Privacy > General, click the "Open Anyway" button for the quantum-forge library
+
 
 ## Getting Started
 It is easy to get quantum behaviour into your game quickly.
