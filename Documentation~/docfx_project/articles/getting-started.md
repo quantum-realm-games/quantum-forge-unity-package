@@ -1,10 +1,10 @@
-# Getting Started with Quantum Forge
+# Getting Started with <span class="brand-font">Quantum Forge</span>
 
-This guide will help you quickly integrate quantum behavior into your Unity projects using the Quantum Forge package.
+This guide will help you quickly integrate quantum behavior into your Unity projects using the <span class="brand-font">Quantum Forge</span> package.
 
 ## Installation
 
-To install the Quantum Forge Unity Package:
+To install the <span class="brand-font">Quantum Forge</span> Unity Package:
 
 1. Open the Unity Package Manager (Window > Package Manager)
 2. Click the "+" button in the top left corner
@@ -39,7 +39,7 @@ When you run the game and click the button, you'll see the probability distribut
 
 ## Testing Your Setup
 
-Quantum Forge includes a test suite to ensure everything is working correctly:
+<span class="brand-font">Quantum Forge</span> includes a test suite to ensure everything is working correctly:
 
 1. Open the package manifest file (`Packages/manifest.json`)
 2. Add quantum-forge to the testables list:
@@ -60,7 +60,7 @@ If you encounter a DLL not found error, or if all tests fail, try closing and re
 
 ## Sample Projects
 
-The Quantum Forge package includes several sample projects that demonstrate different aspects of quantum mechanics:
+The <span class="brand-font">Quantum Forge</span> package includes several sample projects that demonstrate different aspects of quantum mechanics:
 
 - **Actions**: Demonstrates various quantum operations
 - **Platformer**: Shows how quantum mechanics can be applied to a simple platformer game

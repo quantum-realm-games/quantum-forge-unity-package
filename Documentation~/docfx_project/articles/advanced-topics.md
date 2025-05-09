@@ -1,6 +1,6 @@
-# Advanced Topics in Quantum Forge
+# Advanced Topics in <span class="brand-font">Quantum Forge</span>
 
-This guide covers advanced concepts and techniques for the Quantum Forge Unity package. If you're new to Quantum Forge, we recommend starting with the [Getting Started](getting-started.md) guide first.
+This guide covers advanced concepts and techniques for the <span class="brand-font">Quantum Forge</span> Unity package. If you're new to <span class="brand-font">Quantum Forge</span>, we recommend starting with the [Getting Started](getting-started.md) guide first.
 
 ## Best Practices for Quantum Game Design
 
@@ -19,7 +19,7 @@ During the development of [Quantum Chess](https://store.steampowered.com/app/453
 ## Advanced Quantum Concepts
 
 ### Entanglement
-Entanglement is a phenomenon where the state of a quantum system cannot be described by the states of its individual components. In Quantum Forge, you can create entanglement between properties using:
+Entanglement is a phenomenon where the state of a quantum system cannot be described by the states of its individual components. In <span class="brand-font">Quantum Forge</span>, you can create entanglement between properties using:
 
 - **Predicates**: Apply quantum operations conditionally
 - **NCycle**: Entangle two quantum properties
