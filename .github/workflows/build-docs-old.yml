@@ -2,16 +2,11 @@ name: Build and Deploy Documentation
 
 on:
   push:
-    branches: [ "main" ]
-    paths:
-      - 'Documentation~/**'
-      - '.github/workflows/build-docs.yml'
-      - 'LICENSE.md'
-  pull_request:
-    branches: [ "main" ]
-    paths:
-      - 'Documentation~/**'
-      - 'LICENSE.md'
+#    branches: [ "main" ]
+#    paths:
+#      - 'Documentation~/**'
+#      - '.github/workflows/build-docs.yml'
+#      - 'LICENSE.md'
   workflow_dispatch:  # Allows manual triggering
 
 jobs:
