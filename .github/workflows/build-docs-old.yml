@@ -27,23 +27,10 @@ jobs:
     - name: Install DocFX
       run: dotnet tool update -g docfx
     
-    - name: Prepare Documentation Files
-      run: |
-        # Ensure license information is properly included in the documentation
-        mkdir -p Documentation~/docfx_project/articles/legal
-        cp LICENSE.md Documentation~/docfx_project/articles/legal/license.md
-        # Add note about proprietary library
-        echo -e "# Proprietary Library Notice\n\nThe quantum-forge binary library included in the Plugins folder is proprietary software.\nIt is licensed for use only as part of this Unity Package per the terms in the [License](license.md).\n" > Documentation~/docfx_project/articles/legal/proprietary-notice.md
-    
-    - name: Generate API Documentation without Compilation
-      run: |
-        cd Documentation~/docfx_project
-        # Use a custom extraction tool that doesn't require compilation
-        docfx metadata disableCompilation.json
-    
     - name: Build Documentation
       run: |
         cd Documentation~/docfx_project
+        docfx metadata
         docfx build
     
     - name: Upload artifact
