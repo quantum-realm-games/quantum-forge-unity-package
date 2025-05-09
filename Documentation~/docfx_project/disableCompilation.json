@@ -1,0 +1,30 @@
+{
+  "build": {
+    "content": [
+      {
+        "files": [ "*.cs" ],
+        "src": "../../Runtime"
+      }
+    ],
+    "resource": [
+      {
+        "files": [ "LICENSE.md" ],
+        "src": "../.."
+      }
+    ],
+    "overwrite": [],
+    "dest": "api"
+  },
+  "metadata": {
+    "src": [
+      {
+        "files": [ "*.cs" ],
+        "src": "../../Runtime"
+      }
+    ],
+    "dest": "api"
+  },
+  "defaultNamespace": "QRG.QuantumForge.Runtime",
+  "disableGitFeatures": false,
+  "disableDefaultFilter": false
+}
