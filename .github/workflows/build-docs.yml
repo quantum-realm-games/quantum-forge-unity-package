@@ -7,11 +7,6 @@ on:
       - 'Documentation~/**'
       - '.github/workflows/build-docs.yml'
       - 'LICENSE.md'
-  pull_request:
-    branches: [ "main" ]
-    paths:
-      - 'Documentation~/**'
-      - 'LICENSE.md'
   workflow_dispatch:  # Allows manual triggering
 
 jobs:
@@ -20,49 +15,40 @@ jobs:
     
     steps:
     - name: Checkout code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
         fetch-depth: 0  # Important for history and navigation
     
     - name: Setup .NET
-      uses: actions/setup-dotnet@v3
+      uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: '6.0.x'
+        dotnet-version: '8.0.x'
     
     - name: Install DocFX
       run: dotnet tool update -g docfx
     
-    - name: Prepare License Information
-      run: |
-        # Ensure license information is properly included in the documentation
-        mkdir -p Documentation~/docfx_project/articles/legal
-        cp LICENSE.md Documentation~/docfx_project/articles/legal/license.md
-        # Add note about proprietary library
-        echo -e "# Proprietary Library Notice\n\nThe quantum-forge binary library included in the Plugins folder is proprietary software.\nIt is licensed for use only as part of this Unity Package per the terms in the [License](license.md).\n" > Documentation~/docfx_project/articles/legal/proprietary-notice.md
-    
     - name: Build Documentation
       run: |
         cd Documentation~/docfx_project
-        docfx
+        docfx metadata
+        docfx build
     
     - name: Upload artifact
-      uses: actions/upload-pages-artifact@v2
+      uses: actions/upload-pages-artifact@v3
       with:
         path: 'Documentation~/docfx_project/_site'
 
   deploy:
-    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}  
+    runs-on: ubuntu-latest
     needs: build
     permissions:
       pages: write
       id-token: write
-    
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    
-    runs-on: ubuntu-latest
+      contents: read
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v3
+        uses: actions/deploy-pages@v4

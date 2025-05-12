@@ -10,24 +10,27 @@
         }
       ],
       "dest": "api",
-      "disableGitFeatures": false,
-      "disableDefaultFilter": false
+      "allowCompilationErrors": true
     }
   ],
   "build": {
     "content": [
       {
         "files": [
-          "api/**.yml",
-          "api/index.md"
+          "index.md",
+          "toc.yml"
         ]
       },
       {
         "files": [
           "articles/**.md",
-          "articles/**/toc.yml",
-          "toc.yml",
-          "*.md"
+          "articles/**/toc.yml"
+        ]
+      },
+      {
+        "files": [
+          "api/**.yml",
+          "api/index.md"
         ]
       }
     ],
@@ -60,6 +63,12 @@
     "noLangKeyword": false,
     "keepFileLink": false,
     "cleanupCacheHistory": false,
-    "disableGitFeatures": false
+    "disableGitFeatures": false,
+    "globalMetadata": {
+      "_homepage": "index.md",
+      "_enableSearch": true,
+      "_disableContribution": false,
+      "_disableBreadcrumb": false
+    }
   }
 }
