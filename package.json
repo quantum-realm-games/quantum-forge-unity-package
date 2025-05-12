@@ -5,9 +5,9 @@
   "description": "A set of tools for adding genuine quantum behavior to Unity projects.",
   "unity": "2022.3",
   "unityRelease": "5f1",
-  "documentationUrl": "https://example.com/",
-  "changelogUrl": "https://example.com/changelog.html",
-  "licensesUrl": "https://example.com/licensing.html",
+  "documentationUrl": "https://quantum-realm-games.github.io/quantum-forge-unity-package/",
+  "changelogUrl": "https://github.com/quantum-realm-games/quantum-forge-unity-package/blob/main/CHANGELOG.md",
+  "licensesUrl": "https://github.com/quantum-realm-games/quantum-forge-unity-package/blob/main/LICENSE.md",
   "keywords": [
     "quantum"
   ],
