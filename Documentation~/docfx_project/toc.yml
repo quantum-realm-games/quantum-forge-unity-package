@@ -10,5 +10,5 @@ items:
   href: api/
   homepage: api/index.md
 - name: Legal
-  href: articles/legal/license.md
+  href: articles/proprietary-notice.md
 memberLayout: SamePage

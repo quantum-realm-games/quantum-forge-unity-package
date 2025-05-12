@@ -31,5 +31,5 @@ Dive deeper into advanced features and use cases.
 ## [API Reference](api/index.md)
 Explore the complete API documentation for the <span class="brand-font">Quantum Forge</span> Unity package.
 
-## [Legal](articles/legal/license.md)
-View license information and proprietary notices for the <span class="brand-font">Quantum Forge</span> Unity package.
+## [Legal](articles/proprietary-notice.md)
+View license information and proprietary notice information for the <span class="brand-font">Quantum Forge</span> Unity package.
