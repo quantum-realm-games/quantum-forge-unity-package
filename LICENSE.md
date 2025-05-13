@@ -22,7 +22,7 @@ Quantum Forge Unity Package License 2.0 ("License")
 
    c. You may not use the Proprietary Library to create a competing product or service.
 
-   d. Any project created using this Package must include attribution to QRG in a manner specified in the documentation accompanying this Package.
+   d. Any project created using this Package must include attribution to QRG in a manner specified in section 4.
 
 3. Restrictions.
 
@@ -37,7 +37,7 @@ Quantum Forge Unity Package License 2.0 ("License")
    a. If you distribute a project created using this Package, you must include the following attribution in a prominent location within the project:
       "This project uses the Quantum Forge Unity Package, © Quantum Realm Games, Inc. All rights reserved."
 
-   b. The attribution must include the Quantum Forge logo, which can be found in the Documentation~/images/logo.png file. The logo should be displayed on a splash screen and/or the main menu of the project.
+   b. The attribution must include the Quantum Forge logo, which can be found in the Branding folder. The logo should be displayed in a prominent location within the project, such as the title screen, menu, play screen, or other easily visible location.
 
 5. Termination.
 
