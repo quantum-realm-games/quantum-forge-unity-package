@@ -57,16 +57,13 @@ The quantum-forge binary library contains Quantum Realm Games, Inc.'s proprietar
 
 ### Attribution Requirements
 
-Any project using the <span class="brand-font">Quantum Forge</span> package, including its proprietary binary library, must comply with the attribution requirements specified in the [Quantum Forge Unity Package License](https://github.com/quantum-realm-games/quantum-forge-unity-package/blob/main/LICENSE.md), including:
+We want to provide this technology, and build a strong community around it. Attribution helps us spread the word, and get more people using it. A larger community means a greater diversity of ideas, and that is exciting to us.
 
-- Text attribution: "This project uses the Quantum Forge Unity Package, © Quantum Realm Games, Inc. All rights reserved."
-- Display of the <span class="brand-font">Quantum Forge</span> logo on a splash screen and/or main menu / play screen.
+As such, we require that any project using the quantum-forge binary library must include attribution as outlined in the [Quantum Forge License](https://github.com/quantum-realm-games/quantum-forge-unity-package/blob/main/LICENSE.md). This includes in text, and with the logo. To make it easier, we've provided a branding prefab with the package in the Branding folder.
 
 ### Support and Updates
 
-For questions about the proprietary library or to report issues, please contact:
-- Technical Support: support@quantumrealmgames.com
-- General Inquiries: info@quantumrealmgames.com
+For questions about the proprietary library or to report issues, please contact  support@quantumrealmgames.com. You can also find us on [Discord](https://discord.gg/9rjj4eWEsB), or submit an issue on our [GitHub repository](https://github.com/quantum-realm-games/quantum-forge-unity-package/issues).
 
 Quantum Realm Games is committed to maintaining and improving the quantum-forge library through regular updates to ensure optimal performance and compatibility with Unity's latest versions.
 
