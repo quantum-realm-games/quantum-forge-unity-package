@@ -22,6 +22,8 @@ If you believe in this vision and want to help push the boundaries of what's pos
 
 Thank you for joining us on this journey.
 
+And don't forget to join the community on [Discord](https://discord.gg/9rjj4eWEsB)!
+
 ## [Getting Started](articles/getting-started.md)
 Learn how to integrate <span class="brand-font">Quantum Forge</span> into your Unity project.
 
