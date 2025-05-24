@@ -1,4 +1,7 @@
-﻿using System.Collections;
+﻿// Copyright (c) 2025 Quantum Realm Games, Inc. All rights reserved.
+// See LICENSE.md for license information.
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using QRG.QuantumForge.Runtime;

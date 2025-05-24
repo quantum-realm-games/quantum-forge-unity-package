@@ -1,3 +1,6 @@
+// Copyright (c) 2025 Quantum Realm Games, Inc. All rights reserved.
+// See LICENSE.md for license information.
+
 //# Copyright 2024 Quantum Realm Games
 //#
 //# Licensed under the Quantum Realm Games Quantum Forge Unity Toolkit 
@@ -1076,7 +1079,7 @@ namespace QRG.QuantumForge.Core
                 // Duplicate the original matrix A so it stays intact.
                 Complex[,] U = LinearAlgebra.Duplicate(A);
 
-                // Calculate the U matrix using the Gram–Schmidt process (see https://en.wikipedia.org/wiki/Gram%E2%80%93Schmidt_process).
+                // Calculate the U matrix using the Gramï¿½Schmidt process (see https://en.wikipedia.org/wiki/Gram%E2%80%93Schmidt_process).
                 for (int j = 1; j < n; j++)
                 {
                     Complex[] u = LinearAlgebra.GetColumn(U, j);

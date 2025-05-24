@@ -1,3 +1,6 @@
+// Copyright (c) 2025 Quantum Realm Games, Inc. All rights reserved.
+// See LICENSE.md for license information.
+
 using QRG.QuantumForge.Samples;
 using System.Collections;
 using System.Collections.Generic;

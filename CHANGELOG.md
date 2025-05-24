@@ -35,3 +35,5 @@
 1.1.0 Change quantum-forge.dll to support 16 qudits of dimension 4.
 
 1.1.1 Add Branding prefab, and branding to Actions sample.
+
+1.1.2 Added copyright notices, and removed unused code.

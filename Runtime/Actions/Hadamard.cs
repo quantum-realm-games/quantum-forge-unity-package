@@ -1,3 +1,6 @@
+// Copyright (c) 2025 Quantum Realm Games, Inc. All rights reserved.
+// See LICENSE.md for license information.
+
 //# Copyright 2024 Quantum Realm Games
 //#
 //# Licensed under the Quantum Realm Games Quantum Forge Unity Toolkit 

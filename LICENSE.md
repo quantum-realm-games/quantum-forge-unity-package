@@ -24,6 +24,11 @@ Quantum Forge Unity Package License 2.0 ("License")
 
    d. Any project created using this Package must include attribution to QRG in a manner specified in section 4.
 
+   e. **Source Code Availability**: Other than the Proprietary Library (defined in 1.a and governed by specific conditions in 2.a, 2.b, 2.c, and 3.b), the remaining code included in this Package ("Source Code") is provided on a "source-available" basis. You are granted the right to view, modify, and use this Source Code solely in connection with Unity projects that incorporate the Package. This Source Code is not open source. You may not:
+      i. Redistribute the Source Code, or modifications thereof, except as an integral part of your Build Product.
+      ii. Use the Source Code, or modifications thereof, to create a product or service that competes with the Quantum Forge Unity Package.
+      iii. Remove or alter any copyright notices or this License from the Source Code.
+
 3. Restrictions.
 
    a. You may not sublicense, sell, rent, lease, or otherwise transfer the Proprietary Library or this License to another party.
