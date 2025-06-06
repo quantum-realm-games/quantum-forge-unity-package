@@ -37,3 +37,5 @@
 1.1.1 Add Branding prefab, and branding to Actions sample.
 
 1.1.2 Added copyright notices, and removed unused code.
+
+1.1.3 Fix missing ReflectionSystem dependency.
