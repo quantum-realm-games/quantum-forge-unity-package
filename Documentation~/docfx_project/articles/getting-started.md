@@ -16,6 +16,14 @@ To install the <span class="brand-font">Quantum Forge</span> Unity Package:
 
 ## Quick Start Guide
 
+Quantum Forge is built on a few main concepts: 
+
+   * Basis: The values your QuantumProperty can exist in (either classically or in superposition).
+   * QuantumProperty: Your hook to give a game object quantum state.
+   * Operations: Can be applied to QuantumProperties to change their quantum state.
+
+For example, in Rock Paper Scissors (RPS) your basis can be the values: 'rock', 'paper', 'scissors'. You can give a game object a QuantumProperty component, and set its basis to the RPS basis. You can then apply a Hadamard operation to it, so it exists is a superposition of being all three simultaneously.
+
 Follow these simple steps to add quantum behavior to your game:
 
 1. **Create a Basis**
