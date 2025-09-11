@@ -1,10 +1,10 @@
 {
   "name": "com.qrg.quantumforge",
-  "version": "1.1.3",
+  "version": "1.1.4",
   "displayName": "Quantum Forge",
   "description": "A set of tools for adding genuine quantum behavior to Unity projects.",
-  "unity": "2022.3",
-  "unityRelease": "5f1",
+  "unity": "6000.0",
+  "unityRelease": "43f1",
   "documentationUrl": "https://quantum-realm-games.github.io/quantum-forge-unity-package/",
   "changelogUrl": "https://github.com/quantum-realm-games/quantum-forge-unity-package/blob/main/CHANGELOG.md",
   "licensesUrl": "https://github.com/quantum-realm-games/quantum-forge-unity-package/blob/main/LICENSE.md",
@@ -31,6 +31,11 @@
       "displayName": "Actions",
       "description": "A sample showing various actions and their effects using visualization tools.",
       "path": "Samples~/Actions"
+    },
+        {
+      "displayName": "CHSH Game",
+      "description": "A sample demonstrating the CHSH game, a clear example of quantum advantage.",
+      "path": "Samples~/CHSH"
     }
   ]
 }

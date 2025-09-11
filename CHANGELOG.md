@@ -39,3 +39,6 @@
 1.1.2 Added copyright notices, and removed unused code.
 
 1.1.3 Fix missing ReflectionSystem dependency.
+
+1.1.4   - Added basic CHSH game sample, a quantum game with clear quantum advantage.
+        - Updated Unity version to 6000.0.43f1
