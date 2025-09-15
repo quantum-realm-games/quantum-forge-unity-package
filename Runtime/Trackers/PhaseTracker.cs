@@ -35,7 +35,7 @@ namespace QRG.QuantumForge.Runtime
         /// Quantum properties to track phase information for.
         /// </summary>
         [Tooltip("Quantum properties to track phase information for.")]
-        [SerializeField] private QuantumProperty[] quantumProperties;
+        [SerializeField] public QuantumProperty[] quantumProperties;
 
         /// <summary>
         /// Matrix representing the phase information between quantum properties.

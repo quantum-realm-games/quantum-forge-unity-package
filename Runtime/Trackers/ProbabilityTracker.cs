@@ -33,7 +33,7 @@ namespace QRG.QuantumForge.Runtime
         /// Quantum properties to track probabilities for.
         /// </summary>
         [Tooltip("Quantum properties to track probabilities for.")]
-        [SerializeField] private QuantumProperty[] quantumProperties;
+        [SerializeField] public QuantumProperty[] quantumProperties;
 
         /// <summary>
         /// Array representing the basis probabilities of the quantum properties.

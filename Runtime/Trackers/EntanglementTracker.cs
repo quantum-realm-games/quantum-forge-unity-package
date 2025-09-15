@@ -36,7 +36,7 @@ namespace QRG.QuantumForge.Runtime
         /// Quantum properties to track entanglement for.
         /// </summary>
         [Tooltip("Quantum properties to track entanglement for.")]
-        [SerializeField] private QuantumProperty[] quantumProperties;
+        [SerializeField] public QuantumProperty[] quantumProperties;
 
         /// <summary>
         /// Array representing the mutual information between quantum properties.

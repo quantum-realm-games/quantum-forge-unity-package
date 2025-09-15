@@ -42,3 +42,5 @@
 
 1.1.4   - Added basic CHSH game sample, a quantum game with clear quantum advantage.
         - Updated Unity version to 6000.0.43f1
+
+1.1.5 - Made QuantumProperties arrays in trackers public, for code interactivity.

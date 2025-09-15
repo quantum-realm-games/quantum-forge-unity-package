@@ -34,7 +34,7 @@ namespace QRG.QuantumForge.Runtime
         /// Quantum properties to track the reduced density matrix for.
         /// </summary>
         [Tooltip("Quantum properties to track the reduced density matrix for.")]
-        [SerializeField] private QuantumProperty[] quantumProperties;
+        [SerializeField] public QuantumProperty[] quantumProperties;
 
         /// <summary>
         /// Matrix representing the reduced density matrix of the quantum properties.

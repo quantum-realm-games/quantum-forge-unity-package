@@ -33,7 +33,7 @@ namespace QRG.QuantumForge.Runtime
         /// Quantum properties to track correlations for.
         /// </summary>
         [Tooltip("Quantum properties to track correlations for.")]
-        [SerializeField] private QuantumProperty[] quantumProperties;
+        [SerializeField] public QuantumProperty[] quantumProperties;
 
         /// <summary>
         /// Matrix representing the correlations between quantum properties.
