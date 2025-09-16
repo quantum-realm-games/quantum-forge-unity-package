@@ -79,7 +79,7 @@ The <span class="brand-font">Quantum Forge</span> package includes several sampl
 - **Platformer**: Shows how quantum mechanics can be applied to a simple platformer game
 - **Roshambo**: A quantum version of rock-paper-scissors
 
-To access these samples, install them from the Unity Package Manager window.
+To access these [samples](samples.md), install them from the Unity Package Manager window.
 
 ## Next Steps
 

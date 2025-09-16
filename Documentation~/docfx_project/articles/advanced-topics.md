@@ -62,14 +62,10 @@ Many quantum operations accept predicates that make them conditional. This is ho
 
 ```csharp
 // Example: Apply Hadamard only when another property is in state 0
-var predicate = new Predicate { 
-    property = controlQubit, 
-    value = controlQubit.Basis.Values[0], 
-    is_equal = true 
-};
+// Given a QuantumProperty named control, and another named target
 
-hadamard.Predicates.Add(predicate);
-hadamard.Apply(); // This is now a controlled-Hadamard operation
+var predicate = control.is_value(0); // 0 can be any number indexing basis values.
+target.hadamard(predicate);
 ```
 
 ### Custom Quantum Actions
