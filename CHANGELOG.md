@@ -46,3 +46,5 @@
 1.1.5 - Made QuantumProperties arrays in trackers public, for code interactivity.
 
 1.1.6 - Fix bug in CHSH example code.
+
+1.1.7 - Fix entanglement calculation.

@@ -1029,6 +1029,110 @@ namespace QRG.QuantumForge.Core
             }
         }
 
+        /// <summary>
+        /// Computes eigenvalues of an N x N Hermitian matrix using the Jacobi method.
+        /// </summary>
+        /// <param name="matrix">Square Hermitian complex matrix</param>
+        /// <param name="tolerance">Convergence tolerance</param>
+        /// <param name="maxIterations">Max number of iterations</param>
+        /// <returns>Array of eigenvalues (real)</returns>
+        internal static double[] JacobiEigenvalues(Complex[,] matrix, double tolerance = 1e-12, int maxIterations = 1000)
+        {
+            int n = matrix.GetLength(0);
+            if (n != matrix.GetLength(1))
+                throw new ArgumentException("Matrix must be square.");
+
+            // Copy into a working real symmetric matrix (since Hermitian has real diagonal, symmetric magnitude off-diagonal)
+            double[,] a = new double[n, n];
+            for (int i = 0; i < n; i++)
+            {
+                if (Math.Abs(matrix[i, i].Imaginary) > 1e-12)
+                    throw new ArgumentException("Hermitian matrix must have real diagonal entries.");
+
+                for (int j = 0; j < n; j++)
+                {
+                    if (i == j)
+                        a[i, j] = matrix[i, j].Real;
+                    else if (j > i)
+                    {
+                        // Upper triangle
+                        if (Math.Abs(matrix[i, j].Imaginary + matrix[j, i].Imaginary) > 1e-12 ||
+                            Math.Abs(matrix[i, j].Real - matrix[j, i].Real) > 1e-12)
+                            throw new ArgumentException("Matrix is not Hermitian.");
+
+                        a[i, j] = matrix[i, j].Real; // real part, since Hermitian => symmetric real part
+                    }
+                    else
+                    {
+                        a[i, j] = a[j, i]; // symmetric
+                    }
+                }
+            }
+
+            // Jacobi iteration
+            for (int iter = 0; iter < maxIterations; iter++)
+            {
+                // Find largest off-diagonal element
+                int p = 0, q = 0;
+                double max = 0.0;
+                for (int i = 0; i < n; i++)
+                {
+                    for (int j = i + 1; j < n; j++)
+                    {
+                        double val = Math.Abs(a[i, j]);
+                        if (val > max)
+                        {
+                            max = val;
+                            p = i;
+                            q = j;
+                        }
+                    }
+                }
+
+                // Check convergence
+                if (max < tolerance)
+                    break;
+
+                // Compute Jacobi rotation
+                double app = a[p, p];
+                double aqq = a[q, q];
+                double apq = a[p, q];
+
+                double phi = 0.5 * Math.Atan2(2 * apq, aqq - app);
+                double c = Math.Cos(phi);
+                double s = Math.Sin(phi);
+
+                // Update matrix entries
+                for (int i = 0; i < n; i++)
+                {
+                    if (i != p && i != q)
+                    {
+                        double aip = a[i, p];
+                        double aiq = a[i, q];
+                        a[i, p] = c * aip - s * aiq;
+                        a[p, i] = a[i, p];
+                        a[i, q] = s * aip + c * aiq;
+                        a[q, i] = a[i, q];
+                    }
+                }
+
+                double appNew = c * c * app - 2 * s * c * apq + s * s * aqq;
+                double aqqNew = s * s * app + 2 * s * c * apq + c * c * aqq;
+
+                a[p, p] = appNew;
+                a[q, q] = aqqNew;
+                a[p, q] = 0.0;
+                a[q, p] = 0.0;
+            }
+
+            // Extract eigenvalues (diagonal entries)
+            double[] eigenvalues = new double[n];
+            for (int i = 0; i < n; i++)
+                eigenvalues[i] = a[i, i];
+
+            return eigenvalues;
+        }
+
         internal static class QRAlgorithm
         {
             /// <summary>
@@ -1048,7 +1152,7 @@ namespace QRG.QuantumForge.Core
                 // Initialize the eigenvector matrix C.
                 Complex[,] U = LinearAlgebra.Identity(n);
 
-                // Perform the QR decomposition and update the B and C matrixes each iteration.
+                // Perform the QR decomposition and update the B and C matrices each iteration.
                 for (int i = 0; i < iterations; i++)
                 {
                     QRDecomposition(B, out Complex[,] Q, out Complex[,] R);
@@ -1124,29 +1228,35 @@ namespace QRG.QuantumForge.Core
 
         private static float VonNeumannEntropy(Complex[,] matrix)
         {
-            float entropy = 0.0f;
-            QRAlgorithm.Diagonalize(matrix, 100, out var eigenvalues, out _);
+            double entropy = 0.0;
+            //QRAlgorithm.Diagonalize(matrix, 100, out var eigenvalues, out _);
+            var eigenvalues = JacobiEigenvalues(matrix);
             foreach (var ev in eigenvalues)
             {
-                if (ev.Magnitude < float.Epsilon) continue;
-                entropy -= (float)(ev.Magnitude * Math.Log(ev.Magnitude));
+                //Debug.Log($"Eigenvalue: {ev}");
+                if (ev < float.Epsilon) continue;
+                entropy -= (float)(ev * Math.Log(ev));
             }
-            return entropy;
+            return (float)(entropy);
         }
 
         public static float[] MutualInformation(params NativeQuantumProperty[] props)
         {
             float[] result = new float[props.Length];
             var r = ReducedDensityMatrix(props);
+            //Debug.Log($"Finding entropy for RDM: {LinearAlgebra.ToString(r)}");
             var s = VonNeumannEntropy(r);
 
             for (int i = 0; i < props.Length; ++i)
             {
                 var ra = ReducedDensityMatrix(new NativeQuantumProperty[] { props[i] });
+                //Debug.Log($"Finding entropy for RDM A: {LinearAlgebra.ToString(ra)}");
                 var sa = VonNeumannEntropy(ra);
                 var propsB = props.Except(new NativeQuantumProperty[] { props[i] }).ToArray();
                 var rb = ReducedDensityMatrix(propsB);
+                //Debug.Log($"Finding entropy for RDM B: {LinearAlgebra.ToString(rb)}");
                 var sb = VonNeumannEntropy(rb);
+                //Debug.Log($"S(A)={sa} S(B)={sb} S(AB)={s}");
                 result[i] = sa + sb - s;
             }
             return result;

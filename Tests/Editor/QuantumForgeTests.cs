@@ -14,6 +14,7 @@ public class QuantumForgeTests
 {
     private QuantumForge.NativeQuantumProperty qubit1;
     private QuantumForge.NativeQuantumProperty qubit2;
+    private QuantumForge.NativeQuantumProperty qubit3;
     private QuantumForge.NativeQuantumProperty qutrit1;
     private QuantumForge.NativeQuantumProperty qutrit2;
 
@@ -25,6 +26,7 @@ public class QuantumForgeTests
     {
         qubit1 = new QuantumForge.NativeQuantumProperty(2);
         qubit2 = new QuantumForge.NativeQuantumProperty(2);
+        qubit3 = new QuantumForge.NativeQuantumProperty(2);
         qutrit1 = new QuantumForge.NativeQuantumProperty(3);
         qutrit2 = new QuantumForge.NativeQuantumProperty(3);
 
@@ -39,6 +41,7 @@ public class QuantumForgeTests
     {
         qubit1.Dispose();
         qubit2.Dispose();
+        qubit3.Dispose();
         qutrit1.Dispose();
         qutrit2.Dispose();
     }
@@ -255,6 +258,23 @@ public class QuantumForgeTests
         Assert.AreEqual(2, mi.Length);
         float target = 2.0f * MathF.Log(2.0f);
         Assert.IsTrue(Mathf.Approximately(target, mi[0]));
+    }
+
+    [Test]
+    public void TestTripartiteMutualInformation()
+    {
+        Assert.DoesNotThrow(() => QuantumForge.Hadamard(qubit1));
+        var predicate1 = qubit1.is_value(0);
+        Assert.DoesNotThrow(() => QuantumForge.Hadamard(qubit2));
+        var predicate2 = qubit2.is_value(1);
+        Assert.DoesNotThrow(() => QuantumForge.Cycle(qubit3, predicate1, predicate2));
+        var mi = QuantumForge.MutualInformation(new[] { qubit1, qubit2, qubit3 });
+        Assert.AreEqual(3, mi.Length);
+        float target = 1.12467f;
+        Debug.Log($"TargetL: {target}   Mutual Information: {mi[0]}, {mi[1]}, {mi[2]}");
+        Assert.IsTrue(Mathf.Approximately(target, mi[0]));
+        Assert.IsTrue(Mathf.Approximately(target, mi[1]));
+        Assert.IsTrue(Mathf.Approximately(target, mi[2]));
     }
 
     [Test]
