@@ -44,3 +44,5 @@
         - Updated Unity version to 6000.0.43f1
 
 1.1.5 - Made QuantumProperties arrays in trackers public, for code interactivity.
+
+1.1.6 - Fix bug in CHSH example code.

@@ -1,6 +1,5 @@
 using System;
-using Unity.Android.Gradle.Manifest;
-using UnityEngine;using UnityEngine.Events;
+using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class DialRotationHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler, IPointerDownHandler
