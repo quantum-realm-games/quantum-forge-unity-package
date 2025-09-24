@@ -105,6 +105,12 @@ namespace QRG.QuantumForge.Runtime
         /// <returns>The phase matrix as a 2D float array.</returns>
         public float[,] UpdatePhaseMatrix()
         {
+            if (quantumProperties == null || quantumProperties.Length == 0)
+            {
+                Debug.LogError(
+                    $"{gameObject.name}: No NativeQuantumProperty found on this object. Set properties to track");
+                return null;
+            }
             var rdm = QuantumProperty.ReducedDensityMatrix(quantumProperties);
             for (int i = 0; i < rdm.GetLength(0); ++i)
             {

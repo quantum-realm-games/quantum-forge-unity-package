@@ -48,3 +48,5 @@
 1.1.6 - Fix bug in CHSH example code.
 
 1.1.7 - Fix entanglement calculation.
+
+1.1.8 - Added empty properties check to the phase tracker
